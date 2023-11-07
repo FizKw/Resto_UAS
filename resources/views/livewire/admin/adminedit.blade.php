@@ -12,7 +12,7 @@
 
     </div>
 
-    <div class="overflow-auto  container">
+    <div class="overflow-auto container">
         <table class="table-fixed w-full h-full mx-auto table-hover relative border">
                 <thead class="text-center sticky top-0 font-bold bg-color3 text-lg text-black border-y">
                     <tr>
