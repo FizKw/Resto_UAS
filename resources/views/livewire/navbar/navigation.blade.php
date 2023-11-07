@@ -1,8 +1,7 @@
 <div class="navbar bg-color4 fixed z-50 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
-        <a href="{{ route('index') }}" class=" font-bold px-2 text-xl" wire:navigate>
-            <p class="text-color1">PerCilok
-            <span class="text-slate-950">Foods</span>.</p>
+        <a href="{{ route('index') }}" class=" w-16 h-20 mx-2 mt-1" wire:navigate>
+            <img src={!! asset('Inni.png') !!} alt="">
         </a>
         @auth
         <a href="{{ route('home') }}"  class=" font-bold px-2 text-xl" wire:navigate>
