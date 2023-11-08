@@ -4,6 +4,9 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     daisyui: {
+      themes: [
+        
+      ],
       },
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -13,6 +16,9 @@ export default {
 
     theme: {
         extend: {
+          spacing: {
+            '18': '4.5rem',
+          },
             colors: {
                 "kuning": {
                     "50": "#faf5ea",
@@ -52,7 +58,7 @@ export default {
                   },
             },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                poppins: ['Poppins'],
             },
         },
     },

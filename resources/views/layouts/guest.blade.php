@@ -10,14 +10,15 @@
 
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://unpkg.com/feather-icons"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;900&display=swap" rel="stylesheet">
         
         <!-- Scripts -->
+        <script src="https://unpkg.com/feather-icons"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased  min-h-screen bg-[#5B0017]">
+    <body class="font-poppins antialiased  min-h-screen bg-[#5B0017]">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
 
 

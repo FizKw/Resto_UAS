@@ -18,7 +18,7 @@
                         <h2 class="card-title  text-2xl capitalize">{{ $product->food }}
                             <span class="badge badge-sm bg-color3">{{ $product->category }}</span>
                         </h2>
-                        <p class="text-gray-900 items-center text-xl font-bold">Rp{{ $product->price }}</p>
+                        <p class="text-gray-900 items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
                         <div class="card-actions">
                             <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-color1 hover:bg-red-400 text-white">Add</a></button>
                         </div>
