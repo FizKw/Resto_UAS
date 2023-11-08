@@ -1,4 +1,4 @@
-<div class="navbar bg-color4 fixed z-50 shadow-lg justify-between">
+<div class="navbar bg-merah-500 fixed z-50 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
         <a href="{{ route('index') }}" class=" w-16 h-20 mx-2 mt-1" wire:navigate>
             <img src={!! asset('Inni.png') !!} alt="">

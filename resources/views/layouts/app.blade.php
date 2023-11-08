@@ -26,7 +26,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased min-h-screen bg-[#5B0017]">
         <div class="min-h-screen bg-color3">
             {{-- Navbar masuk disini --}}
             <livewire:navbar.navigation />
