@@ -3,13 +3,6 @@
         <a href="{{ route('index') }}" class=" " wire:navigate>
             <img src={!! asset('Inni.png') !!} alt="" class="w-18 h-16 mx-2 my-auto">
         </a>
-        @auth
-        <a href="{{ route('home') }}"  class=" text-white text-sm px-2 " wire:navigate>
-        @else
-        <a href="{{ route('menu') }}"  class=" text-white px-2 text-xl" wire:navigate>
-        @endauth
-            Menu
-        </a>
     </div>
     <div class="mx-4">
 
