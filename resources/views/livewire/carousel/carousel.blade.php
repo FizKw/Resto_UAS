@@ -10,7 +10,7 @@
               @auth
               <a href="{{ route('home') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
               @else
-              <a href="{{ route('home') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
+              <a href="{{ route('menu') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
               @endauth
             </button>
         </div>
@@ -41,7 +41,7 @@
               @auth
               <a href="{{ route('home') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
               @else
-              <a href="{{ route('home') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
+              <a href="{{ route('menu') }}" class="left-3 top-1 absolute text-center text-yellow-600 text-xl font-bold" wire:navigate>Our Menu</a>
               @endauth
             </button>
         </div>
