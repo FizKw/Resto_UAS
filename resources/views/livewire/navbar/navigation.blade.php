@@ -64,12 +64,8 @@
 
         {{-- Non logged-in --}}
         @else
-        <div class="flex-none md:px-12 ">
-            <a href="{{ route('login') }}" class="pr-1 font-bold text-black hover:text-grey-400">Login</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="btn border-none bg-color1 hover:bg-red-700 text-base text-white capitalize rounded-full ml-4 font-semibold ">Register</a>
-            @endif
+        <div class="flex-none md:px-12 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22">
+            <a href="{{ route('login') }}" class="rounded-none font-bold    text-black hover:text-white ">Login</a>
         </div>
         @endauth
     </div>
