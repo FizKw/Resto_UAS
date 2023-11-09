@@ -11,7 +11,7 @@
 
         <x-foodlist>
             @foreach($products as $product)
-            <div  class="card card-compact mx-auto w-96 lg:w-80 xl:w-96 mb-6 bg-color4 border border-color2 transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-lg relative">
+            <div  class="card card-compact mx-auto w-96 lg:w-80 xl:w-96 mb-6 bg-biru-500 border border-color2 transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-lg relative">
                 <a href="{{ route('products.show', $product->id) }}">
                     <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-96 h-56 rounded-xl object-cover object-center" /></figure>
                     <div class="card-body text-center items-center">
@@ -20,7 +20,7 @@
                         </h2>
                         <p class="text-white items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
                         <div class="card-actions">
-                            <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-color1 hover:bg-red-400 text-white">Add</a></button>
+                            <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-merah-500 hover:bg-merah-400 text-white">Add</a></button>
                         </div>
                     </div>
                 </a>
