@@ -2,10 +2,10 @@
     @if($products->count() > 0)
         <div class="mb-6"></div>
         <div class="flex justify-start space-x-3 ml-20 ">
-            <button wire:click="filterCategory()" class="btn rounded-full capitalize text-lg {{ is_null($category) ? 'bg-color1  text-white' : '' }}">Inni Mozarella</button>
-            <button wire:click="filterCategory('Makanan')" class="btn rounded-full capitalize text-lg {{ ($category == 'Makanan') ? 'bg-color1  text-white' : '' }}">Inni Mie Ayam</button>
-            {{-- <button wire:click="filterCategory('Minuman')" class="btn rounded-full capitalize text-lg {{ ($category == 'Minuman') ?   text-white' : '' }}">Minuman</button>
-            <button wire:click="filterCategory('Snack')" class="btn rounded-full capitalize text-lg {{ ($category == 'Snack') ?  text-white' : '' }}">Snack</button> --}}
+            <button wire:click="filterCategory()" class="btn rounded-full capitalize text-lg {{ is_null($category) ? 'bg-color1  text-white' : '' }}">All</button>
+            <button wire:click="filterCategory('Mozarella')" class="btn rounded-full capitalize text-lg {{ ($category == 'Mozarella') ? 'bg-color1  text-white' : '' }}">Mozarella</button>
+            <button wire:click="filterCategory('Mie')" class="btn rounded-full capitalize text-lg {{ ($category == 'Mie') ? 'bg-color1 text-white' : '' }}">Mie Ayam</button>
+            {{-- <button wire:click="filterCategory('Snack')" class="btn rounded-full capitalize text-lg {{ ($category == 'Snack') ?  text-white' : '' }}">Snack</button> --}}
         </div>
         
 

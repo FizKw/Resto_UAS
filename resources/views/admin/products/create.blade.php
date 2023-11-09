@@ -21,9 +21,8 @@
                     <div class="input-group">
                         <select class="select select-bordered" name="category" required>
                             <option disabled selected hidden value="">Category</option>
-                            <option value="Makanan">Makanan</option>
-                            <option value="Minuman">Minuman</option>
-                            <option value="Snack">Snack</option>
+                            <option value="Mozarella">Mozarella</option>
+                            <option value="Mie">Mie Ayam</option>
                         </select>
                     </div>
                     <div class="mb-3">
