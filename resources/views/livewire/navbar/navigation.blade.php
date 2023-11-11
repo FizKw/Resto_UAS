@@ -27,12 +27,18 @@
 
             {{-- Avatar Logo --}}
             @if (isset(Auth()->user()->avatar))  
-            <div class="group overflow-visible relative max-w-sm mx-auto mr-6 h-12 bg-kuning-500 rounded-lg hover:bg-kuning-400 hover:rounded-none duration-150 shadow-lg ring-1 ring-black/5  flex items-center gap-6">
+            <label tabindex="0" class="btn block lg:hidden group-hover:cursor-pointer focus:ring-2  w-14 h-14 btn-circle avatar">
+                <div class="rounded-full">
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
+                </div>
+            </label>
+            <div class="btn hidden lg:block capitalize group overflow-visible relative max-w-sm mx-auto mr-6 py-2 pr-1 bg-kuning-500 rounded-lg hover:bg-kuning-400 hover:rounded-none duration-150 shadow-lg   items-center ">
+                
                 <label tabindex="0">
-                    <img class="group-hover:cursor-pointer absolute -left-6 -top-1 w-14 h-14 rounded-full shadow-lg group-hover:scale-125 duration-150" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
+                    <img class="group-hover:cursor-pointer absolute -left-6 -top-1 w-14 h-14 rounded-full shadow-lg duration-150" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
                 </label>
                 {{-- Username --}}
-                <label tabindex="0" class="group-hover:cursor-pointer py-5 px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+                <label tabindex="0" class="group-hover:cursor-pointer py-5 px-6  text-black text-lg font-bold  ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
             </div>
             @else
             <div class="flex group bg-kuning-500 rounded-lg h-12 max-w-sm mx-auto">
@@ -64,7 +70,7 @@
 
         {{-- Non logged-in --}}
         @else
-        <div class="flex-none md:px-12 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22">
+        <div class="flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22">
             <a href="{{ route('login') }}" class="rounded-none font-bold    text-black hover:text-white ">Login</a>
         </div>
         @endauth
