@@ -10,9 +10,9 @@
 
         <x-foodlist>
             @foreach($products as $product)
-            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[22.5rem] xl:w-[24rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[24rem] xl:w-[24rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                 <button wire:click="viewDetail({{ $product }})">
-                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[24rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">
                         <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}                        </h2>
                         {{-- <p class="text-white items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
@@ -35,13 +35,18 @@
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
-                    <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
-                        <div>ID : {{ $selectedFood->id }}</div>
-                        <div>Name : {{ $selectedFood->food }}</div>
-                        <div>Price : {{ $selectedFood->price }}</div>
-                        <div>Category : {{ $selectedFood->category }}</div>
-                        <div>Description : {{ $selectedFood->description }}</div>
-                        <figure class="mx-auto"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-28 max-w-2xl text-white">
+                        <div class="m-4 py-4 flex justify-between">
+                            <div class="pr-12"></div>
+                            <h1 class="text-center font-semibold mx-auto inset-x-0 text-3xl Capitalize">{{ $selectedFood->food }}</h1>
+                            <button x-on:click="show = false" class="text-xl bg-kuning-500 w-10 h-10 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">X</button>
+                        </div>
+                        <div class="flex justify-between inset-x-4">
+                            <p>{{ $selectedFood->description }}</p>
+                            <figure class="oject-cover object-center"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                        </div>
+                        <div>{{ $selectedFood->price }}</div>
+                        <div>{{ $selectedFood->category }}</div>
                         @if($foodCount > 0)
                         <div class="flex items-center justify-center md:justify-start lg:justify-start mt-2 mr-4 py-2 space-x-6 rounded-full">
                             <button wire:click="increase({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">+</button>
