@@ -10,9 +10,6 @@ class Carousel extends Component
     public $item1;
     public $item2;
 
-
-
-
     public function render()
     {
         $this->item1 = Foods::where('carouselId', 1)->first();

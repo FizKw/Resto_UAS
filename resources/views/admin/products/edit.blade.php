@@ -29,10 +29,8 @@
                         </div>
                         <div class="input-group">
                             <select class="select select-bordered text-md text-black" name="category" required>
-                                <option disabled selected hidden value="">Category</option>
-                                <option value="Makanan" {{ $product->category === 'Makanan' ? 'selected' : '' }} >Makanan</option>
-                                <option value="Minuman" {{ $product->category === 'Minuman' ? 'selected' : '' }} >Minuman</option>
-                                <option value="Snack" {{ $product->category === 'Snack' ? 'selected' : '' }} >Snack</option>
+                                <option value="Mozarella" {{ old('category', $product->category) == 'Mozarella' ? 'selected' : '' }}>Mozarella</option>
+                                <option value="Mie" {{ old('category', $product->category) == 'Mie' ? 'selected' : '' }}>Mie Ayam</option>
                             </select>
                         </div>
                             <div class="mb-3 relative w-full min-w-[200px]">

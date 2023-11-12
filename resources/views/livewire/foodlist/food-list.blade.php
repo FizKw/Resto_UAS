@@ -1,33 +1,60 @@
 <div>
     @if($products->count() > 0)
-        <div class="mb-6"></div>
-        <div class="flex items-center justify-center space-x-3 ">
-            <button wire:click="filterCategory()" class="btn rounded-full capitalize text-lg {{ is_null($category) ? 'bg-color1 hover:bg-red-400 text-white' : '' }}">All</button>
-            <button wire:click="filterCategory('Makanan')" class="btn rounded-full capitalize text-lg {{ ($category == 'Makanan') ? 'bg-color1 hover:bg-red-400 text-white' : '' }}">Makanan</button>
-            <button wire:click="filterCategory('Minuman')" class="btn rounded-full capitalize text-lg {{ ($category == 'Minuman') ? 'bg-color1 hover:bg-red-400 text-white' : '' }}">Minuman</button>
-            <button wire:click="filterCategory('Snack')" class="btn rounded-full capitalize text-lg {{ ($category == 'Snack') ? 'bg-color1 hover:bg-red-400 text-white' : '' }}">Snack</button>
-        </div>
+    <div class="flex justify-start space-x-3 ml-20 mt-6 mb-3 ">
+        {{-- <button wire:click="filterCategory()" class=" capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white{{ is_null($category) ? ' focus:text-white focus:opacity-100 font-medium' : '' }}">Inni Mozarella</button>
+        <button wire:click="filterCategory('Makanan')" class=" capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white{{ ($category == 'Makanan') ? ' focus:text-white focus:opacity-100 font-medium' : '' }}">Inni Mie Ayam</button>
+        <button wire:click="filterCategory('Minuman')" class=" capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white{{ ($category == 'Minuman') ?   'focus:text-white focus:opacity-100 font-medium' : '' }}">Minuman</button>
+        <button wire:click="filterCategory('Snack')" class=" capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white{{ ($category == 'Snack') ?  'focus:text-white focus:opacity-100 font-medium' : '' }}">Snack</button> --}}
+    </div>
         
 
         <x-foodlist>
             @foreach($products as $product)
-            <div  class="card card-compact mx-auto w-96 lg:w-80 xl:w-96 mb-6 bg-color4 border border-color2 transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-lg relative">
-                <a href="{{ route('products.show', $product->id) }}">
-                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-96 h-56 rounded-xl object-cover object-center" /></figure>
-                    <div class="card-body text-center items-center">
-                        <h2 class="card-title  text-2xl capitalize">{{ $product->food }}
-                            <span class="badge badge-sm bg-color3">{{ $product->category }}</span>
-                        </h2>
-                        <p class="text-gray-900 items-center text-xl font-bold">Rp{{ $product->price }}</p>
+            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[22.5rem] xl:w-[22.5rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+                <button wire:click="viewDetail({{ $product }})">
+                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                    <div class="card-body text-start ml-5 mt-2">
+                        <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}                        </h2>
+                        {{-- <p class="text-white items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
                         <div class="card-actions">
-                            <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-color1 hover:bg-red-400 text-white">Add</a></button>
-                        </div>
+                            <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-merah-500 hover:bg-merah-400 text-white">Add</a></button>
+                        </div> --}}
                     </div>
-                </a>
+                </button>
             </div>
             @endforeach
         </x-foodlist>
         @else 
                 <td class="text-center" colspan="5">Product not found</td>
         @endif
+
+        {{-- Modal Box Asu --}}
+        @if($selectedFood)
+            <x-detail-modal name="food-detail">
+                @slot('body')
+                    {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
+                    <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
+                    {{-- Modal Here --}}
+                    <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
+                        <div>ID : {{ $selectedFood->id }}</div>
+                        <div>Name : {{ $selectedFood->food }}</div>
+                        <div>Price : {{ $selectedFood->price }}</div>
+                        <div>Category : {{ $selectedFood->category }}</div>
+                        <div>Description : {{ $selectedFood->description }}</div>
+                        <figure class="mx-auto"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                        @if($foodCount > 0)
+                        <div class="flex items-center justify-center md:justify-start lg:justify-start mt-2 mr-4 py-2 space-x-6 rounded-full">
+                            <button wire:click="increase({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">+</button>
+                            <span class="text-lg text-gray-700 select-none">{{ $foodCount }}</span>
+                            <button wire:click="decrease({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">-</button>
+                        </div>
+                        @else
+                            <button wire:click="addToCart({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">Add To Cart</button>
+                        @endif
+                        
+                    </div>
+                @endslot
+            </x-detail-modal>
+        @endif
 </div>
+{{-- href="{{ route('products.show', $product->id) }}" --}}

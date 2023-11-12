@@ -35,35 +35,6 @@ class CartController extends Controller
 
     }
 
-    public function add(int $foods){
-
-        $user = User::find(Auth()->user()->id);
-        $user->foods()->attach($foods);
-        return redirect()->route('home',['#foodcart'])->with('success', 'Product added successfully');
-
-    }
-
-    public function increase(int $foods){
-
-        $user = User::find(Auth()->user()->id);
-        $user->foods()->attach($foods);
-        return redirect()->back();
-
-    }
-    public function decrease(int $foods){
-
-        $user = User::find(Auth()->user()->id);
-        $tableData = DB::table('user_foods')
-        ->where('user_id', $user->id)
-        ->where('foods_id', $foods)
-        ->first();
-        // dd($tableData);
-        DB::table('user_foods')->where('id', $tableData->id)->delete();
-
-        // $user->foods()->detach($foods);
-        return redirect()->back();
-
-    }
 
     public function checkout(){
         $user = User::find(Auth()->user()->id);

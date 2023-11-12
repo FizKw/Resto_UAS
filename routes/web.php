@@ -22,21 +22,16 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('menu', [HomeController::class, 'menu'])->name('menu');
-Route::get('show/{id}', [ProductController::class,'show'])->name('products.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('home',[HomeController::class,'menu'])->name('home');
     Route::get('home/cartlist',[CartController::class,'show'])->name('cartlist');
+    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::patch('/profile/avatar',[ImageUploadController::class, 'avatarUpdate'])->name('profile.avatar');
-    Route::get('home/addtocart/{id}',[CartController::class,'add'])->name('addtocart');
-    Route::get('home/increase/{id}',[CartController::class,'increase'])->name('increase');
-    Route::get('home/decrease/{id}',[CartController::class,'decrease'])->name('decrease');
-    // Route::get('product/{category}', [HomeController::class, 'category'])->name('category');
-    Route::get('show/insert/{id}', [ProductController::class, 'insert'])->name('insert');
-    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+    
     
     
 });
