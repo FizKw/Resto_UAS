@@ -47,7 +47,7 @@
         </div>
       </div>
       <div>
-          <img class="w-[712px] h-[570px] mx-10 object-center object-cover" src="{{ asset('storage/' . $item1->food_image) }}" />
+          <img class="w-[712px] h-[570px] mx-10 object-center object-cover" src="{{ asset('storage/' . $item2->food_image) }}" />
       </div>
       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
         <a href="#slide1">
