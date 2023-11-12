@@ -10,8 +10,8 @@
 
         <x-foodlist>
             @foreach($products as $product)
-            <div  class="card card-compact mx-auto w-[22.5rem] xl:w-[22.5rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
-                <a href="{{ route('products.show', $product->id) }}">
+            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[22.5rem] xl:w-[22.5rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+                <button wire:click="viewDetail({{ $product }})">
                     <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">
                         <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}
@@ -22,11 +22,41 @@
                             <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-merah-500 hover:bg-merah-400 text-white">Add</a></button>
                         </div> --}}
                     </div>
-                </a>
+                </button>
             </div>
             @endforeach
         </x-foodlist>
         @else 
                 <td class="text-center" colspan="5">Product not found</td>
         @endif
+
+        {{-- Modal Box Asu --}}
+        @if($selectedFood)
+            <x-detail-modal name="food-detail">
+                @slot('body')
+                    {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
+                    <div x-on:click="show = false" class="fixed inset-0 bg-gray-300 opacity-40"></div>
+                    {{-- Modal Here --}}
+                    <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
+                        <div>ID : {{ $selectedFood->id }}</div>
+                        <div>Name : {{ $selectedFood->food }}</div>
+                        <div>Price : {{ $selectedFood->price }}</div>
+                        <div>Category : {{ $selectedFood->category }}</div>
+                        <div>Description : {{ $selectedFood->description }}</div>
+                        <figure class="mx-auto"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                        @if($foodCount > 0)
+                        <div class="flex items-center justify-center md:justify-start lg:justify-start mt-2 mr-4 py-2 space-x-6 rounded-full">
+                            <button wire:click="increase({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">+</button>
+                            <span class="text-lg text-gray-700 select-none">{{ $foodCount }}</span>
+                            <button wire:click="decrease({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">-</button>
+                        </div>
+                        @else
+                            <button wire:click="addToCart({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">Add To Cart</button>
+                        @endif
+                        
+                    </div>
+                @endslot
+            </x-detail-modal>
+        @endif
 </div>
+{{-- href="{{ route('products.show', $product->id) }}" --}}

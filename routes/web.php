@@ -32,8 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::patch('/profile/avatar',[ImageUploadController::class, 'avatarUpdate'])->name('profile.avatar');
     Route::get('home/addtocart/{id}',[CartController::class,'add'])->name('addtocart');
-    Route::get('home/increase/{id}',[CartController::class,'increase'])->name('increase');
-    Route::get('home/decrease/{id}',[CartController::class,'decrease'])->name('decrease');
     Route::get('show/insert/{id}', [ProductController::class, 'insert'])->name('insert');
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
     

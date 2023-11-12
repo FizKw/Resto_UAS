@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class Navigation extends Component
 {
     public $cart;
-    
-
 
     #[On('counts-update')]
     public function render()

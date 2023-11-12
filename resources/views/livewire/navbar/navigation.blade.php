@@ -29,7 +29,7 @@
             @if (isset(Auth()->user()->avatar))  
             <label tabindex="0" class="btn block lg:hidden group-hover:cursor-pointer focus:ring-2  w-14 h-14 btn-circle avatar">
                 <div class="rounded-full">
-                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo">
                 </div>
             </label>
             <div class="btn hidden lg:block capitalize group overflow-visible relative max-w-sm mx-auto mr-6 py-2 pr-1 bg-kuning-500 rounded-lg hover:bg-kuning-400 hover:rounded-none duration-150 shadow-lg   items-center ">
