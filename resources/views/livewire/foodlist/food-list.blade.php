@@ -35,27 +35,30 @@
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-28 max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-24 max-w-2xl text-white">
                         <div class="m-4 py-4 flex justify-between">
                             <div class="pr-12"></div>
-                            <h1 class="text-center font-semibold mx-auto inset-x-0 text-3xl Capitalize">{{ $selectedFood->food }}</h1>
+                            <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
                             <button x-on:click="show = false" class="text-xl bg-kuning-500 w-10 h-10 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">X</button>
                         </div>
-                        <div class="flex justify-between inset-x-4">
-                            <p>{{ $selectedFood->description }}</p>
-                            <figure class="oject-cover object-center"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
+                        <div class="md:flex md:justify-between hidden inset-x-4">
+                            <p class="mx-8 mt-12">{{ $selectedFood->description }}</p>
+                            <figure class="p-6"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
                         </div>
-                        <div>{{ $selectedFood->price }}</div>
-                        <div>{{ $selectedFood->category }}</div>
+                        <div class="grid md:hidden">
+                            <figure class="p-6 mx-auto"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
+                            <p class="mx-auto">{{ $selectedFood->description }}</p>
+                        </div>
+                        <h1 class="font-semibold md:pl-6 text-center md:text-start text-3xl ">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
                         @if($foodCount > 0)
-                        <div class="flex items-center justify-center md:justify-start lg:justify-start mt-2 mr-4 py-2 space-x-6 rounded-full">
-                            <button wire:click="increase({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">+</button>
-                            <span class="text-lg text-gray-700 select-none">{{ $foodCount }}</span>
-                            <button wire:click="decrease({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">-</button>
-                        </div>
-                        @else
-                            <button wire:click="addToCart({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">Add To Cart</button>
-                        @endif
+                            <div class="flex items-center md:justify-start justify-center mt-2 p-6 py-2 ">
+                                <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
+                                <span class="font-bold text-2xl select-none">{{ $foodCount }}</span>
+                                <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>
+                            </div>
+                            @else
+                                <button wire:click="addToCart({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">Add To Cart</button>
+                            @endif
                         
                     </div>
                 @endslot

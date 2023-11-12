@@ -28,7 +28,7 @@
         
     </head>
     <body class="font-poppins antialiased min-h-screen bg-[#5B0017]">
-        <div class="min-h-screen bg-color3">
+        <div class="min-h-screen">
             {{-- Navbar masuk disini --}}
             <livewire:navbar.navigation />
 
