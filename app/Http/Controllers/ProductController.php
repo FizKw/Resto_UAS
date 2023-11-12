@@ -50,13 +50,10 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Foods::findOrFail($id);
-
+        $path = Storage::disk('public')->put('foods',$request->file('food_image'));
         $data = $request->all();
-
-        // dd($data);
-  
+        $data['food_image'] = $path;
         $product->update($data);
-  
         return redirect()->route('home')->with('success', 'product updated successfully');
     }
   

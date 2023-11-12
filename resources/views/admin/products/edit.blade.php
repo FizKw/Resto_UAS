@@ -1,23 +1,17 @@
 <x-app-layout>
-    
     <section class="py-12 px-4 lg:px-0 container mx-auto">
         <h2 class="text-center font-bold text-2xl p-3">Edit Menu</h2>
         <div class="p-12 sm:p-8 bg-color4 shadow rounded-lg">
             <div class="max-w-xl">
-                <form action="{{ route('food.image', $product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
+                    @method('PUT')
                         <figure class=" flex-shrink-0 flex-grow-0 mx-8 w-72 h-56 justify-center rounded-lg ">
                             <img class="object-fill object-center  flex-shrink-0 flex-grow-0 h-full max-w-full mx-auto rounded-lg mb-4 justtify-center" src="{{ asset('storage/' . $product->food_image) }}" alt="">   
                         </figure>
                         <div class="mt-4">
                             <x-text-input type="file" name="food_image" placeholder="Food Image" />
-                            <x-primary-button>Update</x-primary-button>
                         </div>
-                </form>
-                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PATCH')
                     <div class="pt-3">
                         <div class="mb-3">
                             <x-input-label class="form-label">Food</x-input-label>
