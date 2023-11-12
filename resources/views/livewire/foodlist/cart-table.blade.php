@@ -45,17 +45,6 @@
             <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
             <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
             <h1>Upload Payment Image Or Pay Later</h1>
-
-            <form method="POST" action="{{ route('checkout') }}" enctype="multipart/form-data" >
-                @csrf
-                <div>
-                    <x-input-label for="payment_image" value="payment_image" />
-                    <x-text-input id="payment_image" name="payment_image" type="file" class="mt-1 block w-full" required autofocus autocomplete="payment_image" />
-                    <x-input-error class="mt-2" :messages="$errors->get('payment_image')" />
-                </div>
-
-                <button class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">NOW</button>
-            </form>
             <a href="{{ route('order') }}" class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">LATER</a>
         </div>
 

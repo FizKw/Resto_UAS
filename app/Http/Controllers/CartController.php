@@ -34,16 +34,15 @@ class CartController extends Controller
     }
 
 
-    public function checkout(Request $request){
+    public function paynow(Request $request){
         
         $path = Storage::disk('public')->put('payment_images',$request->file('payment_image'));
         $user = User::find(Auth()->user()->id);
-        Orders::create([
-            'user_id' => $user->id,
-            'is_paid' => 1,
+        $order = Orders::where('user_id', $user->id)->where('status','!=','Done')->first();
+        $order->update([
             'payment_image' => $path,
+            'is_paid' => 1,
         ]);
-        $order = Orders::where('user_id', $user->id)->first();
         $user->update([
             'order_id' => $order->id,
         ]);
@@ -57,7 +56,7 @@ class CartController extends Controller
             'user_id' => $user->id,
             'is_paid' => 0,
         ]);
-        $order = Orders::where('user_id', $user->id)->first();
+        $order = Orders::where('user_id', $user->id)->where('status','!=','Done')->first();
         $user->update([
             'order_id' => $order->id,
         ]);

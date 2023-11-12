@@ -26,7 +26,7 @@ Route::get('menu', [HomeController::class, 'menu'])->name('menu');
 Route::middleware('auth')->group(function () {
     Route::get('home',[HomeController::class,'menu'])->name('home');
     Route::get('home/cartlist',[CartController::class,'show'])->name('cartlist');
-    Route::post('checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('paynow', [CartController::class, 'paynow'])->name('paynow');
     Route::get('order', [CartController::class, 'order'])->name('order');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

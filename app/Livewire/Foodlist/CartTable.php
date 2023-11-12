@@ -33,9 +33,7 @@ class CartTable extends Component
     public function render()
     {
         $price = 0;
-        // $this->counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('order_id', null)->get();
         $cart = User::with('foods')->where('id',Auth()->user()->id)->first();
-        // dd($cart);
         $this->listFood = $cart->foods;
         foreach($cart->foods as $product){
             $price += $product->price * $product->pivot->count;
