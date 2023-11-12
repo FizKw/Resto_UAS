@@ -4,7 +4,7 @@
     x-on:open-detail.window = "show = true"
     x-on:close-detail.window = "show = false"
     
-    x-transition.duration.500ms
+    x-transition.duration.100ms
     {{-- Edit transition animation https://alpinejs.dev/directives/transition --}}
 
     style="display:none"

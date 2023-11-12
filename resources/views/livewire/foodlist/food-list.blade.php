@@ -14,9 +14,7 @@
                 <button wire:click="viewDetail({{ $product }})">
                     <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">
-                        <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}
-                            {{-- <span class="badge badge-sm text-white">{{ $product->category }}</span> --}}
-                        </h2>
+                        <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}                        </h2>
                         {{-- <p class="text-white items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
                         <div class="card-actions">
                             <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-merah-500 hover:bg-merah-400 text-white">Add</a></button>
@@ -35,7 +33,7 @@
             <x-detail-modal name="food-detail">
                 @slot('body')
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
-                    <div x-on:click="show = false" class="fixed inset-0 bg-gray-300 opacity-40"></div>
+                    <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
                     <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
                         <div>ID : {{ $selectedFood->id }}</div>
