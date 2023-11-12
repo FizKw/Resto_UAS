@@ -53,16 +53,19 @@ class FoodList extends Component
     public function viewDetail(Foods $product)
     {
         $this->selectedFood = $product;
-        $count = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $product->id)->first();
-        if(isset($count)){
-        $this->foodCount = $count->count;
-        }
-        else{
+        if(Auth::id()){
+            $count = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $product->id)->first();
+            if(isset($count)){
+            $this->foodCount = $count->count;
+            }
+            else{
+                $this->foodCount = 0;
+            }
+        
+        }else{
             $this->foodCount = 0;
         }
-
         $this->dispatch('open-detail', name:'food-detail');
-        // $this->dispatch('counts-update');
     }
 
 

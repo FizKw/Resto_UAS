@@ -35,31 +35,6 @@ class ProductController extends Controller
     }
   
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $product = Foods::findOrFail($id);
-        if (Auth::check()) {
-            $counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $id)->get()->count();
-        }else{
-            $counts = 0;
-        }
-        // dd($counts);
-
-  
-        return view('admin.products.show', compact('product','counts'));
-    }
-    
-    public function insert(int $foods){
-
-        $user = User::find(Auth()->user()->id);
-        $user->foods()->attach($foods);
-        return redirect()->back();
-
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
