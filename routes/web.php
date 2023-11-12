@@ -26,23 +26,28 @@ Route::get('menu', [HomeController::class, 'menu'])->name('menu');
 Route::middleware('auth')->group(function () {
     Route::get('home',[HomeController::class,'menu'])->name('home');
     Route::get('home/cartlist',[CartController::class,'show'])->name('cartlist');
-    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::get('order', [CartController::class, 'order'])->name('order');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::patch('/profile/avatar',[ImageUploadController::class, 'avatarUpdate'])->name('profile.avatar');
-    
-    
+
     
 });
+
+Route::middleware(['auth', 'cahshier'])->prefix('cahsier')->group(function(){
+
+});
+
 Route::middleware(['auth', 'admin'])->prefix('home')->group(function () {
-        Route::get('create', [ProductController::class,'create'])->name('products.create');
-        Route::post('store', [ProductController::class,'store'])->name('products.store');
-        Route::get('edit/{id}', [ProductController::class,'edit'])->name('products.edit');
-        Route::patch('edit/{id}', [ProductController::class,'update'])->name('products.update');
-        Route::delete('destroy/{id}', [ProductController::class,'destroy'])->name('products.destroy');
-        Route::post('store/image',[ImageUploadController::class, 'foodImage'])->name('product.image');
-        Route::patch('edit/food/{id}', [ImageUploadController::class, 'foodImage'])->name('food.image');
+    Route::get('create', [ProductController::class,'create'])->name('products.create');
+    Route::post('store', [ProductController::class,'store'])->name('products.store');
+    Route::get('edit/{id}', [ProductController::class,'edit'])->name('products.edit');
+    Route::put('edit/{id}', [ProductController::class,'update'])->name('products.update');
+    Route::delete('destroy/{id}', [ProductController::class,'destroy'])->name('products.destroy');
+    Route::post('store/image',[ImageUploadController::class, 'foodImage'])->name('product.image');
+    Route::patch('edit/food/{id}', [ImageUploadController::class, 'foodImage'])->name('food.image');
 });
 
 require __DIR__.'/auth.php';

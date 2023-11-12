@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email')->unique();
+            $table->foreignId('order_id')->nullable();
             $table->date('date_of_birth');
             $table->string('avatar')->nullable();
             $table->string('password');
@@ -35,6 +36,17 @@ return new class extends Migration
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin123'),
                 'usertype' => 'admin'
+            )
+        );
+
+        DB::table('users')->insert(
+            array(
+                'f_name' => 'cashier',
+                'l_name' => '1',
+                'date_of_birth' => '2000-01-01',
+                'email' => 'cashier@gmail.com',
+                'password' => Hash::make('cashier123'),
+                'usertype' => 'cashier'
             )
         );
     }

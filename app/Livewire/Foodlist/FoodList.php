@@ -31,19 +31,19 @@ class FoodList extends Component
 
     public function increase($foodId = null){
         $user = User::find(Auth()->user()->id);
-        DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->increment('count');
+        DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->increment('count');
         $this->foodCount++;
         $this->dispatch('counts-update');
     }
 
     public function decrease($foodId = null){
         $user = User::find(Auth()->user()->id);
-        $row = DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->first();
+        $row = DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->first();
         if($row->count > 1){
-            DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->decrement('count');
+            DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->decrement('count');
             $this->foodCount--;
         }else{
-            $user->foods()->detach($foodId);
+            DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->delete();
             $this->foodCount = 0;
         }
         $this->dispatch('counts-update');
@@ -54,7 +54,7 @@ class FoodList extends Component
     {
         $this->selectedFood = $product;
         if(Auth::id()){
-            $count = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $product->id)->first();
+            $count = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $product->id)->where('order_id', null)->first();
             if(isset($count)){
             $this->foodCount = $count->count;
             }

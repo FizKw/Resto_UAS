@@ -14,17 +14,17 @@ class CartTable extends Component
 
     public function increase($cartId = null){
         $user = User::find(Auth()->user()->id);
-        DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->increment('count');
+        DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->where('order_id', null)->increment('count');
         $this->dispatch('counts-update');
     }
 
     public function decrease($cartId = null){
         $user = User::find(Auth()->user()->id);
-        $row = DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->first();
+        $row = DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->where('order_id', null)->first();
         if($row->count > 1){
-            DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->decrement('count');
+            DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->where('order_id', null)->decrement('count');
         }else{
-            $user->foods()->detach($cartId);
+            DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->where('order_id', null)->delete();
         }
         $this->dispatch('counts-update');
         
@@ -33,8 +33,9 @@ class CartTable extends Component
     public function render()
     {
         $price = 0;
-        $this->counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->get();
+        // $this->counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('order_id', null)->get();
         $cart = User::with('foods')->where('id',Auth()->user()->id)->first();
+        // dd($cart);
         $this->listFood = $cart->foods;
         foreach($cart->foods as $product){
             $price += $product->price * $product->pivot->count;
