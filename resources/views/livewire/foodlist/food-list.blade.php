@@ -10,7 +10,7 @@
 
         <x-foodlist>
             @foreach($products as $product)
-            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[22.5rem] xl:w-[22.5rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[22.5rem] xl:w-[24rem] lg:w-[21rem]  mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                 <button wire:click="viewDetail({{ $product }})">
                     <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[22.5rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">

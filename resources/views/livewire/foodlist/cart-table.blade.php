@@ -11,9 +11,9 @@
                                 <div class="self-start  ">
                                     <div class="flex px-4">
                                         <div class="flex">
-                                            <button><a wire:click="decrease({{ $food->id }})" type="button" class="text-2xl bg-kuning-500 w-8 h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></a></button>
+                                            <button><a wire:click="decrease({{ $food->id }})" type="button" class="text-xl bg-kuning-500 w-8 h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</a></button>
                                             <p class="mx-4 font-bold text-2xl ">{{ $food->pivot->count }}</p>
-                                            <button><a wire:click="increase({{ $food->id }})" type="button" class="text-2xl bg-kuning-500 w-8 h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a></button>
+                                            <button><a wire:click="increase({{ $food->id }})" type="button" class="text-xl bg-kuning-500 w-8 h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</a></button>
                                         </div>
                                         <h1 class="align-middle font-bold text-2xl text-center ml-6 ">Rp.{{number_format($food->price,0,".",".")  }}</h1>
                                     </div>
