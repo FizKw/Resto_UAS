@@ -6,6 +6,7 @@
                 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    
                         <figure class=" flex-shrink-0 flex-grow-0 mx-8 w-72 h-56 justify-center rounded-lg ">
                             <img class="object-fill object-center  flex-shrink-0 flex-grow-0 h-full max-w-full mx-auto rounded-lg mb-4 justtify-center" src="{{ asset('storage/' . $product->food_image) }}" alt="">   
                         </figure>
