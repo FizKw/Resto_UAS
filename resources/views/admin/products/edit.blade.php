@@ -9,10 +9,9 @@
                         <figure class=" flex-shrink-0 flex-grow-0 mx-8 w-72 h-56 justify-center rounded-lg ">
                             <img class="object-fill object-center  flex-shrink-0 flex-grow-0 h-full max-w-full mx-auto rounded-lg mb-4 justtify-center" src="{{ asset('storage/' . $product->food_image) }}" alt="">   
                         </figure>
-                        <div class="mt-4">
+                        <div class="mt-4 mb-3">
                             <x-text-input type="file" name="food_image" placeholder="Food Image" />
                         </div>
-                    <div class="pt-3">
                         <div class="mb-3">
                             <x-input-label class="form-label">Food</x-input-label>
                             <x-text-input type="text" name="food" class="mt-1 block w-full" placeholder="Food" value="{{ $product->food }}" />
@@ -34,7 +33,6 @@
                         <div class="">
                             <x-primary-button class="btn btn-warning">Update</x-primary-button>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
