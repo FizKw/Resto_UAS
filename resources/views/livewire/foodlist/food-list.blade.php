@@ -35,7 +35,7 @@
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-24 max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-32 max-w-2xl text-white">
                         <div class="m-4 py-4 flex justify-between">
                             <div class="pr-12"></div>
                             <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
@@ -51,13 +51,13 @@
                         </div>
                         <h1 class="font-semibold md:pl-6 text-center md:text-start text-3xl ">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
                         @if($foodCount > 0)
-                            <div class="flex items-center md:justify-start justify-center mt-2 p-6 py-2 ">
+                            <div class="flex items-center md:justify-start justify-center mt-4 mx-10 py-2 ">
                                 <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
                                 <span class="font-bold text-2xl select-none">{{ $foodCount }}</span>
                                 <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>
                             </div>
                             @else
-                                <button wire:click="addToCart({{ $selectedFood->id }})" class="text-2xl bg-color1 w-10 h-10 rounded-full hover:scale-105 transform transition duration-500 cursor-pointer p-2">Add To Cart</button>
+                                <x-primary-button wire:click="addToCart({{ $selectedFood->id }})" class="flex items-center md:justify-start justify-center md:mx-6 mx-auto mt-6 ">Add To Cart</x-primary-button>
                             @endif
                         
                     </div>
