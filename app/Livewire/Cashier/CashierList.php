@@ -5,20 +5,27 @@ namespace App\Livewire\Cashier;
 use App\Models\Foods;
 use App\Models\Orders;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Rule;
 
 class CashierList extends Component
 {
-    public $status = "Process";
+    public $status = "Waiting";
     public Orders $selectedOrder;
     public $cartDetail;
+
+    #[Rule('required')]
+    public $cancelOption = "";
+
+    public $cashierNote = "";
+
 
 
     public function filterStatus($status = null){
         $this->status = $status;
-
     }
 
     public function orderdetail(Orders $order){
@@ -27,14 +34,37 @@ class CashierList extends Component
         $this->dispatch('open-detail', name:'order-detail');
     }
 
-    public function nextProcess(){
-        if ($this->selectedOrder->status == 'Waiting') {
-            $this->selectedOrder->update(['status' => 'Process']);
-        }else if($this->selectedOrder->status == 'Process'){
-            $this->selectedOrder->update(['status' => 'Ready']);
-        }else if($this->selectedOrder->status == 'Ready'){
-            $this->selectedOrder->update(['status' => 'Done']);
-        }
+    public function orderCancel(){
+        $this->selectedOrder->update([
+            'status' => 'Cancel',
+            'cashier_note' => $this->cancelOption,
+        ]);
+        $this->dispatch('update-detail');
+    }
+
+    public function orderAccept(){
+        $this->selectedOrder->update(['status' => 'Process']);
+        $this->dispatch('update-detail');
+    }
+
+    public function verivication(){
+        $this->selectedOrder->update(['is_paid' => 1]);
+        $this->dispatch('update-detail');
+    }
+
+    public function orderReady(){
+        $this->selectedOrder->update([
+            'status' => 'Ready',
+            'cashier_note' => $this->cashierNote,
+        ]);
+        $this->dispatch('update-detail');
+    }
+
+    public function orderDone(){
+        $this->selectedOrder->update(['status' => 'Done']);
+        User::find($this->selectedOrder->user_id)->update(['order_id' => null]);
+        // dd($user);
+        // $user->update(['order_id' => null]);
         $this->dispatch('update-detail');
     }
 

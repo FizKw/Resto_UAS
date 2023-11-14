@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('status')->default('Waiting');
-            $table->boolean('is_paid');
+            $table->boolean('is_paid')->default(1);
             $table->string('payment_image')->nullable();
+            $table->text('order_note')->nullable();
+            $table->text('cashier_note')->nullable();
             $table->timestamps();
         });
     }

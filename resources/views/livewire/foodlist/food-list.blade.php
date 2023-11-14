@@ -15,10 +15,7 @@
                     <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[24rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">
                         <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}                        </h2>
-                        {{-- <p class="text-white items-center text-xl font-bold">Rp.{{number_format($product->price,0,".",".")  }}</p>
-                        <div class="card-actions">
-                            <button class="justify-end flex-end"><a wire:click="addToCart({{ $product->id }})" type="button" class="btn rounded-full capitalize text-lg bg-merah-500 hover:bg-merah-400 text-white">Add</a></button>
-                        </div> --}}
+                       
                     </div>
                 </button>
             </div>
@@ -52,11 +49,15 @@
                         <h1 class="font-semibold md:pl-6 text-center md:text-start text-3xl ">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
                         @if($foodCount > 0)
                             <div class="flex items-center md:justify-start justify-center mt-4 mx-10 py-2 ">
+                                
                                 <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
                                 <span class="font-bold text-2xl select-none">{{ $foodCount }}</span>
                                 <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>
                             </div>
                             @else
+                                @if (session('orderStatus'))
+                                    <h1 class="text-center font-semibold mx-auto text-3xl capitalize">Order Status Not Done</h1>
+                                @endif
                                 <x-primary-button wire:click="addToCart({{ $selectedFood->id }})" class="flex items-center md:justify-start justify-center md:mx-6 mx-auto mt-6 ">Add To Cart</x-primary-button>
                             @endif
                         

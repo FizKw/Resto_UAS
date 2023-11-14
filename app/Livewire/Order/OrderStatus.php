@@ -8,11 +8,13 @@ use Livewire\Component;
 
 class OrderStatus extends Component
 {
-    public $orderNumber;
 
     public function render()
     {
-        $this->orderNumber = Orders::where('id', Auth()->user()->order_id)->first();
-        return view('livewire.order.order-status');
+        
+        $orderNumber = Orders::where('id', Auth()->user()->order_id)->first();
+        return view('livewire.order.order-status',[
+            'orderNumber' => $orderNumber,
+        ]);
     }
 }

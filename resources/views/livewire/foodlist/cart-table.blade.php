@@ -36,7 +36,7 @@
             @else
             <h1 class="container text-center px-5 py-40 font-semibold text-3xl leading-normal">Kamu masih belum pesan apa apa nih :) <br> Silahkan pesan menu yang kamu mau</h1>
             @endif
-            
+
         </div>
     </div>
 
@@ -45,7 +45,14 @@
             <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
             <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
             <h1>Upload Payment Image Or Pay Later</h1>
-            <a href="{{ route('order') }}" class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">LATER</a>
+            <form action="{{ route('order') }}" method="POST">
+                @csrf
+                @method('PATCH')
+
+                <label for="order_note">Notes Untuk Order</label>
+                <textarea name="order_note" placeholder="Order Note"></textarea>
+                <button class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">LATER</button>
+            </form>
         </div>
 
         @endslot

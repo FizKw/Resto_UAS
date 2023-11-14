@@ -27,13 +27,13 @@ Route::middleware('auth')->group(function () {
     Route::get('home',[HomeController::class,'menu'])->name('home');
     Route::get('home/cartlist',[CartController::class,'show'])->name('cartlist');
     Route::post('paynow', [CartController::class, 'paynow'])->name('paynow');
-    Route::get('order', [CartController::class, 'order'])->name('order');
+    Route::patch('order', [CartController::class, 'order'])->name('order');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::patch('/profile/avatar',[ImageUploadController::class, 'avatarUpdate'])->name('profile.avatar');
 
-    
+
 });
 
 Route::middleware(['auth', 'cahshier'])->prefix('cahsier')->group(function(){

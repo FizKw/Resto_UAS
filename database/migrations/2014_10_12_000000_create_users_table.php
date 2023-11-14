@@ -41,11 +41,11 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
-                'f_name' => 'cashier',
+                'f_name' => 'kasir',
                 'l_name' => '1',
                 'date_of_birth' => '2000-01-01',
-                'email' => 'cashier@gmail.com',
-                'password' => Hash::make('cashier123'),
+                'email' => 'kasir@gmail.com',
+                'password' => Hash::make('kasir123'),
                 'usertype' => 'cashier'
             )
         );

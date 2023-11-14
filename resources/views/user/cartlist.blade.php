@@ -6,9 +6,6 @@
             @else
             <livewire:order.order-status />
             @endif
-            
-
-            
         </div>
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Foodlist;
 
 use Livewire\Component;
 use App\Models\Foods;
+use App\Models\Orders;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +20,18 @@ class FoodList extends Component
     }
 
     public function addToCart($foodsId = null){
+        $user = User::find(Auth()->user()->id);
+        // dd($user->order->status);
         if(Auth::id()){
-            $user = User::find(Auth()->user()->id);
-            $user->foods()->attach($foodsId);
-            $this->foodCount = 1;
-            $this->dispatch('counts-update');
+            if($user->order->status == "Cancel" || $user->order->status == "Done" || $user->order->status == null ){
+                $user->update(['order_id' => null]);
+                $user->foods()->attach($foodsId);
+                $this->foodCount = 1;
+                $this->dispatch('counts-update');
+
+            }else{
+                session()->flash('orderStatus', 'Your Order Is Still In Progress');
+            }
         }else{
             return redirect()->route('login');
         }
@@ -47,7 +55,7 @@ class FoodList extends Component
             $this->foodCount = 0;
         }
         $this->dispatch('counts-update');
-        
+
     }
 
     public function viewDetail(Foods $product)
@@ -61,7 +69,7 @@ class FoodList extends Component
             else{
                 $this->foodCount = 0;
             }
-        
+
         }else{
             $this->foodCount = 0;
         }
