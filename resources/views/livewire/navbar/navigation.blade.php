@@ -1,7 +1,7 @@
 <div class="navbar bg-merah-500 fixed z-50 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
         <a href="{{ route('index') }}" class=" " wire:navigate>
-            <img src={!! asset('Inni.png') !!} alt="" class="w-18 h-16 mx-2 my-auto">
+            <img src="/asset/Inni.png" alt="" class="w-18 h-16 mx-2 my-auto">
         </a>
     </div>
     <div class="mx-4">
@@ -70,9 +70,9 @@
 
         {{-- Non logged-in --}}
         @else
-        <div class="flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22">
-            <a href="{{ route('login') }}" class="rounded-none font-bold    text-black hover:text-white ">Login</a>
-        </div>
+        <button>
+            <a href="{{ route('login') }}" class="rounded-none font-bold  flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22  text-black hover:text-white ">Login</a>
+        </button>
         @endauth
     </div>
 </div>

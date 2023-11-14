@@ -2,9 +2,9 @@
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible ">
                 @if($product->count() > 0)
-                    <table class="table text-white border-separate space-y-6 text-sm">
-                        <thead class=" text-kuning-500 sticky top-0">
-                            <tr>
+                    <table class="table text-white border-separate space-y-6 text-sm relative">
+                        <thead class=" text-kuning-500">
+                            <tr class="sticky top-0">
                                 <th class="p-3"></th>
                                 <th class="p-3 text-left">Menu</th>
                                 <th class="p-3 text-left">Detail</th>

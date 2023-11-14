@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Navbar;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
@@ -18,9 +19,11 @@ class Navigation extends Component
     {
         if (Auth::check()) {
             $total = 0;
-            $counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->get();
-            foreach($counts as $count){
+            if (Auth()->user()->order_id === null) {
+                $counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('order_id', null)->get();
+                foreach($counts as $count){
                 $total = $total + $count->count;
+                }
             }
             $this->cart = $total;
         }

@@ -26,6 +26,9 @@ class HomeController extends Controller
             else if($usertype=='admin'){
                 return view('admin.adminhome');
             }
+            else if($usertype == 'cashier'){
+                return view('cashier.cashierhome');
+            }
             else{
                 return redirect()->back();
             }

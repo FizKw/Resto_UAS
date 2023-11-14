@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Foods;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ImageUploadController extends Controller
 {
@@ -22,16 +24,16 @@ class ImageUploadController extends Controller
         if ($oldAvatar = $request->user()->avatar) {
             Storage::disk('public')->delete($oldAvatar);
         }
-
-        auth()->user()->update(['avatar' => $path]);
+        User::find(Auth()->user()->id)->update(['avatar' => $path]);
+        // auth()->user()->update(['avatar' => $path]);
 
         return Redirect::route('profile.edit')->with(['message'=>'Avatar is changed']);
     }
     public function foodImage(FoodImageRequest $request, string $id): RedirectResponse
     {
         $product = Foods::findOrFail($id);
-        
-        
+
+
         $path = Storage::disk('public')->put('foods',$request->file('food_image'));
 
         if ($oldAvatar = $product->food_image) {
