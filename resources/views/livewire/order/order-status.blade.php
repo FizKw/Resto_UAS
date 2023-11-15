@@ -4,7 +4,7 @@
         <div class="ml-24 mt-9 col">
             <p class="text-7xl font-bold text-white">
                 Sorry Your Order is Cancelled Because : <br>
-                {{ $orderNumber->order_note }}
+                {{ $orderNumber->cashier_note }}
             </p>
         </div>
 
