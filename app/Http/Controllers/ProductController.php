@@ -71,4 +71,9 @@ class ProductController extends Controller
 
         return redirect()->route('home')->with('success', 'product deleted successfully');
     }
+
+    public function history()
+    {
+        return view('admin.products.history');
+    }
 }

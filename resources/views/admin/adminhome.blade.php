@@ -12,7 +12,7 @@
             <h1 class="text-xl font-semibold text-yellow-500 self-end pl-28 ">Our Menu</h1>
         </div>
         <div class="flex justify-end items-center mx-12  ">
-            <a href="#" class="capitalize text-black text-md bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-8 px-10 py-2 rounded-sm">Cek Pemasukan</a>
+            <a href="{{ route('products.history') }}" class="capitalize text-black text-md bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-8 px-10 py-2 rounded-sm">Cek Pemasukan</a>
             <a href="{{ route('products.create') }}" class="capitalize text-black text-md bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 px-4 py-2 rounded-sm">Tambahkan Menu Baru</a>
         </div>
     </div>

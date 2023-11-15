@@ -46,6 +46,7 @@ Route::middleware(['auth', 'admin'])->prefix('home')->group(function () {
     Route::get('edit/{id}', [ProductController::class,'edit'])->name('products.edit');
     Route::put('edit/{id}', [ProductController::class,'update'])->name('products.update');
     Route::delete('destroy/{id}', [ProductController::class,'destroy'])->name('products.destroy');
+    Route::get('history', [ProductController::class,'history'])->name('products.history');
     Route::post('store/image',[ImageUploadController::class, 'foodImage'])->name('product.image');
     Route::patch('edit/food/{id}', [ImageUploadController::class, 'foodImage'])->name('food.image');
 });
