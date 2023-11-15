@@ -34,12 +34,13 @@
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
                     <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-32 max-w-2xl text-white">
-                        <div class="m-4 py-4 flex justify-between">
-                            <div class="pr-12"></div>
+                        <div class="mx-4 mt-4 flex justify-between">
+                            <div class="pr-10"></div>
                             <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
                             <button x-on:click="show = false" class="text-xl bg-kuning-500 w-10 h-10 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">X</button>
                         </div>
                         <div class="md:flex md:justify-between hidden inset-x-4">
+                            
                             <p class="mx-8 mt-12">{{ $selectedFood->description }}</p>
                             <figure class="p-6"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
                         </div>
