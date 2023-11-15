@@ -52,7 +52,6 @@ class CashierList extends Component
     public function verivication(){
         $this->selectedOrder->update(['is_paid' => 1]);
         $this->dispatch('update-detail');
-
     }
 
     public function orderReady(){
