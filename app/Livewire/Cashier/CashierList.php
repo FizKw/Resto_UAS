@@ -40,16 +40,19 @@ class CashierList extends Component
             'cashier_note' => $this->cancelOption,
         ]);
         $this->dispatch('update-detail');
+        $this->dispatch('close-detail');
     }
 
     public function orderAccept(){
         $this->selectedOrder->update(['status' => 'Process']);
         $this->dispatch('update-detail');
+        $this->dispatch('close-detail');
     }
 
     public function verivication(){
         $this->selectedOrder->update(['is_paid' => 1]);
         $this->dispatch('update-detail');
+
     }
 
     public function orderReady(){
@@ -58,14 +61,15 @@ class CashierList extends Component
             'cashier_note' => $this->cashierNote,
         ]);
         $this->dispatch('update-detail');
+        $this->dispatch('close-detail');
     }
 
     public function orderDone(){
         $this->selectedOrder->update(['status' => 'Done']);
         User::find($this->selectedOrder->user_id)->update(['order_id' => null]);
-        // dd($user);
-        // $user->update(['order_id' => null]);
         $this->dispatch('update-detail');
+        $this->dispatch('close-detail');
+
     }
 
     #[On('update-detail')]

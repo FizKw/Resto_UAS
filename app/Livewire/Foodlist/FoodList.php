@@ -21,9 +21,8 @@ class FoodList extends Component
 
     public function addToCart($foodsId = null){
         $user = User::find(Auth()->user()->id);
-        // dd($user->order->status);
         if(Auth::id()){
-            if($user->order->status == "Cancel" || $user->order->status == "Done" || $user->order->status == null ){
+            if( $user->order_id == null || $user->order->status == "Cancel" || $user->order->status == "Done"){
                 $user->update(['order_id' => null]);
                 $user->foods()->attach($foodsId);
                 $this->foodCount = 1;
