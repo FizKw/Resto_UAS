@@ -2,13 +2,13 @@
     
     
     <header>
-        <h2 class="text-lg pb-3 font-bold text-black">
+        <h2 class="text-lg pb-2 font-bold text-kuning-500">
             Avatar
         </h2>
         @if($user->avatar)
         <img  class="rounded-full w-48 h-48 object-cover object-center" src="{{ "/storage/$user->avatar" }}" alt="">
         @endif
-        <p class="pt-4 text-sm text-black">
+        <p class="pt-4 text-sm text-kuning-500">
             Add or Update Avatar
         </p>
     </header>

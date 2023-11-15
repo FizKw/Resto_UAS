@@ -1,10 +1,10 @@
 <x-guest-layout>
-    <div class="max-w-screen-xl mx-auto grid grid-cols-2 gap-8">
+    <div class=" mx-auto lg:grid lg:grid-cols-2 gap-8">
         <div class="text-white col-span-1">
-            <h1 class="text-center text-white text-9xl font-bold font-['Smooch Sans']">Welcome</h1>
-            <h2 class="text-center text-white text-xl font-normal font-['Poppins'] ">Please Register Here</h2>
+            <h1 class="text-center text-white text-7xl font-semibold">Welcome</h1>
+            <h2 class="text-center text-white text-xl  ">Please Register Here</h2>
 
-            <form class="max-w-md mx-auto p-8" method="POST" action="{{ route('register') }}">
+            <form class="max-w-md mx-auto p-5" method="POST" action="{{ route('register') }}">
                 @csrf
 
                 {{-- Name --}}
@@ -84,16 +84,16 @@
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
-                <button type="submit" class="w-full bg-white text-black border border-black py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:border-blue-500 focus:bg-blue-600">Submit</button>
+                <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 rounded-md  hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
-                <div class="text-sm font-normal font-'Poppins' p-2">Already have account? <a href="{{ route('login') }}" class="button text-yellow-600 text-sm font-normal font-['Poppins']">Login here</a></div>
+                <h2 class="text-sm font-normal mt-4 p-2">Already have account? <a href="{{ route('login') }}" class="button text-kuning-500 hover:text-kuning-400 focus:text-kuning-400">Login here</a></h2>
 
             </form>
         </div>
 
 
-        <div class="col-span-1 p-8 rounded shadow-md flex items-center justify-center">
-            <img class="w-96 h-96 rounded-3xl" src="img/banner.jpg" alt="Placeholder Image">
+        <div class="col-span-1 p-8 rounded shadow-md hidden lg:flex items-center justify-center mr-6">
+            <img class="w-[34rem] h-96 rounded-3xl" src="/asset/Inni.png" alt="Placeholder Image">
         </div>
     </div>
 </x-guest-layout>
