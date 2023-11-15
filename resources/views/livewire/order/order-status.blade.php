@@ -14,14 +14,14 @@
         </p>
         @if ( $orderNumber->status == "Process")
             @if ($orderNumber->payment_image == null  )
-                    <button x-data x-on:click="$dispatch('open-detail')" class="btn">Pay Now</button>
-            @else
-                @if ($orderNumber->is_paid == false)
-                    <h1 class="text-7xl font-bold text-white">Menunggu Verivikasi Pembayaran</h1>
-                @elseif ($orderNumber->is_paid == true)
-                    <h1 class="text-7xl font-bold text-white">Pembayaranmu Sudah Terverivikasi</h1>
-                @endif
+                <button x-data x-on:click="$dispatch('open-detail')" class="btn">Pay Now</button>
             @endif
+            @if ($orderNumber->is_paid == false)
+                <h1 class="text-7xl font-bold text-white">Menunggu Verivikasi Pembayaran</h1>
+            @endif
+        @endif
+        @if( $orderNumber->is_paid == true)
+            <h1 class="text-7xl font-bold text-white">Pembayaranmu Sudah Terverivikasi</h1>
         @endif
 
         @if (isset($orderNumber->cashier_note))
