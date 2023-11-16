@@ -25,6 +25,21 @@
       </div>
     </div>
 </div>
+
+<div class="grid lg:grid-cols-2 mt-32 ml-72 mx-96">
+          <div class="max-w-lg max-h-96 bg-yellow-600 ml-16">
+            <div class="w-7 h-7 text-blue-950 text-6xl font-black font-['Poppins'] leading-10 mt-5 ml-5">“</div>
+            <div class="w-96 opacity-90 text-blue-950 text-xl font-normal font-['Inter'] leading-10 ml-9">You can't go wrong with Chicken Mandi, I had it twice. The chicken was cooked perfectly, juicy & soft (usually mandi chicken is a bit dry). I would defiantly recommend it.</div>
+            <div class="opacity-90 text-blue-950 text-sm font-medium font-['Poppins'] leading-tight mt-10 ml-9">Khalid Al Dawsry</div>
+            <div class="opacity-60 text-blue-950 text-xs font-medium font-['Poppins'] leading-3 mt-1 ml-9">Jeddah, Saudi</div> 
+          </div>
+          <div class="max-w-fit max-h-fit ml-0">
+            <video controls>
+              <source src="asset/2023-10-18 00-32-39.mkv" />
+            </video>
+          </div>
+        </div>
+        
 <div class="mt-20 h-96 bg-gradient-to-r bg-rose-950 bg-opacity-70">
   <div class="mt-60 mx-auto h-44 text-center text-white text-3xl font-black font-['Poppins']">
      <br><br><br> A unique menu that <br> reflects the true essence <br> of the Indonesian cuisine <br>

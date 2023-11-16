@@ -9,4 +9,20 @@
         </div>
   </div>
         <livewire:foodlist.food-list />
+    
+        <div class="grid lg:grid-cols-2">
+          <div class="bg-blue-950 max-w-lg max-h-96 ml-96 my-40 px-4 py-4">
+            <h1 class="text-2xl font-bold text-yellow-600">Q</h1>
+            <p class="font-semibold text-white my-2">Sunday to Sunday<br>09.00 AM to 11.00 PM<br>Friday<br>02:00 PM to 1:00 AM</p>
+            <h1 class="text-2xl font-bold text-yellow-600">Location</h1>
+            <p class="text-white font-semibold my-2">Jl.cemara raya no 18 RT.001 RW.021 Kelurahan: cibodassari, RT.004/RW.021, Kecamatan:, Kec. Cibodas, Kota Tangerang, Banten 15138</p>
+            <h1 class="text-2xl font-bold text-yellow-600">Contact Us</h1>
+            <p class="font-semibold text-white my-2">+123456789<br>service@maizresturant.com</p>
+          </div>
+          <div>
+            <a href="https://maps.app.goo.gl/DN8h3Tknn3RkUGjL8">
+              <img class="my-40 max-w-xl h-96" src="asset/RobloxScreenShot20231102_232009421.png" alt="">
+            </a>
+          </div>
+        </div>
 </x-app-layout>

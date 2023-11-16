@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="py-12 px-4 lg:px-0 container mx-auto">
-        <div class="grid grid-rows-1 grid-flow-col gap-2">
+        <div class="grid grid-rows-1 grid-flow-col gap-2 mt-10">
             <div>
                 <h2 class="text-center font-semibold text-2xl text-kuning-500 p-6 ml-96">Pemasukan</h2>
             </div>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="text-center w-[279px] h-[60px] bg-yellow-600 rounded-xl mx-96 mt-96 ml-96">
-                <button class="w-[344px] h-[69px] text-center place-content-end text-black text-[40px] font-black font-['Poppins'] pr-14 pb-12">Home</button>
+                <a href="{{ route('home') }}" class="w-[344px] h-[69px] text-center place-content-end text-black text-[40px] font-black font-['Poppins'] pr-14 pb-12">Home</a>
             </div>
         </div>
 
