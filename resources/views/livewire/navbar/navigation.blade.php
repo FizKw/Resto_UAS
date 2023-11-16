@@ -1,7 +1,7 @@
 <div class="navbar bg-merah-500 fixed z-50 h-28 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
         <a href="{{ route('index') }}" class=" " wire:navigate>
-            <img src="{{ asset('asset/logo.png') }}" alt="" class="w-18 h-16 mx-2 my-auto">
+            <img src="{{ asset('asset/logo.png') }}" alt="" class="w-24 h-20 mx-2 my-auto">
         </a>
     </div>
     <div class="mx-4">
@@ -45,15 +45,20 @@
                 <img src="/asset/vector/kipas2.png" alt="" class="h-[60px] mt-1.5 w-10">
             </div>
 
+            {{-- Tanpa logo --}}
             @else
-            <div class="flex group bg-kuning-500 rounded-lg h-12 max-w-sm mx-auto">
-                <label tabindex="0" class="btn group-hover:cursor-pointer focus:ring-2 focus:ring-color2 btn-circle avatar">
-                    <i data-feather="user"></i> 
-                </label>
-            </label>
-            {{-- Username --}}
-            <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
-           </div>
+            <div class="lg:flex hidden mr-9 ">
+                <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
+                    <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
+                        <i data-feather="user" class=""></i> 
+                    </label>
+                
+                    {{-- Username --}}
+                    <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+                </div>
+                <img src="/asset/vector/kipas2.png" alt="" class="h-[60px] mt-1.5 w-10">
+            </div>
+
             @endif
 
            
@@ -76,7 +81,7 @@
         {{-- Non logged-in --}}
         @else
         <button class="border-none -mr-2">
-            <a href="{{ route('login') }}" class="rounded-none font-bold  flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 border-none py-3 h-10 w-22  text-black hover:text-white ">Login</a>
+            <a href="{{ route('login') }}" class="rounded-none font-bold  flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 border-none py-3 h-10 w-22 text-xl text-black ">Login</a>
         </button>
         <img src="/asset/vector/kipas.png">
         @endauth
