@@ -18,8 +18,9 @@
         <script src="https://unpkg.com/feather-icons"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-poppins antialiased w-full max-h-screen bg-[#5B0017]">
-        <section class="mt-24  mx-8">
+    <body class="font-poppins antialiased w-full n bg-[#5B0017] relative">
+        <img src="{{ asset('asset/vector/matahari.png') }}" class="absolute -bottom-3 sm:w-14 w-8">
+        <section class="mt-36 mx-8 max-h-screen">
             {{ $slot }}
         </section>           
     <script>feather.replace();</script>

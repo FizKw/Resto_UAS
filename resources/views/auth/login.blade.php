@@ -6,9 +6,9 @@
             @csrf
 
             <section class="text-white col-span-1">
-                <h1 class="text-center text-white text-7xl font-semibold ">Welcome</h1>
-                <h2 class="text-center text-white text-xl">We are glad to see you back with us</h2>
-                <div class="max-w-md mx-auto p-8">
+                <h1 class="text-center text-white text-7xl sm:text-8xl font-sans font-bold">Welcome</h1>
+                <h2 class="text-center text-white text-xl font-light mt-0">We are glad to see you back with us</h2>
+                <div class="max-w-md mx-auto pt-6">
                     
                     <!-- Email Address -->
                     <div class=" relative">
@@ -62,8 +62,10 @@
                 </div>
             </section>
         </form>
-        <div class="col-span-1 p-8 rounded shadow-md hidden lg:flex items-center justify-center">
-            <img class="w-[34rem] h-96 rounded-3xl" src="/asset/Inni.png" alt="Placeholder Image">
+        <div class="col-span-1 p-8  hidden lg:flex items-center justify-center">
+            <a href="{{ route('index') }}" class=" " wire:navigate>
+                <img class=" w-full h-full rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
+            </a>
         </div>
     </div>
 </x-guest-layout>

@@ -1,10 +1,10 @@
 <x-guest-layout>
     <div class=" mx-auto lg:grid lg:grid-cols-2 gap-8">
         <div class="text-white col-span-1">
-            <h1 class="text-center text-white text-7xl font-semibold">Welcome</h1>
-            <h2 class="text-center text-white text-xl  ">Please Register Here</h2>
+            <h1 class="text-center text-white text-7xl sm:text-8xl font-sans font-bold">Welcome</h1>
+            <h2 class="text-center text-white text-xl  font-light mt-0">Please Register Here</h2>
 
-            <form class="max-w-md mx-auto p-5" method="POST" action="{{ route('register') }}">
+            <form class="max-w-md mx-auto pt-6" method="POST" action="{{ route('register') }}">
                 @csrf
 
                 {{-- Name --}}
@@ -86,14 +86,16 @@
 
                 <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 rounded-md  hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
-                <h2 class="text-sm font-normal mt-4 p-2">Already have account? <a href="{{ route('login') }}" class="button text-kuning-500 hover:text-kuning-400 focus:text-kuning-400">Login here</a></h2>
+                <h2 class="text-sm font-normal mt-6  p-2">Already have account? <a href="{{ route('login') }}" class="button text-kuning-500 hover:text-kuning-400 focus:text-kuning-400">Login here</a></h2>
 
             </form>
         </div>
 
 
-        <div class="col-span-1 p-8 rounded shadow-md hidden lg:flex items-center justify-center mr-6">
-            <img class="w-[34rem] h-96 rounded-3xl" src="/asset/Inni.png" alt="Placeholder Image">
+        <div class="col-span-1 hidden lg:flex items-center justify-center mr-6">
+            <a href="{{ route('index') }}" class=" " wire:navigate>
+                <img class=" rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
+            </a>
         </div>
     </div>
 </x-guest-layout>

@@ -1,4 +1,4 @@
-<div>
+<div class="">
     @if($products->count() > 0)
     <div class="flex justify-start space-x-3 ml-20 mt-6 mb-3 ">
         {{-- <button wire:click="filterCategory()" class=" capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white{{ is_null($category) ? ' focus:text-white focus:opacity-100 font-medium' : '' }}">Inni Mozarella</button>
@@ -10,9 +10,9 @@
 
         <x-foodlist>
             @foreach($products as $product)
-            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[24rem] xl:w-[24rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+            <div wire:key="{{ $product->id }}" class="card card-compact mx-auto w-[28rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                 <button wire:click="viewDetail({{ $product }})">
-                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[24rem] h-52 object-cover object-center" /></figure>
+                    <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[28rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-52 object-cover object-center" /></figure>
                     <div class="card-body text-start ml-5 mt-2">
                         <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}                        </h2>
 
@@ -33,25 +33,23 @@
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-32 max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-x-32 inset-y-32 md:inset-y-44 max-w-2xl text-white">
                         <div class="mx-4 mt-4 flex justify-between">
                             <div class="pr-10"></div>
                             <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
                             <button x-on:click="show = false" class="text-xl bg-kuning-500 w-10 h-10 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">X</button>
                         </div>
-                        <div class="md:flex md:justify-between hidden inset-x-4">
-                            
-                            <p class="mx-8 mt-12">{{ $selectedFood->description }}</p>
-                            <figure class="p-6"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
+                        <div class="md:grid md:grid-cols-2  hidden inset-x-4 h-64 mb-6 overflow-hidden">
+                            <p class="mx-8 mt-6 overflow-auto">{{ $selectedFood->description }}</p>
+                            <figure class="p-6 "><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
                         </div>
-                        <div class="grid md:hidden">
-                            <figure class="p-6 mx-auto"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
-                            <p class="mx-auto">{{ $selectedFood->description }}</p>
+                        <div class="grid md:hidden ">
+                            <figure class="p-6 mx-auto "><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-52 object-cover object-center rounded-lg " /></figure>
+                            <p class="mx-8 text-center h-36 overflow-y-auto">{{ $selectedFood->description }}</p>
                         </div>
-                        <h1 class="font-semibold md:pl-6 text-center md:text-start text-3xl ">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
+                        <h1 class="font-semibold md:pl-6 text-center md:text-start text-3xl mt-3">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
                         @if($foodCount > 0)
-                            <div class="flex items-center md:justify-start justify-center mt-4 mx-10 py-2 ">
-
+                            <div class="flex items-center md:justify-start justify-center mx-10 py-2 ">
                                 <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
                                 <span class="font-bold text-2xl select-none">{{ $foodCount }}</span>
                                 <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-10 h-10 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>

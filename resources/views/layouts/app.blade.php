@@ -28,12 +28,12 @@
         
     </head>
     <body class="font-poppins antialiased min-h-screen bg-[#5B0017]">
-        <div class="min-h-screen">
+        <div class="min-h-screen relative">
             {{-- Navbar masuk disini --}}
             <livewire:navbar.navigation />
 
             {{-- Page Content  --}}
-            <main class="pt-10">
+            <main class="pt-8">
                 {{ $slot }}
             </main>
         </div>

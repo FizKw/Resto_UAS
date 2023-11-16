@@ -27,7 +27,7 @@
                                         {{ $rs->description }}
                                     </td>
                                     <td class="p-3">
-                                        Rp.{{number_format($rs->price,0,".",".")  }}
+                                        Rp {{number_format($rs->price,0,".",".")  }}
                                     </td>
                                     <td class="p-3">
                                         {{ $rs->category }}
