@@ -23,6 +23,6 @@ class Orders extends Model
     {
         return $this->hasOne(User::class, 'order_id');
     }
-    
+
 
 }
