@@ -33,36 +33,40 @@
                     {{-- Background Blur Here transition masuk keluar buka component tapi disini juga bisa--}}
                     <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto fixed inset-x-[20%] inset-y-[10%] max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-hidden fixed inset-x-[20%] inset-y-[17%] max-w-2xl text-white">
                         <div class="mx-4 mt-4 flex justify-between">
                             <div class="pr-10"></div>
                             <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
                             <button x-on:click="show = false" class="text-xl bg-kuning-500 w-10 h-10 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">X</button>
                         </div>
-                        <div class="md:grid md:grid-cols-2  hidden h-64 mb-6 overflow-hidden">
-                            <p class="mx-8 mt-6 text-justify overflow-auto">{{ $selectedFood->description }}</p>
-                            <figure class="p-6 "><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-[14.3rem] object-cover object-center rounded-lg " /></figure>
+                        <div class="md:grid md:grid-cols-2 mb-6 hidden h-[62%] overflow-hidden">
+                            <p class="mx-8 mt-6  overflow-auto">{{ $selectedFood->description }}</p>
+                            <figure class="mx-6 mt-6"><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-full h-[90%] object-cover object-center rounded-lg " /></figure>
                         </div>
-                        <div class="grid md:hidden">
-                            <figure class="p-6 mx-auto "><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-[10rem] object-cover rounded-lg " /></figure>
-                            <p class="mx-8 text-center h-20 overflow-hidden overflow-y-auto">{{ $selectedFood->description }}</p>
+                        <div class="grid md:hidden h-[73%]">
+                            <figure class="p-6 mx-auto "><img src="{{ asset('storage/' . $selectedFood->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] h-[100%] object-cover rounded-lg " /></figure>
+                            <p class="mx-8 text-center overflow-hidden overflow-y-auto">{{ $selectedFood->description }}</p>
                         </div>
-                        <h1 class="font-semibold md:mx-8 text-center md:text-end text-2xl mt-3">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
-                        @if($foodCount > 0)
-                            <div class="flex items-center md:justify-end justify-center mx-8 py-1 ">
-                                <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-8 h-8 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
-                                <span class="font-bold text-xl select-none">{{ $foodCount }}</span>
-                                <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-8 h-8 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>
-                            </div>
-                        @else
-                            {{-- warningnya disini --}}
-                            @if (session('orderStatus'))
-                                <h1 class="text-center font-semibold mx-auto text-3xl capitalize">Order Status Not Done</h1>
-                            @endif
-                            <div class="flex">
-                            <x-primary-button wire:click="addToCart({{ $selectedFood->id }})" class="justify-center mx-auto mt-2 ">Add To Cart</x-primary-button>
+                        
+                        <div class="-mb-0">
+                            <h1 class="font-semibold md:mx-12 text-center md:text-end text-2xl">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
+                            @if($foodCount > 0)
+                                <div class="flex items-center md:justify-end justify-center mx-12 py-1 ">
+                                    <button wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-8 h-8 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
+                                    <span class="font-bold text-xl select-none">{{ $foodCount }}</span>
+                                    <button wire:click="increase({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-8 h-8 ml-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">+</button>
+                                </div>
+                            @else
+                                {{-- warningnya disini --}}
+                                @if (session('orderStatus'))
+                                    <h1 class="text-center font-semibold mx-auto text-3xl capitalize">Order Status Not Done</h1>
+                                @endif
+                            <div class="flex ml-6 md:ml-0 justify-center md:justify-end">
+                                <x-primary-button wire:click="addToCart({{ $selectedFood->id }})" class="mt-2 px-12 ">Add To Cart</x-primary-button>
                             </div>        
-                        @endif
+                            @endif
+                        </div>
+                    </div>
 
                     </div>
                 @endslot
