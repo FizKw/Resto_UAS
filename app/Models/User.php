@@ -50,13 +50,13 @@ class User extends Authenticatable
     public function foods(){
         return $this->belongsToMany(Foods::class, 'user_foods')->where('order_id', null)->withTimestamps()->withPivot('count');
     }
+
     public function foodOrder(){
-        return $this->belongsToMany(Foods::class, 'user_foods')->withPivot('count');
+        return $this->belongsToMany(Foods::class, 'user_foods')->withPivot('count', 'order_id');
     }
-    
 
     public function order(){
-        return $this->hasOne(Orders::class);
+        return $this->belongsTo(Orders::class);
     }
 
 

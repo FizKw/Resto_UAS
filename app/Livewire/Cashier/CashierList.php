@@ -82,11 +82,12 @@ class CashierList extends Component
             $user = null;
         }
 
-        $orders = Orders::orderBy('created_at', 'ASC')
+        $orders = Orders::with('user.foodOrder')
             ->when($this->status, function($query, $status){
                 return $query->where('status', $status);
             })
-            ->get();
+            ->get()->sortBy('id');
+
         return view('livewire.cashier.cashier-list',[
             'carts' => $carts,
             'orders' => $orders,

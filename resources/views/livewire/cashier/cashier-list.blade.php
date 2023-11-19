@@ -1,9 +1,9 @@
 <div>
     {{-- Button untuk filter process --}}
     <div class="flex justify-start space-x-3 ml-20 mt-6 mb-3 ">
-        <button wire:click="filterStatus('Waiting')" class="btn {{ ($status == 'Waiting') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Dalam Proses</button>
-        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Selesai</button>
-        <button wire:click="filterStatus('Ready')" class="btn {{ ($status == 'Ready') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Batal</button>
+        <button wire:click="filterStatus('Waiting')" class="btn {{ ($status == 'Waiting') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Waiting</button>
+        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Process</button>
+        <button wire:click="filterStatus('Ready')" class="btn {{ ($status == 'Ready') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Ready</button>
     </div>
     {{-- Wire Key Dimasukin Ke div pembungkus list --}}
     @if($orders->count() > 0)
@@ -12,7 +12,16 @@
             <div class="card-body text-start ml-5 mt-2">
                 {{-- Order ID --}}
                 <h2 class="card-title text-white text-lg font-semibold capitalize">#{{ $order->id }}</h2>
+                <h2 class="card-title text-white text-lg font-semibold capitalize">Name {{ $order->user->f_name }}</h2>
+                <h2 class="card-title text-white text-lg font-semibold capitalize">Foods : <br></h2>
                 {{-- Order Status --}}
+
+                @foreach ($order->user->foodOrder as $foods)
+                    @if ($foods->pivot->order_id == $order->id)
+                        <h2 class="card-title text-white text-lg capitalize">{{ $foods->food }} x {{ $foods->pivot->count }}</h2>
+                    @endif
+
+                @endforeach
                 <h2 class="card-title text-white text-lg font-semibold capitalize">Status : {{ $order->status }}</h2>
 
                 <h2 class="card-title text-white text-lg font-semibold capitalize">
@@ -51,12 +60,19 @@
                     </div>
                     {{-- isi pesanan dari dari order yang di select detailnya --}}
                     @if (isset($carts))
+                        <?php $totalPrice = 0 ?>
+
                         <div>User : {{ $user->f_name }} {{ $user->l_name }}</div>
+                        <div>Foods :</div>
                         @foreach($carts as $cart)
                             {{-- pivot->count itu jumlah makanan yang dipesan --}}
-                            <div>Foods : {{ $cart->pivot->count }} {{ $cart->food }}</div>
-                            <div>Price : {{ $cart->price }}</div>
+                            <div>{{ $cart->pivot->count }} {{ $cart->food }} = {{ $cart->price * $cart->pivot->count }}</div>
+
+                            <?php $totalPrice += ($cart->price * $cart->pivot->count) ?>
+
                         @endforeach
+                        {{-- Harga Total --}}
+                        <div>Total : {{ $totalPrice }}</div>
                     @endif
                     {{-- Ini notes dari pembeli ke kasir --}}
                     <h1>Notes : {{ $selectedOrder->order_note }}</h1>
