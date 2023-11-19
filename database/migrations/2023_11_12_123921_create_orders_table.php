@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('order_note')->nullable();
             $table->text('cashier_note')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

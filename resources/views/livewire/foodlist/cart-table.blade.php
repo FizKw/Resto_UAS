@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-biru-500 overflow-auto h-[80vh] shadow-sm rounded-3xl border-4 border-yellow-600">
+    <div class="bg-biru-500 overflow-auto min-h-[80vh] max-h-[80vh] mt-10 shadow-sm rounded-3xl border-4 border-yellow-600">
         <div class=" text-white">
             @if($listFood->count() > 0)
             <div class="relative">
@@ -40,23 +40,25 @@
         </div>
     </div>
 
+    {{-- Modal buat checkout --}}
     <x-detail-modal>
         @slot('body')
+            {{-- Background modal --}}
             <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
+            {{-- Konten Modal --}}
             <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
-            <h1>Upload Payment Image Or Pay Later</h1>
-            <form action="{{ route('order') }}" method="POST">
-                @csrf
-                @method('PATCH')
-
-                <label for="order_note">Notes Untuk Order</label>
-                <textarea name="order_note" placeholder="Order Note"></textarea>
-                <button class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">LATER</button>
-            </form>
-        </div>
-
+                <h1>Checkout?</h1>
+                {{-- Ini form buat checkout --}}
+                <form action="{{ route('order') }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    {{-- Notes dari user ke kasir kalau perlu --}}
+                    <label for="order_note">Notes Untuk Order</label>
+                    <textarea name="order_note" placeholder="Order Note"></textarea>
+                    {{-- button buat checkout --}}
+                    <button class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">LATER</button>
+                </form>
+            </div>
         @endslot
-
     </x-detail-modal>
-
 </div>

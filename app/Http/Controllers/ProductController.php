@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FoodImageRequest;
 use App\Models\Foods;
+use App\Models\Orders;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class ProductController extends Controller
     {
         return view('admin.products.create');
     }
-  
+
     /**
      * Store a newly created resource in storage.
      */
@@ -29,34 +30,37 @@ class ProductController extends Controller
         $data = $request->all();
         $data['food_image'] = $path;
         Foods::create($data);
-        
- 
+
+
         return redirect()->route('home')->with('success', 'Product added successfully');
     }
-  
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $product = Foods::findOrFail($id);
-  
+
         return view('admin.products.edit', compact('product'));
     }
-  
+
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
         $product = Foods::findOrFail($id);
-        $path = Storage::disk('public')->put('foods',$request->file('food_image'));
         $data = $request->all();
-        $data['food_image'] = $path;
+        if(isset($request->food_image)){
+            Storage::disk('public')->delete($product->food_image);
+            $path = Storage::disk('public')->put('foods',$request->file('food_image'));
+            $data['food_image'] = $path;
+        }
         $product->update($data);
         return redirect()->route('home')->with('success', 'product updated successfully');
     }
-  
+
     /**
      * Remove the specified resource from storage.
      */
@@ -65,7 +69,29 @@ class ProductController extends Controller
         $product = Foods::findOrFail($id);
         $product->users()->detach();
         $product->delete();
-  
+
         return redirect()->route('home')->with('success', 'product deleted successfully');
+    }
+
+    public function history()
+    {
+        $history = null;
+
+        return view('admin.history', compact('history'));
+    }
+
+    public function filterHistory(Request $request){
+
+        $history = Orders::with('user.foodOrder')->onlyTrashed()
+            ->whereDate('deleted_at', '>=', $request->start_date)
+            ->whereDate('deleted_at', '<=', $request->end_date)
+            ->where('status', 'Done')
+            ->get()->sortBy('id');
+
+        // dd($history);
+
+
+
+        return view('admin.history', compact('history'));
     }
 }

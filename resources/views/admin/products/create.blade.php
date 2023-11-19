@@ -36,7 +36,7 @@
                             </section>
                             <div class="my-2 mx-auto relative w-full">
                                 <x-input-label class="mt-1 ">Deskripsi</x-input-label>
-                                <textarea class="px-3 py-2.5 mt-1 block resize-none peer min-h-[100px] w-full h-full text-lg border border-black bg-kuning-500 ring-merah-500 focus:border-merah-500 focus:ring-merah-500 rounded-lg" name="description" placeholder="Food Description" required></textarea>
+                                <textarea class="px-3 py-2.5 mt-1 block resize-none peer min-h-[100px] w-full h-full text-lg border border-black bg-kuning-500 ring-merah-500 focus:border-merah-500 focus:ring-merah-500 placeholder:italic placeholder:text-orange-800 placeholder:opacity-60 rounded-lg" name="description" placeholder="Food Description" required></textarea>
                             </div>
                             <div class="flex justify-center mt-4">
                                 <x-primary-button class="btn">Simpan</x-primary-button>

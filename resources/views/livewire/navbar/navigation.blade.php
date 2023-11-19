@@ -1,7 +1,7 @@
-<div class="navbar bg-merah-500 fixed z-50 shadow-lg justify-between">
+<div class="navbar bg-merah-500 fixed z-50 h-28 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
         <a href="{{ route('index') }}" class=" " wire:navigate>
-            <img src="/asset/Inni.png" alt="" class="w-18 h-16 mx-2 my-auto">
+            <img src="{{ asset('asset/logo.png') }}" alt="" class="w-24 h-20 mx-2 my-auto">
         </a>
     </div>
     <div class="mx-4">
@@ -32,23 +32,33 @@
                     <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo">
                 </div>
             </label>
-            <div class="btn hidden lg:block capitalize group overflow-visible relative max-w-sm mx-auto mr-6 py-2 pr-1 bg-kuning-500 rounded-lg hover:bg-kuning-400 hover:rounded-none duration-150 shadow-lg   items-center ">
-                
-                <label tabindex="0">
-                    <img class="group-hover:cursor-pointer absolute -left-6 -top-1 w-14 h-14 rounded-full shadow-lg duration-150" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
-                </label>
-                {{-- Username --}}
-                <label tabindex="0" class="group-hover:cursor-pointer py-5 px-6  text-black text-lg font-bold  ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+            
+            <div class="lg:flex hidden mr-10">
+                <div class="btn hidden lg:block capitalize group overflow-visible relative max-w-sm mx-auto py-2 pr-1 bg-kuning-500 rounded-none hover:bg-kuning-400 duration-150 border-none mt-3 ">
+                    <label tabindex="0">
+                        <img class="group-hover:cursor-pointer absolute -left-6 -top-1 w-14 h-14 rounded-full shadow-lg duration-150" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo"></img>
+                    </label>
+                    {{-- Username --}}
+                    <label tabindex="0" class="group-hover:cursor-pointer py-5 px-6  text-black text-lg font-bold  ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+
+                </div>
+                <img src="/asset/vector/kipas2.png" alt="" class="h-[60px] mt-1.5 w-10">
             </div>
+
+            {{-- Tanpa logo --}}
             @else
-            <div class="flex group bg-kuning-500 rounded-lg h-12 max-w-sm mx-auto">
-                <label tabindex="0" class="btn group-hover:cursor-pointer focus:ring-2 focus:ring-color2 btn-circle avatar">
-                    <i data-feather="user"></i> 
-                </label>
-            </label>
-            {{-- Username --}}
-            <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
-           </div>
+            <div class="lg:flex hidden mr-9 ">
+                <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
+                    <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
+                        <i data-feather="user" class=""></i> 
+                    </label>
+                
+                    {{-- Username --}}
+                    <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+                </div>
+                <img src="/asset/vector/kipas2.png" alt="" class="h-[60px] mt-1.5 w-10">
+            </div>
+
             @endif
 
            
@@ -70,9 +80,10 @@
 
         {{-- Non logged-in --}}
         @else
-        <button>
-            <a href="{{ route('login') }}" class="rounded-none font-bold  flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 mr-6 py-2 h-10 w-22  text-black hover:text-white ">Login</a>
+        <button class="border-none -mr-2">
+            <a href="{{ route('login') }}" class="rounded-none font-bold  flex-none md:px-12 px-8 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 border-none py-3 h-10 w-22 text-xl text-black ">Login</a>
         </button>
+        <img src="/asset/vector/kipas.png">
         @endauth
     </div>
 </div>

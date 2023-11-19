@@ -23,6 +23,7 @@ class FoodList extends Component
         $user = User::find(Auth()->user()->id);
         if(Auth::id()){
             if( $user->order_id == null || $user->order->status == "Cancel" || $user->order->status == "Done"){
+                Orders::where('user_id', $user->id)->delete();
                 $user->update(['order_id' => null]);
                 $user->foods()->attach($foodsId);
                 $this->foodCount = 1;

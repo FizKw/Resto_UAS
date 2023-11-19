@@ -19,13 +19,11 @@ class ImageUploadController extends Controller
     public function avatarUpdate(UpdateAvatarRequest $request): RedirectResponse
     {
         $path = Storage::disk('public')->put('avatars',$request->file('avatar'));
-        //$path = $request->file('avatar')->store('avatars', 'public');
 
         if ($oldAvatar = $request->user()->avatar) {
             Storage::disk('public')->delete($oldAvatar);
         }
         User::find(Auth()->user()->id)->update(['avatar' => $path]);
-        // auth()->user()->update(['avatar' => $path]);
 
         return Redirect::route('profile.edit')->with(['message'=>'Avatar is changed']);
     }

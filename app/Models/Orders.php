@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Orders extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -19,10 +20,9 @@ class Orders extends Model
         'cashier_note',
     ];
 
-    public function order() : HasOne
+    public function user()
     {
-        return $this->hasOne(User::class, 'order_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
-    
 
 }
