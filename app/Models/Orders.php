@@ -22,7 +22,7 @@ class Orders extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'order_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

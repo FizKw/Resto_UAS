@@ -5,6 +5,7 @@ namespace App\Livewire\Cashier;
 use App\Models\Foods;
 use App\Models\Orders;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -66,6 +67,7 @@ class CashierList extends Component
     public function orderDone(){
         $this->selectedOrder->update(['status' => 'Done']);
         User::find($this->selectedOrder->user_id)->update(['order_id' => null]);
+        Orders::find($this->selectedOrder->id)->delete();
         $this->dispatch('update-detail');
         $this->dispatch('close-detail');
 
@@ -87,6 +89,8 @@ class CashierList extends Component
                 return $query->where('status', $status);
             })
             ->get()->sortBy('id');
+
+        // dd($orders);
 
         return view('livewire.cashier.cashier-list',[
             'carts' => $carts,

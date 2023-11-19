@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function order(){
-        return $this->belongsTo(Orders::class);
+        return $this->hasOne(Orders::class);
     }
 
 

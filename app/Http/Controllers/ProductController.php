@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FoodImageRequest;
 use App\Models\Foods;
+use App\Models\Orders;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,23 @@ class ProductController extends Controller
 
     public function history()
     {
-        return view('admin.products.history');
+        $history = null;
+
+        return view('admin.history', compact('history'));
+    }
+
+    public function filterHistory(Request $request){
+
+        $history = Orders::with('user.foodOrder')->onlyTrashed()
+            ->whereDate('deleted_at', '>=', $request->start_date)
+            ->whereDate('deleted_at', '<=', $request->end_date)
+            ->where('status', 'Done')
+            ->get()->sortBy('id');
+
+        // dd($history);
+
+
+
+        return view('admin.history', compact('history'));
     }
 }
