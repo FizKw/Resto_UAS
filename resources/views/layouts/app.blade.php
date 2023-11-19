@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -19,13 +12,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;900&display=swap" rel="stylesheet">
-       
 
-        
+
+
         <!-- Scripts -->
         <script src="https://unpkg.com/feather-icons"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
+
     </head>
     <body class="font-poppins antialiased min-h-screen bg-[#5B0017]">
         <div class="min-h-screen relative">
@@ -38,7 +31,7 @@
             </main>
         </div>
     <script>feather.replace();</script>
-    
+
 
     </body>
 </html>
