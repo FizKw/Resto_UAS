@@ -9,7 +9,6 @@
                                 <th class="p-3 text-left">Menu</th>
                                 <th class="p-3 text-left">Detail</th>
                                 <th class="p-3 text-left">Harga</th>
-                                <th class="p-3 text-left">Kategori</th>
                                 <th class="p-3 text-left"></th>
                             </tr>
                         </thead>
@@ -28,9 +27,6 @@
                                     </td>
                                     <td class="p-3">
                                         Rp {{number_format($rs->price,0,".",".")  }}
-                                    </td>
-                                    <td class="p-3">
-                                        {{ $rs->category }}
                                     </td>
                                     <td class="p-3 flex btn-group ">
 

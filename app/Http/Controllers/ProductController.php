@@ -28,6 +28,7 @@ class ProductController extends Controller
     {
         $path = Storage::disk('public')->put('foods',$request->file('food_image'));
         $data = $request->all();
+        $data['category'] = "Kosong";
         $data['food_image'] = $path;
         Foods::create($data);
 

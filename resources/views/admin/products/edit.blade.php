@@ -9,11 +9,13 @@
                     <div class="py-6 mx-auto">
                         <div class="px-2 mx-auto">
                             <section class="lg:flex justify-center lg:justify-around">
-                                <div class="">
+                                <div class="" x-data="{src: '{{ asset('storage/' . $product->food_image) }}'}">
                                     <h1 class="font-semibold text-lg text-kuning-500 mb-2 text-center">Foto</h1>
-                                    <img class="object-cover object-center w-96 h-56 justify-center  max-w-full mx-auto rounded-lg mb-4" src="{{ asset('storage/' . $product->food_image) }}" alt="">
+                                    <img class="object-cover object-center w-96 h-56 justify-center  max-w-full mx-auto rounded-lg mb-4" :src="src" alt="">
                                     <div class="mt-4 mb-3">
-                                        <x-text-input class="w-full file:shadow-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-md file:font-semibold file:bg-merah-500 file:text-white hover:file:bg-merah-400 " type="file" name="food_image" placeholder="Food Image" />
+                                        <x-text-input class="w-full file:shadow-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-md file:font-semibold file:bg-merah-500 file:text-white hover:file:bg-merah-400 " type="file" name="food_image" placeholder="Food Image"
+                                            @change="src = URL.createObjectURL($event.target.files[0])"
+                                        />
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-[40%]">
