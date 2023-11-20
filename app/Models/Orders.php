@@ -25,4 +25,8 @@ class Orders extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function foods(){
+        return $this->belongsToMany(Foods::class, 'user_foods', 'order_id', 'foods_id')->withPivot('count');
+    }
+
 }

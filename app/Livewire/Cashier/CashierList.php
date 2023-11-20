@@ -77,25 +77,21 @@ class CashierList extends Component
     public function render()
     {
         if (isset($this->selectedOrder)) {
-            $carts = User::find($this->selectedOrder->user_id)->foodOrder()->where('order_id', $this->selectedOrder->id)->get();
-            $user = User::find($this->selectedOrder->user_id);
+            $carts = Orders::with('user', 'foods')->where('id', $this->selectedOrder->id)->first();
         }else{
             $carts = null;
-            $user = null;
         }
 
-        $orders = Orders::with('user.foodOrder')
+        $orders = Orders::with('user', 'foods')
             ->when($this->status, function($query, $status){
                 return $query->where('status', $status);
             })
             ->get()->sortBy('id');
 
-        // dd($orders);
 
         return view('livewire.cashier.cashier-list',[
             'carts' => $carts,
             'orders' => $orders,
-            'user' =>$user,
         ]);
     }
 }

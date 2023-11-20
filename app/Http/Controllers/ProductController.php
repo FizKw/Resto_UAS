@@ -52,11 +52,16 @@ class ProductController extends Controller
     {
         $product = Foods::findOrFail($id);
         $data = $request->all();
+        if($data['carouselId'] != null){
+            Foods::where('carouselId', $data['carouselId'])->update(['carouselId'=> null]);
+        }
+
         if(isset($request->food_image)){
             Storage::disk('public')->delete($product->food_image);
             $path = Storage::disk('public')->put('foods',$request->file('food_image'));
             $data['food_image'] = $path;
         }
+
         $product->update($data);
         return redirect()->route('home')->with('success', 'product updated successfully');
     }
@@ -82,16 +87,11 @@ class ProductController extends Controller
 
     public function filterHistory(Request $request){
 
-        $history = Orders::with('user.foodOrder')->onlyTrashed()
+        $history = Orders::with('user', 'foods')->onlyTrashed()
             ->whereDate('deleted_at', '>=', $request->start_date)
             ->whereDate('deleted_at', '<=', $request->end_date)
             ->where('status', 'Done')
             ->get()->sortBy('id');
-
-        // dd($history);
-
-
-
         return view('admin.history', compact('history'));
     }
 }

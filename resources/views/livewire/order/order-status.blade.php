@@ -20,9 +20,8 @@
             {{-- kalau belum upload image buat bayar muncul button  --}}
             @if ($orderNumber->payment_image == null  )
                 <button x-data x-on:click="$dispatch('open-detail')" class="btn">Pay Now</button>
-            @endif
             {{-- Kalau sudah upload image buat bayar tapi masih nunggu verivikasi dari kasir --}}
-            @if ($orderNumber->is_paid == false)
+            @elseif ($orderNumber->is_paid == false )
                 <h1 class="text-7xl font-bold text-white">Menunggu Verivikasi Pembayaran</h1>
             @endif
         @endif

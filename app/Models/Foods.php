@@ -19,7 +19,11 @@ class Foods extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class, 'user_foods')->withTimestamps()->withPivot('count');
+        return $this->belongsToMany(User::class, 'user_foods')->withTimestamps()->withPivot('count', 'order_id');
     }
-    
+    public function orders(){
+        return $this->belongsToMany(Orders::class, 'user_foods', 'foods_id', 'order_id')->withPivot('count');
+    }
+
+
 }
