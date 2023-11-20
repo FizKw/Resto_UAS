@@ -1,8 +1,8 @@
+<div>
+@if (isset($item1) && isset($item2))
 <div class="carousel w-full min-h-screen relative ">
-    @if (isset($item1) && isset($item2))
-
-        {{-- slide 1 --}}
-        {{-- Media Query Dekstop--}}
+    {{-- slide 1 --}}
+    {{-- Media Query Dekstop--}}
     <div id="slide1" class="relative w-full carousel-item hidden xl:grid grid-cols-3 pt-18">
         <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2 h-[85%]">
         <img src="{{ asset('asset/vector/buletan.png') }}" class="absolute hidden xl:flex left-10 bottom-[15%]">
@@ -132,8 +132,12 @@
     </div>
 </div>
 @else
-<div>
-    Nothing To Show Here
-</div>
+<button class="block mx-auto mt-32 mb-6">
+    @auth
+    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+    @else
+    <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+    @endauth
+    </button>
 @endif
-
+</div>
