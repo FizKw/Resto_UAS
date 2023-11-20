@@ -16,11 +16,8 @@
                 <h2 class="card-title text-white text-lg font-semibold capitalize">Foods : <br></h2>
                 {{-- Order Status --}}
 
-                @foreach ($order->user->foodOrder as $foods)
-                    @if ($foods->pivot->order_id == $order->id)
-                        <h2 class="card-title text-white text-lg capitalize">{{ $foods->food }} x {{ $foods->pivot->count }}</h2>
-                    @endif
-
+                @foreach ($order->foods as $foods)
+                    <h2 class="card-title text-white text-lg capitalize">{{ $foods->food }} x {{ $foods->pivot->count }}</h2>
                 @endforeach
                 <h2 class="card-title text-white text-lg font-semibold capitalize">Status : {{ $order->status }}</h2>
 
@@ -62,9 +59,9 @@
                     @if (isset($carts))
                         <?php $totalPrice = 0 ?>
 
-                        <div>User : {{ $user->f_name }} {{ $user->l_name }}</div>
+                        <div>User : {{ $carts->user->f_name }} {{ $carts->user->l_name }}</div>
                         <div>Foods :</div>
-                        @foreach($carts as $cart)
+                        @foreach($carts->foods as $cart)
                             {{-- pivot->count itu jumlah makanan yang dipesan --}}
                             <div>{{ $cart->pivot->count }} {{ $cart->food }} = {{ $cart->price * $cart->pivot->count }}</div>
 
