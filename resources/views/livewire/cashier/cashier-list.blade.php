@@ -2,25 +2,21 @@
     {{-- Button untuk filter process --}}
     <div class="flex justify-start space-x-3 ml-20 mt-6 mb-3 ">
         <button wire:click="filterStatus('Waiting')" class="btn {{ ($status == 'Waiting') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Waiting</button>
-        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Process</button>
+        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Dalam Proses</button>
         <button wire:click="filterStatus('Ready')" class="btn {{ ($status == 'Ready') ? ' focus:text-white focus:opacity-100 font-medium' : '' }} capitalize text-md mr-2 text-rose-100 opacity-50 hover:opacity-100 hover:text-white">Ready</button>
     </div>
     {{-- Wire Key Dimasukin Ke div pembungkus list --}}
     @if($orders->count() > 0)
         @foreach($orders as $order)
-        <div wire:key="{{ $order->id }}" class="card card-compact mx-auto w-[24rem] xl:w-[24rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+        <div wire:key="{{ $order->id }}" class="w-[712px] h-[263px] bg-blue-950 rounded-[56px] border-4 border-yellow-600 card card-compact mx-auto mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 relative mt-12 mr-96">
             <div class="card-body text-start ml-5 mt-2">
                 {{-- Order ID --}}
-                <h2 class="card-title text-white text-lg font-semibold capitalize">#{{ $order->id }}</h2>
-                <h2 class="card-title text-white text-lg font-semibold capitalize">Name {{ $order->user->f_name }}</h2>
-                <h2 class="card-title text-white text-lg font-semibold capitalize">Foods : <br></h2>
+                <h2 class="card-title text-white text-lg font-semibold capitalize w-[297px] h-[32px] text-center text-yellow-600 text-[32px] font-black font-['Poppins']">{{ $order->user->f_name }} #{{ $order->id }}</h2>
                 {{-- Order Status --}}
 
                 @foreach ($order->foods as $foods)
-                    <h2 class="card-title text-white text-lg capitalize">{{ $foods->food }} x {{ $foods->pivot->count }}</h2>
+                <h2 class="card-title text-white text-lg capitalize w-[297px] h-[32px] text-center text-yellow-600 text-[32px] font-black font-['Poppins']">{{ $foods->pivot->count }} x {{ $foods->food }}</h2>
                 @endforeach
-                <h2 class="card-title text-white text-lg font-semibold capitalize">Status : {{ $order->status }}</h2>
-
                 <h2 class="card-title text-white text-lg font-semibold capitalize">
                     {{-- Kalau user udah upload Foto pembayaran tulisan yang ngasih tau
                          pembayaran udh diverivikasi atau belum sama kasir --}}
@@ -29,13 +25,13 @@
                     @endif
                 </h2>
                 {{-- Button buat nampilin modal box detail --}}
-                <button wire:click="orderdetail({{ $order }})" class="btn">Details</button>
+                <button wire:click="orderdetail({{ $order }})" class="btn w-[634px] h-[56px] text-center text-black text-[40px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px]">Details</button>
             </div>
         </div>
         @endforeach
     @else
         {{-- Ini kalau list orderan kosong. $status itu list status yang ditampilin saat ini  --}}
-        <h1>There Is no order on {{ $status }}</h1>
+        <div class="w-[952px] h-[310px] text-center text-yellow-600 text-8xl font-black font-['Poppins'] ml-56 mt-12">Yah :(  belum ada<br/>yang di {{ $status }} nih</div>
     @endif
 
     {{-- Modal box detail --}}
@@ -45,7 +41,7 @@
                 {{-- Background Modal --}}
                 <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                 {{-- Konten Modal box --}}
-                <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl">
+                <div class="w-[1012px] h-[663px] bg-blue-950 rounded-[56px] border-4 border-yellow-600 card card-compact mx-auto mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 relative mt-5 px-8">
                     {{ $selectedOrder->id }}
                     {{-- Ini kalau si user udah upload foto bukti pembayaran --}}
                     <div>
@@ -59,50 +55,69 @@
                     @if (isset($carts))
                         <?php $totalPrice = 0 ?>
 
-                        <div>User : {{ $carts->user->f_name }} {{ $carts->user->l_name }}</div>
-                        <div>Foods :</div>
+                        <div class="text-yellow-600 text-4xl font-black font-['Poppins'] ml-10">User : {{ $carts->user->f_name }} {{ $carts->user->l_name }}</div>
+                        <div class="text-yellow-600 text-1xl font-black font-['Poppins'] ml-10 mt-5">Foods :</div>
                         @foreach($carts->foods as $cart)
                             {{-- pivot->count itu jumlah makanan yang dipesan --}}
-                            <div>{{ $cart->pivot->count }} {{ $cart->food }} = {{ $cart->price * $cart->pivot->count }}</div>
+                            <div class="text-yellow-600 text-1xl font-black font-['Poppins'] ml-10 mt-2">{{ $cart->pivot->count }} x {{ $cart->food }} = {{ $cart->price * $cart->pivot->count }}</div>
 
                             <?php $totalPrice += ($cart->price * $cart->pivot->count) ?>
 
                         @endforeach
                         {{-- Harga Total --}}
-                        <div>Total : {{ $totalPrice }}</div>
+                        <div class="text-yellow-600 text-3xl font-black font-['Poppins'] ml-10 mt-5">Total : {{ $totalPrice }}</div>
                     @endif
                     {{-- Ini notes dari pembeli ke kasir --}}
-                    <h1>Notes : {{ $selectedOrder->order_note }}</h1>
+                    <h1 class="text-yellow-600 text-2xl font-black font-['Poppins'] ml-10 mt-2 mb-5">Notes : {{ $selectedOrder->order_note }}</h1>
 
                     {{-- Ini kalau processnya baru masuk dan masih waiting --}}
                     @if ($selectedOrder->status === 'Waiting')
                     {{-- Dropdown buat Cancel yang isinya alasan kenapa kasir cancel --}}
+                    <div class="grid grid-cols-2 grid-cols-2 gap-8 mt-8 ml-10">
                     <div class="dropdown">
-                        <label tabindex="0" class="btn">Cancel?</label>
-                        <form wire:submit="orderCancel()" class="dropdown-content">
+                        <div>
+                            <label tabindex="0" class="btn w-[344px] h-[56px] text-center text-yellow-600 text-[40px] font-black font-['Poppins'] bg-zinc-300 rounded-[56px] ml-12">TOLAK</label>
+                        </div>
+                        <form wire:submit="orderCancel()" class="dropdown-content mt-5">
                             {{-- div baris ini itu pilihan kenapa cancel nya --}}
+                            <h1 class="text-yellow-600 text-2xl font-black font-['Poppins']">Alasan membatalkan pesanan??</h1>
                             <div class="form-control">
                                 <label class="label cursor-pointer">
                                     {{-- label buat yang ditampilin di layar
                                         kalo mau ganti alasannya value="" nya juga diganti --}}
-                                  <span class="label-text">Test 1</span>
-                                  <input wire:model="cancelOption" value="Test 1" type="radio" name="radio-10" class="radio checked:bg-red-500" checked required/>
+                                  <span class="label-text text-yellow-600 text-1xl font-black font-['Poppins']">Bahan Baku Habis</span>
+                                  <input wire:model="cancelOption" value="Reason1" type="radio" name="radio-10" class="radio checked:bg-red-500" checked required/>
                                 </label>
                             </div>
                             <div class="form-control">
                                 <label class="label cursor-pointer">
-                                  <span class="label-text">Test 2</span>
-                                  <input wire:model="cancelOption" value="Test 2" type="radio" name="radio-10" class="radio checked:bg-blue-500" checked required/>
+                                  <span class="label-text text-yellow-600 text-1xl font-black font-['Poppins']">Persiapan Penutupan Toko</span>
+                                  <input wire:model="cancelOption" value="Reason2" type="radio" name="radio-10" class="radio checked:bg-blue-500" checked required/>
+                                </label>
+                            </div>
+                            <div class="form-control">
+                                <label class="label cursor-pointer">
+                                  <span class="label-text text-yellow-600 text-1xl font-black font-['Poppins']">Menu yang di pesan tidak valid</span>
+                                  <input wire:model="cancelOption" value="Reason3" type="radio" name="radio-10" class="radio checked:bg-blue-500" checked required/>
+                                </label>
+                            </div>
+                            <div class="form-control">
+                                <label class="label cursor-pointer">
+                                  <span class="label-text text-yellow-600 text-1xl font-black font-['Poppins']">Terlalu banyak orderan bahan baku tidak cukup</span>
+                                  <input wire:model="cancelOption" value="Reason4" type="radio" name="radio-10" class="radio checked:bg-blue-500" checked required/>
                                 </label>
                             </div>
                                 {{-- button konfirmasi setelah pilih alasan --}}
-                                <button class="btn">Cancel Order</button>
+                                <button class="btn w-[334px] h-[36px] text-center text-white-600 text-[30px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px]">Cancel Order</button>
                         </form>
                     </div>
+                    
 
                     {{-- Button buat accept order --}}
-                    <button class="btn" wire:click="orderAccept()">Accept Order</button>
-
+                        <div>
+                            <button class="btn w-[344px] h-[56px] text-center text-black-600 text-[40px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px]" wire:click="orderAccept()">TERIMA</button>
+                        </div>
+                    </div>
                     {{-- Ini pas statusnya udah di accept sama kasir terus lanjut ke status On Process --}}
                     @elseif ($selectedOrder->status === 'Process')
                         {{-- Ini button verivikasi ketika payment dari user udh di upload --}}
@@ -112,15 +127,15 @@
                         {{-- ini button buat ganti statusnya dari yang on progress ke ready,
                             dalem form karena kasir bisa kasih notes untuk pembeli ketika pickup --}}
                         <form wire:submit="orderReady()">
-                            <label for="note">Notes untuk pembeli</label>
-                            <textarea name="note" wire:model="cashierNote">Note Untuk Pembeli</textarea>
-                            <button class="btn" >Order Ready for pickup?</button>
+                            <label for="note" class="text-yellow-600 text-2xl font-black font-['Poppins'] ml-10">Notes untuk pembeli : </br></label>
+                            <textarea class="w-[864px] h-[86px] rounded-[16px] ml-10" name="note mt-5" wire:model="cashierNote">Note Untuk Pembeli</textarea>
+                            <button class="btn w-[324px] h-[46px] text-center text-white-600 text-[20px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px] ml-10 mt-8" >Order Ready to pickup?</button>
                         </form>
 
                         @endif
                     {{-- Button buat menyelesaikan order ketika sudah di pickup --}}
                     @else
-                        <button class="btn" wire:click="orderDone()">Order Done</button>
+                        <button class="btn w-[384px] h-[56px] text-center text-white-600 text-[40px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px] ml-10 mt-10" wire:click="orderDone()">Order Done</button>
                     @endif
                 </div>
             @endif
