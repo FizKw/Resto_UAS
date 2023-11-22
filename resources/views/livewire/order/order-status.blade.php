@@ -178,7 +178,7 @@
         <x-detail-modal>
             @slot('body')
                 {{-- Konten Modal Box --}}
-                <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-hidden fixed inset-x-[20%] inset-y-[17%] max-w-2xl text-white" >
+                <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-auto fixed inset-x-[20%] inset-y-[17%] max-w-2xl text-white" >
                     <h1 class="text-center font-semibold text-xl md:text-2xl text-white p-6">Upload Pembayaran</h1>
                     <img class="mx-auto w-[50%] h-[50%] mb-4 object-scale-down" src="{{ asset('asset/barcodePlaceholder.png') }}" alt="">
                     {{-- Ini form buat upload foto pembayaran --}}

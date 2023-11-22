@@ -24,7 +24,7 @@
             <x-detail-modal name="food-detail">
                 @slot('body')
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-hidden fixed inset-x-[20%] inset-y-[17%] max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-auto fixed inset-x-[20%] inset-y-[17%] max-w-2xl text-white">
                         <div class="mx-4 mt-4 flex justify-between">
                             <div class="pr-10"></div>
                             <h1 class="text-center font-semibold mx-auto text-3xl capitalize">{{ $selectedFood->food }}</h1>
