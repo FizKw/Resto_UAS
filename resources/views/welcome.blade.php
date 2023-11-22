@@ -40,26 +40,26 @@
       </div>
     </div>
 
-    <div class="lg:flex justify-center mt-40 mx-auto">
-      <div class=" mx-auto lg:mx-0 w-[68%] lg:w-[30%] bg-kuning-500 relative">
+    <div class="md:flex justify-center mt-40 mx-auto">
+      <div class=" mx-auto md:mx-0 w-[68%] md:w-[30%] bg-kuning-500 relative">
         <div class="w-7 h-7 text-blue-950 text-6xl  leading-10 mt-5 ml-5">“</div>
         <p class="mx-9 opacity-90 text-blue-950 xl:text-2xl lg:text-xl text-lg  font-['Inter']">You can't go wrong with Chicken Mandi, I had it twice. The chicken was cooked perfectly, juicy & soft (usually mandi chicken is a bit dry). I would defiantly recommend it.</p>
         <p class=" text-blue-950 text-lg leading-tight mt-6 bottom-0 pb-3 ml-9">-Nggih al nggih</p>
       </div>
-      <div class="w-[68%] lg:w-[50%] mx-auto lg:mx-0">
-        <video controls>
-          <source src="{{ asset('asset/BANGLORBANG.mp4') }}" />
-        </video>
+      <div class="w-[68%] md:w-[50%] mx-auto md:mx-0">
+        <iframe class="min-h-[370px] w-full" src="https://www.youtube.com/embed/VMsS-DpdCuI?autoplay=1&si=zf94-L0KXWy6Dy9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="md:flex justify-center mx-auto my-40">
       <div class="bg-blue-950 mx-auto md:mx-0 w-[68%] md:w-[30%] px-4 py-4">
-        <h1 class="sm:text-xl font-bold text-yellow-600 ">Jam buka</h1>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 ">Jam buka</h1>
         <p class=" text-sm sm:text-base text-white ">Setiap hari<br>09.00 AM to 11.00 PM<br>
-        <h1 class="sm:text-xl font-bold text-yellow-600 mt-3 ">Lokasi</h1>
-        <p class="text-sm sm:text-base text-white  ">Jl. Kelapa Gading Barat AG15 no.10 Kelurahan Kelapa Dua Kecamatan Panongan barat Kabupaten Tangeran</p>
-        <h1 class="sm:text-xl font-bold text-yellow-600 mt-3">Contact Us</h1>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4 ">Lokasi</h1>
+        <p class="text-sm sm:text-base text-white  ">Jl. Kelapa Gading Barat AG15 no.10 Kelurahan Kelapa Dua Kecamatan Panongan barat Kabupaten Tangerang</p>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4 ">Maps</h1>
+        <a href="https://maps.app.goo.gl/DN8h3Tknn3RkUGjL8" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base text-white underline hover:text-gray-200 ">Klik disini</a>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4">Contact Us</h1>
         <a href="https://www.instagram.com/mieayamalya/" target="_blank" rel="noopener noreferrer" class="flex">
           <img src="{{ asset('asset/instagram.png') }}" class="w-6 h-6 mt-2 mr-2" alt="">
           <p class=" text-sm sm:text-base text-white mt-2 hover:underline">@mieayamalya</p>

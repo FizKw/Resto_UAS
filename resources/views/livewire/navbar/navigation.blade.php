@@ -50,7 +50,7 @@
                 {{-- Media Query Kecil --}}
             <label tabindex="0" class="btn block lg:hidden py-3 px-[10px] bg-merah-500 hover:cursor-pointer border-2 text-kuning-500 hover:bg-merah-400 active:bg-merah-400 focus:bg-merah-400 btn-circle avatar">
                 <div class="rounded-full">
-                    <i data-feather="user" class=""></i> 
+                    <i data-feather="user" class="text-kuning-500"></i> 
                 </div>
             </label>
 
