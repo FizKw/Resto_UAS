@@ -31,7 +31,7 @@
         @endforeach
     @else
         {{-- Ini kalau list orderan kosong. $status itu list status yang ditampilin saat ini  --}}
-        <div class="text-center text-yellow-600 md:text-6xl sm:text-6xl font-['Poppins'] md:mx-48 sm:mr-42 md:mt-12 md:mx-48 sm:mt-12">Yah :(  belum ada<br/>yang di {{ $status }} nih</div>
+        <div class="text-center text-yellow-600 md:text-6xl sm:text-6xl font-['Poppins'] md:mx-48 sm:mr-42 md:mt-12 sm:mt-12">Yah :(  belum ada<br/>yang di {{ $status }} nih</div>
     @endif
 
     {{-- Modal box detail --}}
