@@ -47,6 +47,14 @@
 
             {{-- Tanpa logo --}}
             @else
+                {{-- Media Query Kecil --}}
+            <label tabindex="0" class="btn block lg:hidden py-3 px-[10px] bg-merah-500 hover:cursor-pointer border-2 text-kuning-500 hover:bg-merah-400 active:bg-merah-400 focus:bg-merah-400 btn-circle avatar">
+                <div class="rounded-full">
+                    <i data-feather="user" class="text-kuning-500"></i> 
+                </div>
+            </label>
+
+            {{-- Dekstop --}}
             <div class="lg:flex hidden mr-9 ">
                 <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
                     <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
@@ -54,7 +62,8 @@
                     </label>
                 
                     {{-- Username --}}
-                    <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</label>
+                    <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}
+                    </label>
                 </div>
                 <img src="/asset/vector/kipas2.png" alt="" class="h-[60px] mt-1.5 w-10">
             </div>

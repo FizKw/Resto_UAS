@@ -1,11 +1,10 @@
 <x-app-layout>    
   <livewire:carousel.carousel />
 
-  <div class="relative h-full">
-    <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute right-16 top-0 w-[40%] h-full">
 
     {{-- Media Query dekstop --}}
     <div class="hidden xl:grid grid-cols-5 relative">
+      <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute right-16 top-0 w-[40%] h-full">
       <img src="{{ asset('asset/vector/kotak2.png') }}" class="absolute right-[4.2rem] -bottom-6 ">
       <div class="ml-32 pt-2 col-span-2 col-start-1">
           <img class="w-[75%] h-[40rem] object-cover object-center " src="{{ asset('asset/mie-ayam/tempat.png') }}" />
@@ -27,6 +26,7 @@
       </div>
     </div>
 
+    {{-- Media query Tablet & HP --}}
     <div class="xl:hidden block mt-18">
       <h1 class=" mx-12 text-center text-3xl md:text-4xl text-white font-semibold mb-6">A distinctive dining destination inspired by the culture.</h1>
       <div class="grid md:grid-cols-4 grid-cols-2 gap-8 ">
@@ -39,21 +39,38 @@
 
       </div>
     </div>
-  </div>
 
-<div class="grid lg:grid-cols-2 mt-32 ml-72 mx-96">
-          <div class="max-w-lg max-h-96 bg-yellow-600 ml-16">
-            <div class="w-7 h-7 text-blue-950 text-6xl font-black font-['Poppins'] leading-10 mt-5 ml-5">“</div>
-            <div class="w-96 opacity-90 text-blue-950 text-xl font-normal font-['Inter'] leading-10 ml-9">You can't go wrong with Chicken Mandi, I had it twice. The chicken was cooked perfectly, juicy & soft (usually mandi chicken is a bit dry). I would defiantly recommend it.</div>
-            <div class="opacity-90 text-blue-950 text-sm font-medium font-['Poppins'] leading-tight mt-10 ml-9">Khalid Al Dawsry</div>
-            <div class="opacity-60 text-blue-950 text-xs font-medium font-['Poppins'] leading-3 mt-1 ml-9">Jeddah, Saudi</div> 
-          </div>
-          <div class="max-w-fit max-h-fit ml-0">
-            <video controls>
-              <source src="asset/2023-10-18 00-32-39.mkv" />
-            </video>
-          </div>
-        </div>
+    <div class="md:flex justify-center mt-40 mx-auto">
+      <div class=" mx-auto md:mx-0 w-[68%] md:w-[30%] bg-kuning-500 relative">
+        <div class="w-7 h-7 text-blue-950 text-6xl  leading-10 mt-5 ml-5">“</div>
+        <p class="mx-9 opacity-90 text-blue-950 xl:text-2xl lg:text-xl text-lg  font-['Inter']">You can't go wrong with Chicken Mandi, I had it twice. The chicken was cooked perfectly, juicy & soft (usually mandi chicken is a bit dry). I would defiantly recommend it.</p>
+        <p class=" text-blue-950 text-lg leading-tight mt-6 bottom-0 pb-3 ml-9">-Nggih al nggih</p>
+      </div>
+      <div class="w-[68%] md:w-[50%] mx-auto md:mx-0">
+        <iframe class="min-h-[370px] w-full" src="https://www.youtube.com/embed/VMsS-DpdCuI?autoplay=1&si=zf94-L0KXWy6Dy9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="md:flex justify-center mx-auto my-40">
+      <div class="bg-blue-950 mx-auto md:mx-0 w-[68%] md:w-[30%] px-4 py-4">
+        <h1 class="sm:text-2xl font-bold text-yellow-600 ">Jam buka</h1>
+        <p class=" text-sm sm:text-base text-white ">Setiap hari<br>09.00 AM to 11.00 PM<br>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4 ">Lokasi</h1>
+        <p class="text-sm sm:text-base text-white  ">Jl. Kelapa Gading Barat AG15 no.10 Kelurahan Kelapa Dua Kecamatan Panongan barat Kabupaten Tangerang</p>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4 ">Maps</h1>
+        <a href="https://maps.app.goo.gl/DN8h3Tknn3RkUGjL8" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base text-white underline hover:text-gray-200 ">Klik disini</a>
+        <h1 class="sm:text-2xl font-bold text-yellow-600 mt-4">Contact Us</h1>
+        <a href="https://www.instagram.com/mieayamalya/" target="_blank" rel="noopener noreferrer" class="flex">
+          <img src="{{ asset('asset/instagram.png') }}" class="w-6 h-6 mt-2 mr-2" alt="">
+          <p class=" text-sm sm:text-base text-white mt-2 hover:underline">@mieayamalya</p>
+        </a>
+      </div>
+      <div class="w-[68%] md:w-[50%] mx-auto md:mx-0">
+        <a href="https://maps.app.goo.gl/DN8h3Tknn3RkUGjL8" target="_blank" rel="noopener noreferrer">
+          <img class="object-cover h-full" src="{{ asset('asset/placeholder.jpg') }}" alt="">
+        </a>
+      </div>
+    </div>
         
 <div class="mt-20 h-96 bg-gradient-to-r bg-rose-950 bg-opacity-70">
   <div class="mt-60 mx-auto h-44 text-center text-white text-3xl font-black font-['Poppins']">

@@ -48,7 +48,7 @@ class User extends Authenticatable
     ];
 
     public function foods(){
-        return $this->belongsToMany(Foods::class, 'user_foods')->where('order_id', null)->withTimestamps()->withPivot('count');
+        return $this->belongsToMany(Foods::class, 'user_foods')->where('order_id', null)->withTimestamps()->withPivot('count', 'order_id');
     }
 
     public function foodOrder(){

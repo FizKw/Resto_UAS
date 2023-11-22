@@ -12,16 +12,37 @@ use Illuminate\Support\Facades\Auth;
 class FoodList extends Component
 {
     public $category = null;
-    public Foods $selectedFood;
+    public Foods$selectedFood;
     public $foodCount;
 
     public function filterCategory($category = null){
         $this->category = $category;
     }
 
-    public function addToCart($foodsId = null){
-        $user = User::find(Auth()->user()->id);
+
+    public function viewDetail($product)
+    {
+        $this->selectedFood = Foods::with('users')->where('id', $product)->first();
         if(Auth::id()){
+            $food = $this->selectedFood->users()->where('user_id', Auth()->user()->id)->wherePivot('order_id', null)->first();
+            if(isset($food)){
+            $this->foodCount = $food->pivot->count;
+            }
+            else{
+                $this->foodCount = 0;
+            }
+
+        }else{
+            $this->foodCount = 0;
+        }
+        $this->dispatch('open-detail', name:'food-detail');
+    }
+
+
+
+    public function addToCart($foodsId = null){
+        if(Auth::id()){
+            $user = User::find(Auth()->user()->id);
             if( $user->order_id == null || $user->order->status == "Cancel" || $user->order->status == "Done"){
                 Orders::where('user_id', $user->id)->delete();
                 $user->update(['order_id' => null]);
@@ -38,52 +59,36 @@ class FoodList extends Component
     }
 
     public function increase($foodId = null){
-        $user = User::find(Auth()->user()->id);
-        DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->increment('count');
+        $user = User::with('foods')->where('id', Auth()->user()->id)->first();
+        $user->foods()->where('foods_id', $foodId)->increment('count');
         $this->foodCount++;
         $this->dispatch('counts-update');
     }
 
     public function decrease($foodId = null){
-        $user = User::find(Auth()->user()->id);
-        $row = DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->first();
-        if($row->count > 1){
-            DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->decrement('count');
+        $user = User::with('foods')->where('id', Auth()->user()->id)->first();
+        if($user->foods()->where('foods_id', $foodId)->first()->pivot->count > 1){
+            $user->foods()->where('foods_id', $foodId)->decrement('count');
             $this->foodCount--;
         }else{
-            DB::table('user_foods')->where('foods_id', $foodId)->where('user_id', $user->id)->where('order_id', null)->delete();
+            $user->foods()->wherePivot('order_id', null)->detach($foodId);
             $this->foodCount = 0;
         }
         $this->dispatch('counts-update');
-
     }
 
-    public function viewDetail(Foods $product)
-    {
-        $this->selectedFood = $product;
-        if(Auth::id()){
-            $count = DB::table('user_foods')->where('user_id', Auth()->user()->id)->where('foods_id', $product->id)->where('order_id', null)->first();
-            if(isset($count)){
-            $this->foodCount = $count->count;
-            }
-            else{
-                $this->foodCount = 0;
-            }
 
-        }else{
-            $this->foodCount = 0;
-        }
-        $this->dispatch('open-detail', name:'food-detail');
-    }
 
 
     public function render()
     {
-        $products = Foods::orderBy('created_at', 'DESC')
-            ->when($this->category, function($query, $category){
-                return $query->where('category', $category);
-            })
-            ->get();
+        $products = Foods::with('users')->whereNull('carouselId')->get()->sortBy('id');
+        // dd($products);
+        // $products = Foods::orderBy('created_at', 'DESC')
+        //     ->when($this->category, function($query, $category){
+        //         return $query->where('category', $category);
+        //     })
+        //     ->get();
         $btnActive = "none";
         return view('livewire.foodlist.food-list',[
             'products' => $products,
