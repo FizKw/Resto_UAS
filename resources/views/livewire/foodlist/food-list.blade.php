@@ -52,10 +52,10 @@
                             @else
 
                             <div class="flex ml-6 md:ml-0 justify-center md:justify-end">
-                                {{-- @if (session('orderStatus'))
+                                @if (session('orderStatus'))
                                     <h1 class="text-center  mx-auto text-xl capitalize">Tunggu pesanan kamu selesai dulu yaa!!</h1>
-                                @else --}}
-                                    <x-primary-button wire:key="{{ $selectedFood->id }}" wire:click="addToCart({{ $selectedFood->id }})" class="mt-1 px-12 ">Add To Cart</x-primary-button>
+                                @endif
+                                <x-primary-button wire:key="{{ $selectedFood->id }}" wire:click="addToCart({{ $selectedFood->id }})" class="mt-1 px-12 {{ session('orderStatus') ? 'hidden' : '' }}">Add To Cart</x-primary-button>
 
                             </div>
                             @endif
