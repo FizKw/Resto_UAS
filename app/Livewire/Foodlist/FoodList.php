@@ -82,7 +82,7 @@ class FoodList extends Component
 
     public function render()
     {
-        $products = Foods::with('users')->get()->sortBy('id');
+        $products = Foods::with('users')->whereNull('carouselId')->get()->sortBy('id');
         // dd($products);
         // $products = Foods::orderBy('created_at', 'DESC')
         //     ->when($this->category, function($query, $category){
