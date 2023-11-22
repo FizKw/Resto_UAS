@@ -12,16 +12,37 @@ use Illuminate\Support\Facades\Auth;
 class FoodList extends Component
 {
     public $category = null;
-    public Foods $selectedFood;
+    public Foods$selectedFood;
     public $foodCount;
 
     public function filterCategory($category = null){
         $this->category = $category;
     }
 
-    public function addToCart($foodsId = null){
-        $user = User::find(Auth()->user()->id);
+
+    public function viewDetail($product)
+    {
+        $this->selectedFood = Foods::with('users')->where('id', $product)->first();
         if(Auth::id()){
+            $food = $this->selectedFood->users()->where('user_id', Auth()->user()->id)->wherePivot('order_id', null)->first();
+            if(isset($food)){
+            $this->foodCount = $food->pivot->count;
+            }
+            else{
+                $this->foodCount = 0;
+            }
+
+        }else{
+            $this->foodCount = 0;
+        }
+        $this->dispatch('open-detail', name:'food-detail');
+    }
+
+
+
+    public function addToCart($foodsId = null){
+        if(Auth::id()){
+            $user = User::find(Auth()->user()->id);
             if( $user->order_id == null || $user->order->status == "Cancel" || $user->order->status == "Done"){
                 Orders::where('user_id', $user->id)->delete();
                 $user->update(['order_id' => null]);
@@ -56,32 +77,18 @@ class FoodList extends Component
         $this->dispatch('counts-update');
     }
 
-    public function viewDetail(Foods $product)
-    {
-        $this->selectedFood = $product;
-        if(Auth::id()){
-            $food =$product->users()->where('user_id', Auth()->user()->id)->wherePivot('order_id', null)->first();
-            if(isset($food)){
-            $this->foodCount = $food->pivot->count;
-            }
-            else{
-                $this->foodCount = 0;
-            }
 
-        }else{
-            $this->foodCount = 0;
-        }
-        $this->dispatch('open-detail', name:'food-detail');
-    }
 
 
     public function render()
     {
-        $products = Foods::orderBy('created_at', 'DESC')
-            ->when($this->category, function($query, $category){
-                return $query->where('category', $category);
-            })
-            ->get();
+        $products = Foods::with('users')->get()->sortBy('id');
+        // dd($products);
+        // $products = Foods::orderBy('created_at', 'DESC')
+        //     ->when($this->category, function($query, $category){
+        //         return $query->where('category', $category);
+        //     })
+        //     ->get();
         $btnActive = "none";
         return view('livewire.foodlist.food-list',[
             'products' => $products,

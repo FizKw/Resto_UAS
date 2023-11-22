@@ -103,7 +103,7 @@
                     </div>
                     @break
             @endswitch
-            
+
 
             {{-- status orderan dalam process --}}
             @if ( $orderNumber->status == "Process")
@@ -130,8 +130,6 @@
         {{-- Modal box buat upload foto bukti pembayaran --}}
         <x-detail-modal>
             @slot('body')
-                {{-- Backgorund modal box --}}
-                <div x-on:click="show = false" class="fixed inset-0 bg-gray-800 opacity-50"></div>
                 {{-- Konten Modal Box --}}
                 <div class="bg-white rounded m-auto fixed inset-0 max-w-2xl" >
                     <h1>Upload Payment</h1>

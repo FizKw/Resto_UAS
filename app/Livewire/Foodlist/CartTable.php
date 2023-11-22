@@ -5,6 +5,7 @@ namespace App\Livewire\Foodlist;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 
 class CartTable extends Component
 {
@@ -29,6 +30,7 @@ class CartTable extends Component
 
     }
 
+    #[On('counts-detail')]
     public function render()
     {
         $price = 0;
