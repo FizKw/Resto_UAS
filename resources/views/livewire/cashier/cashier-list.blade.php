@@ -110,10 +110,10 @@
                                 {{-- button konfirmasi setelah pilih alasan --}}
 
                                 <button class="btn md:w-[334px] md:h-[36px] sm:w-11/12 sm:h-4/12 text-center text-white-600 sm:text-[20px] md:text-[30px] font-['Poppins'] bg-yellow-600 rounded-[56px]">Cancel Order</button>
-                            
+
                         </form>
                     </div>
-                    
+
 
                     {{-- Button buat accept order --}}
                         <div>
@@ -129,8 +129,9 @@
                         {{-- ini button buat ganti statusnya dari yang on progress ke ready,
                             dalem form karena kasir bisa kasih notes untuk pembeli ketika pickup --}}
                         <form wire:submit="orderReady()">
+                            @csrf
                             <label for="note" class="text-yellow-600 text-2xl font-black font-['Poppins'] ml-10">Notes untuk pembeli : </br></label>
-                            <textarea class="w-[864px] h-[86px] rounded-[16px] ml-10" name="note mt-5" wire:model="cashierNote">Note Untuk Pembeli</textarea>
+                            <textarea class="w-[864px] h-[86px] rounded-[16px] ml-10" name="cashierNote" value="" wire:model="cashierNote"></textarea>
                             <button class="btn w-[324px] h-[46px] text-center text-white-600 text-[20px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px] ml-10 mt-8" >Order Ready to pickup?</button>
                         </form>
 

@@ -56,6 +56,9 @@ class CashierList extends Component
     }
 
     public function orderReady(){
+        if ($this->cashierNote == '') {
+            $this->cashierNote = null;
+        }
         $this->selectedOrder->update([
             'status' => 'Ready',
             'cashier_note' => $this->cashierNote,
