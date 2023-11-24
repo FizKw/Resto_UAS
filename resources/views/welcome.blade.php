@@ -47,7 +47,7 @@
         <p class=" text-blue-950 text-lg leading-tight mt-6 bottom-0 pb-3 ml-9">-Nggih al nggih</p>
       </div>
       <div class="w-[68%] md:w-[50%] mx-auto md:mx-0">
-        <iframe class="min-h-[370px] w-full" src="https://www.youtube.com/embed/VMsS-DpdCuI?autoplay=1&si=zf94-L0KXWy6Dy9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="min-h-[370px] w-full" src="https://www.youtube.com/embed/Z4nFlOGZEJI?si=P_tFXuXvYCNZHjI2&amp;controls=0    " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
 

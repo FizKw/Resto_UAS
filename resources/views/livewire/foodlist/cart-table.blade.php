@@ -1,6 +1,6 @@
 <div>
     <div class="max-h-screen">
-        <div class="bg-biru-500 overflow-auto max-h-[80vh] mt-10 shadow-sm rounded-3xl border-4 border-yellow-600">
+        <div class="bg-biru-500 overflow-auto max-h-[74vh] mt-10 shadow-sm rounded-3xl border-4 border-yellow-600">
             <div class=" text-white">
                 @if($listFood->count() > 0)
                 <div class="relative">
@@ -55,12 +55,11 @@
                         @method('PATCH')
                         {{-- Notes dari user ke kasir kalau perlu --}}
                         <div class="mx-auto relative w-full">
-                            <x-input-label class="text-white font-semibold text-lg md:text-xl mx-4" for="order_note">Catatan untuk restoran</x-input-label>
-                            <textarea class="px-2 py-2.5 mt-6 mx-auto mb-2 block resize-none peer min-h-[100px] w-[90%] h-full text-lg border border-black bg-white text-black ring-merah-500 focus:border-merah-500 focus:ring-merah-500 rounded-lg" name="order_note" placeholder="Order Note"></textarea>
+                            <textarea class="px-2 py-2.5 mt-6 mx-auto mb-3 block resize-none peer min-h-[100px] w-[90%] h-full text-lg border border-black bg-white text-black ring-merah-500 focus:border-merah-500 focus:ring-merah-500 rounded-lg" name="order_note" placeholder="Catatan untuk restoran"></textarea>
                         </div>
                         {{-- button buat checkout --}}
                         <div class="flex justify-end">
-                            <button class="btn capitalize text-2xl mr-4 font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white ">Pesan</button>
+                            <button class="btn capitalize text-2xl mx-auto font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white ">Pesan</button>
                         </div>
                     </form>
                 </div>
