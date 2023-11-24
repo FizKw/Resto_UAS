@@ -13,7 +13,9 @@
             <div  class="relative mt-6 md:mt-8 mx-10">
                 <button class="outline outline-2 hidden md:block md:outline-offset-[10px] outline-yellow-600">
                 @auth
-                <a href="{{ route('home') }}" class=" text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
+                    @if (Auth()->user()->usertype === 'user')
+                        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+                    @endif
                 @else
                 <a href="{{ route('menu') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
                 @endauth
@@ -59,7 +61,9 @@
         </div>
         <button class="relative -bottom-[8%] inset-x-[32%] md:inset-x-[40%]">
         @auth
-        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @if (Auth()->user()->usertype === 'user')
+                <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+            @endif
         @else
         <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
         @endauth
@@ -78,7 +82,9 @@
             <div  class="relative mt-6 md:mt-8 mx-10">
                 <button class="outline outline-2 outline-offset-4 md:outline-offset-[10px] outline-yellow-600">
                 @auth
-                <a href="{{ route('home') }}" class=" text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
+                    @if (Auth()->user()->usertype === 'user')
+                        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+                    @endif
                 @else
                 <a href="{{ route('menu') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
                 @endauth
@@ -124,7 +130,9 @@
         </div>
         <button class="relative -bottom-[8%] inset-x-[30%] md:inset-x-[40%]">
         @auth
-        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @if (Auth()->user()->usertype === 'user')
+                <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+            @endif
         @else
         <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
         @endauth
@@ -134,7 +142,9 @@
 @else
 <button class="block mx-auto mt-32 mb-6">
     @auth
-    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+        @if (Auth()->user()->usertype === 'user')
+            <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+        @endif
     @else
     <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
     @endauth

@@ -5,6 +5,14 @@
         </a>
     </div>
     <div class="mx-4">
+        {{-- dashboard admin & owner --}}
+        @auth
+            @if (Auth()->user()->usertype === 'admin')
+                <a href="{{ route('home') }}" class=" mx-8 my-2 text-center capitalize text-gray-300 hover:text-white" wire:navigate>Dashboard</a>      
+            @elseif (Auth()->user()->usertype === 'cashier')
+                <a href="{{ route('home') }}" class=" mx-8 my-2 text-center capitalize text-gray-300 hover:text-white" wire:navigate>Dashboard</a>
+            @endif
+        @endauth
 
             {{-- Cartlist --}}
             @auth

@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Inni Foods') }}</title>
-        <link rel="icon" href="{!! asset('Inni.png') !!}"/>
+        <link rel="icon" href="{{ asset('asset/logo.png') }}"/>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,14 +1,14 @@
 <x-guest-layout>
     <div class=" mx-auto lg:grid lg:grid-cols-2 gap-8">
         <div class="text-white col-span-1">
-            <h1 class="text-center text-white text-7xl sm:text-8xl font-sans font-bold">Welcome</h1>
-            <h2 class="text-center text-white text-xl  font-light mt-0">Please Register Here</h2>
+            <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
+            <h2 class="text-center text-white text-xl  font-light mt-0">Silahkan daftar disini</h2>
 
             <form class="max-w-md mx-auto pt-6" method="POST" action="{{ route('register') }}">
                 @csrf
 
                 {{-- Name --}}
-                <div class="mb-4 relative">
+                <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -17,9 +17,13 @@
                         </i>
                     </div>
                     <input type="text" id="f_name" name="f_name" value="{{ old('f_name') }}" required autofocus autocomplete="f_name" placeholder="First Name" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    <x-input-error :messages="$errors->get('f_name')" class="mt-2" />
+                    
+                    {{-- <x-input-error :messages="$errors->get('f_name')" class="mt-2" /> --}}
                 </div>
-                <div class="mb-4 relative">
+                    @if ($errors->has('f_name'))
+                        <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email atau password yang anda masukan salah</p>
+                    @endif
+                <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -33,7 +37,7 @@
 
 
                 {{-- Tanggal Lahir --}}
-                <div class="mb-4 relative">
+                <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -47,7 +51,7 @@
 
 
                 {{-- Email --}}
-                <div class="mb-4 relative">
+                <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -56,12 +60,14 @@
                         </i>
                     </div>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="email" placeholder="Email" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
                 </div>
-
+                @if ($errors->has('email'))
+                    <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email telah digunakan</p>
+                @endif
 
                 {{-- Password --}}
-                <div class="mb-4 relative">
+                <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -70,9 +76,12 @@
                         </i>
                     </div>
                     <input type="password" id="password" name="password" value="{{ old('password') }}" required autocomplete="password" placeholder="Password" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
                 </div>
-                <div class="mb-4 relative">
+                    @if ($errors->has('password'))
+                        <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Password paling sedikit menggunakan 8 karakter</p>
+                    @endif
+                <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -81,12 +90,15 @@
                         </i>
                     </div>
                     <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="password" placeholder="Confirm Password" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    {{-- <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> --}}
                 </div>
+                    @if ($errors->has('password_confirmation'))
+                        <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Password tidak sesuai</p>
+                    @endif
 
-                <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 rounded-md  hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
+                <button type="submit" class="mt-4 w-full bg-kuning-500 text-black border border-black py-2 px-4 rounded-md  hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
-                <h2 class="text-sm font-normal mt-6  p-2">Already have account? <a href="{{ route('login') }}" class="button text-kuning-500 hover:text-kuning-400 focus:text-kuning-400">Login here</a></h2>
+                <h2 class="text-sm font-normal mt-6  p-2">Sudah punya akun? <a href="{{ route('login') }}" class="button text-kuning-500 hover:text-kuning-400 focus:text-kuning-400">Login disini</a></h2>
 
             </form>
         </div>
