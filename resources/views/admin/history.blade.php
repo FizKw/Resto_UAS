@@ -27,32 +27,45 @@
     @if (isset($history))
         @if (count($history) == 0)
             <div>
-                <h1 class="text-center text-yellow-600 md:text-4xl font-['Poppins'] md:mt-10">Tidak Ada Pemasukan di hari itu :(</h1>
+                <h1 class="text-center text-yellow-600 md:text-4xl font-['Poppins'] md:mt-10">Total Penjualan</h1>
             </div>
         @else
             {{-- Yang dibungkus php biarin aja jangan diapa apain
                 Posisinya juga jangan berubah --}}
             <?php  $totalPrice = 0 ?>
-            <div class="text-white">
+            <div class="grid grid-rows-1 grid-flow-col gap-2">
                 @foreach ($history as $list)
                 {{-- div setiap order --}}
-                    <div class="mb-5">
-                        <div># {{ $list->id }}</div>
-                        <div>Name : {{ $list->user->f_name }} {{ $list->user->l_name }}</div>
+                <div class="col-span-2 row-span-1 w-4/12 h-3/12 bg-blue-950 rounded-[46px] border-4 border-yellow-600 card card-compact relative mt-12">
+                    <div class="card-body text-start ml-5 mt-2 pb-6 overflow-auto">
+                        <div class="card-title text-center text-yellow-600 text-2xl font-['Poppins']"># {{ $list->id }}</div>
+                        <div class="card-title w-[90%] border-2 border-yellow-600"></div>
+                        <div class="card-title text-center text-yellow-600 text-1xl font-['Poppins']">Name : {{ $list->user->f_name }} {{ $list->user->l_name }}</div>
                         {{-- List Dari Orderan --}}
                         <?php $price = 0 ?>
                         @foreach ($list->foods as $food)
-                                <div>{{ $food->pivot->count }}X {{ $food->food }}</div>
+                                <div class="card-title text-center text-yellow-600 text-1xl font-['Poppins']">{{ $food->pivot->count }}X {{ $food->food }}</div>
 
                                 <?php $price += ($food->price * $food->pivot->count) ?>
                         @endforeach
                         {{-- Harga Masing Masing Order --}}
-                        <div>Price : {{ $price }}</div>
+                        <div class="card-title text-white text-2xl font-['Poppins'] ml-72">+ {{ $price }}</div>
                         <?php $totalPrice += $price ?>
+                        </div>
+                        </div>
                     </div>
                 @endforeach
                 {{-- Harga Total Di jangka waktu --}}
-                <div>Total Price : {{ $totalPrice }}</div>
+                <div class="h-3/12 w-3/12 col-span-3 bg-blue-950 rounded-[46px] border-4 border-yellow-600 card card-compact relative mt-12">
+                    <div class="card-body">
+                        <div class="card-title text-center text-yellow-600 text-[22px] font-['Poppins']">Total Pemasukan</div>
+                        <div class="card-title text-center text-yellow-600 text-[22px] font-['Poppins']">Order id :{{ $list->id }}</div>
+                        <div class="card-title text-center text-white text-[22px] font-['Poppins']">Price : {{ $price }}</div>
+                        <div class="card-title w-[90%] h-[0px] border-2 border-yellow-600"></div>
+                        <div class="card-title text-center text-white text-[32px] font-['Poppins'] ml-20"> {{ $totalPrice }}</div>
+
+                    </div>
+                </div>
             </div>
         @endif
     @else
