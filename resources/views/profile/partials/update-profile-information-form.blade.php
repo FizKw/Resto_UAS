@@ -25,9 +25,9 @@
             <x-input-error class="mt-2" :messages="$errors->get('l_name')" />
         </div>
         <div>
-            <x-input-label for="date_of_birth" :value="__('Birthday (mm/dd/yyy)')" />
-            <x-text-input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full" :value="old('date_of_birth', $user->date_of_birth)" required autofocus autocomplete="date_of_birth" />
-            <x-input-error class="mt-2" :messages="$errors->get('date_of_birth')" />
+            <x-input-label for="phone" :value="__('Phone Number')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="Phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
         <div>
@@ -35,7 +35,7 @@
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="email" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-            
+
         </div>
 
         <div class="flex items-center gap-4">

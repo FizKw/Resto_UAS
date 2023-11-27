@@ -22,7 +22,7 @@
                         </div>
                         <input id="email" class="w-full px-10 py-2 border rounded-md focus:outline-none focus:border-merah-500 focus:ring-merah-500 bg-white text-black placeholder:opacity-60" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus autocomplete="email" />
                     </div>
-                    
+
                     {{-- <x-input-error :messages="$errors->get('email')" class="mt-2 " /> --}}
 
                     <!-- Password -->
@@ -39,7 +39,7 @@
                                         name="password"
                                         placeholder="Password"
                                         required autocomplete="current-password" />
-                                       
+
 
                         {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
                     </div>
@@ -48,17 +48,6 @@
                     @elseif (($errors->has('password')))
                     <p class="mx-2 text-sm text-red-600 space-y-1">Email atau password yang anda masukan salah</p>
                     @endif
-
-                    {{-- Captcha --}}
-                    <div class="mt-4">
-                        {!! captcha_img() !!}
-                        <input id="captcha" class="w-full px-2 py-2 mt-4 border rounded-md focus:outline-none focus:border-merah-500 focus:ring-merah-500 bg-white text-black placeholder:opacity-60" type="text" name="captcha" placeholder="Masukan Captcha" :value="old('captcha')" required autocomplete="captcha" />
-                        @if($errors->has('captcha'))
-                            <span class="mt-2 mx-2 text-sm text-red-600 space-y-1">
-                                Captcha Salah
-                            </span>
-                        @endif
-                    </div>
 
                     {{-- Button --}}
                     <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 mt-4 rounded-md hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>

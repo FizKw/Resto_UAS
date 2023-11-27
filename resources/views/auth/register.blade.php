@@ -17,7 +17,7 @@
                         </i>
                     </div>
                     <input type="text" id="f_name" name="f_name" value="{{ old('f_name') }}" required autofocus autocomplete="f_name" placeholder="First Name" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    
+
                     {{-- <x-input-error :messages="$errors->get('f_name')" class="mt-2" /> --}}
                 </div>
                     @if ($errors->has('f_name'))
@@ -36,18 +36,22 @@
                 </div>
 
 
-                {{-- Tanggal Lahir --}}
+                {{-- No Telepon --}}
                 <div class="mt-4 relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                             </svg>
                         </i>
                     </div>
-                    <input type="date" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" required autofocus autocomplete="date_of_birth" placeholder="Tanggal Lahir" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
-                    <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required autofocus autocomplete="phone" placeholder="No. Telepon" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
+                    {{-- <x-input-error :messages="$errors->get('phone')" class="mt-2" /> --}}
+
                 </div>
+                @if ($errors->has('phone'))
+                    <p class="mx-2 text-sm text-red-600 space-y-1">Nomer Telepon Tidak Sesuai</p>
+                @endif
 
 
                 {{-- Email --}}
@@ -95,6 +99,16 @@
                     @if ($errors->has('password_confirmation'))
                         <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Password tidak sesuai</p>
                     @endif
+
+                <div class="mt-4">
+                    {!! captcha_img() !!}
+                    <input id="captcha" class="w-full px-2 py-2 mt-4 border rounded-md focus:outline-none focus:border-merah-500 focus:ring-merah-500 bg-white text-black placeholder:opacity-60" type="text" name="captcha" placeholder="Masukan Captcha" :value="old('captcha')" required autocomplete="captcha" />
+                    @if($errors->has('captcha'))
+                        <span class="mt-2 mx-2 text-sm text-red-600 space-y-1">
+                            Captcha Salah
+                        </span>
+                    @endif
+                </div>
 
                 <button type="submit" class="mt-4 w-full bg-kuning-500 text-black border border-black py-2 px-4 rounded-md  hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
