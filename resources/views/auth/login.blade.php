@@ -53,15 +53,17 @@
                     <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 mt-4 rounded-md hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
                     {{-- Register --}}
+                    <div class="text-md mt-4 p-2">Lupa Password? <a href="{{ route('password.request') }}" class="button hover:text-kuning-400 text-kuning-500 text-md ">klik disini</a></div>
                     <div class="text-md mt-4 p-2">Belum punya akun? <a href="{{ route('register') }}" class="button hover:text-kuning-400 text-kuning-500 text-md ">Daftar disini</a></div>
 
                 </div>
             </section>
         </form>
         <div class="col-span-1 p-8  hidden lg:flex items-center justify-center">
-            <a href="{{ route('index') }}" class=" " wire:navigate>
+            <a href="{{ route('index') }}" class="" wire:navigate>
                 <img class=" w-full h-full rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
             </a>
         </div>
+
     </div>
 </x-guest-layout>
