@@ -19,9 +19,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::middleware('guest')->group(function(){
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('menu', [HomeController::class, 'menu'])->name('menu');
+});
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('menu', [HomeController::class, 'menu'])->name('menu');
 
 Route::middleware('auth')->group(function () {
     Route::get('home',[HomeController::class,'menu'])->name('home');
