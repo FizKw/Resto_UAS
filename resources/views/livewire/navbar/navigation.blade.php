@@ -1,6 +1,6 @@
 <div class="navbar bg-merah-500 fixed z-50 h-28 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
-        <a href="{{ route('home') }}" class=" " wire:navigate>
+        <a href="{{ route('index') }}" class=" " wire:navigate>
             <img src="{{ asset('asset/logo.png') }}" alt="" class="w-24 h-20 mx-2 my-auto">
         </a>
     </div>
@@ -8,7 +8,7 @@
         {{-- dashboard admin & owner --}}
         @auth
             @if (Auth()->user()->usertype === 'admin')
-                <a href="{{ route('home') }}" class=" mx-8 my-2 text-center capitalize text-gray-300 hover:text-white" wire:navigate>Dashboard</a>      
+                <a href="{{ route('home') }}" class=" mx-8 my-2 text-center capitalize text-gray-300 hover:text-white" wire:navigate>Dashboard</a>
             @elseif (Auth()->user()->usertype === 'cashier')
                 <a href="{{ route('home') }}" class=" mx-8 my-2 text-center capitalize text-gray-300 hover:text-white" wire:navigate>Dashboard</a>
             @endif
@@ -30,17 +30,17 @@
             @endif
             @endauth
 
-        @auth    
+        @auth
         <div class="dropdown dropdown-end ">
 
             {{-- Avatar Logo --}}
-            @if (isset(Auth()->user()->avatar))  
+            @if (isset(Auth()->user()->avatar))
             <label tabindex="0" class="btn block lg:hidden group-hover:cursor-pointer focus:ring-2  w-14 h-14 btn-circle avatar">
                 <div class="rounded-full">
                     <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="user photo">
                 </div>
             </label>
-            
+
             <div class="lg:flex hidden mr-10">
                 <div class="btn hidden lg:block capitalize group overflow-visible relative max-w-sm mx-auto py-2 pr-1 bg-kuning-500 rounded-none hover:bg-kuning-400 duration-150 border-none mt-3 ">
                     <label tabindex="0">
@@ -58,7 +58,7 @@
                 {{-- Media Query Kecil --}}
             <label tabindex="0" class="btn block lg:hidden py-3 px-[10px] bg-merah-500 hover:cursor-pointer border-2 text-kuning-500 hover:bg-merah-400 active:bg-merah-400 focus:bg-merah-400 btn-circle avatar">
                 <div class="rounded-full">
-                    <i data-feather="user" class="text-kuning-500"></i> 
+                    <i data-feather="user" class="text-kuning-500"></i>
                 </div>
             </label>
 
@@ -66,9 +66,9 @@
             <div class="lg:flex hidden mr-9 ">
                 <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
                     <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
-                        <i data-feather="user" class="text-kuning-500"></i> 
+                        <i data-feather="user" class="text-kuning-500"></i>
                     </label>
-                
+
                     {{-- Username --}}
                     <label tabindex="0" class="group-hover:cursor-pointer  my-auto px-4 text-black text-lg font-bold hidden md:block ">{{ Auth::user()->f_name }} {{ Auth::user()->l_name }}
                     </label>
@@ -78,7 +78,7 @@
 
             @endif
 
-           
+
 
             {{-- Dropdown Avatar --}}
             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-kuning-500 text-black rounded-box w-52">
