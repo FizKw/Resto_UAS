@@ -1,10 +1,10 @@
 <div class="relative">
-    <img src="{{ asset('asset/vector/bintang.png') }}" class="absolute right-2 -top-[1%]">
+    <img src="{{ asset('asset/vector/bintang.png') }}" class="hidden md:block absolute right-2 -top-[1%]">
     {{-- Button untuk filter process --}}
-    <div class="flex justify-start space-x-1 md:space-x-3 pl-6 md:pl-10 pb-2 mb-3 border-b border-kuning-500">
-        <button wire:click="filterStatus('Waiting')" class="btn {{ ($status == 'Waiting') ? '  focus:opacity-100 font-medium' : '' }} capitalize md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Menunggu konfirmasi</button>
-        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? '  focus:opacity-100 font-medium' : '' }} capitalize md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Dalam Proses</button>
-        <button wire:click="filterStatus('Ready')" class="btn {{ ($status == 'Ready') ? '  focus:opacity-100 font-medium' : '' }} capitalize md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Siap diambil</button>
+    <div class="flex justify-center md:justify-start md:space-x-3 md:pl-10 pb-2 mb-3 border-b border-kuning-500">
+        <button wire:click="filterStatus('Waiting')" class="btn {{ ($status == 'Waiting') ? '  focus:opacity-100 font-medium' : '' }} capitalize text-xs md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Menunggu konfirmasi</button>
+        <button wire:click="filterStatus('Process')" class="btn {{ ($status == 'Process') ? '  focus:opacity-100 font-medium' : '' }} capitalize text-xs md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Dalam Proses</button>
+        <button wire:click="filterStatus('Ready')" class="btn {{ ($status == 'Ready') ? '  focus:opacity-100 font-medium' : '' }} capitalize text-xs md:text-lg font-normal border-none text-kuning-500 opacity-80 hover:opacity-100">Siap diambil</button>
     </div>
     {{-- Wire Key Dimasukin Ke div pembungkus list --}}
     @if($orders->count() > 0)
@@ -35,7 +35,7 @@
         </div>
     @else
         {{-- Ini kalau list orderan kosong. $status itu list status yang ditampilin saat ini  --}}
-        <p class="text-center text-yellow-600 md:text-6xl font-semibold sm:text-6xl mx-auto mt-20">Yah :(  belum ada<br/>yang  {{ $status }} nih</p>
+        <p class="text-center text-yellow-600 md:text-6xl font-semibold text-4xl px-6 mx-auto mt-20">Yah :( <br> belum ada pesanan yang  {{ $status }} nih</p>
     @endif
 
     {{-- Modal box detail --}}
@@ -56,7 +56,7 @@
                                     <p class="text-kuning-500 text-2xl font-semibold capitalize mt-6 mb-3 mx-10">{{ $carts->user->f_name }} {{ $carts->user->l_name }} #{{ $selectedOrder->id }}</p>
                                          @foreach($carts->foods as $cart)
                                              {{-- pivot->count itu jumlah makanan yang dipesan --}}
-                                             <h1 class="text-kuning-500 text-xl font-['Poppins'] ml-10 mt-1">{{ $cart->pivot->count }} x {{ $cart->food }} = Rp {{number_format($cart->price * $cart->pivot->count,0,".",".")  }}</h1>
+                                             <h1 class="text-kuning-500 text-xl font-['Poppins'] mx-10 mt-1">{{ $cart->pivot->count }} x {{ $cart->food }} = Rp {{number_format($cart->price * $cart->pivot->count,0,".",".")  }}</h1>
 
                                              <?php $totalPrice += ($cart->price * $cart->pivot->count) ?>
 
@@ -70,10 +70,10 @@
                         
                                 {{-- Ini kalau si user udah upload foto bukti pembayaran --}}
                                 @if(isset($selectedOrder->payment_image))
-                                <x-primary-button class="mx-6" onclick="pembayaran.showModal()">Lihat bukti pembayaran</x-primary-button>
+                                <x-primary-button class="mx-6 mb-6" onclick="pembayaran.showModal()">Lihat bukti pembayaran</x-primary-button>
                                 <dialog id="pembayaran" class="modal">
                                     <div class="modal-box">
-                                        <img class="object-fit" src="{{ asset('storage/' . $selectedOrder->payment_image) }}" alt="">
+                                        <img class="object-fit mx-auto" src="{{ asset('storage/' . $selectedOrder->payment_image) }}" alt="">
                                     </div>
                                     <form method="dialog" class="modal-backdrop">
                                     <button>close</button>
@@ -91,7 +91,7 @@
                         @if ($selectedOrder->status === 'Waiting')
                         {{-- Dropdown buat Cancel yang isinya alasan kenapa kasir cancel --}}
                         <div class="flex justify-around">
-                            <div class="dropdown dropdown-top">
+                            <div class="dropdown dropdown-bottom">
                                 <div>
                                     <label tabindex="0" class="btn font-semibold text-center text-yellow-600 text-3xl bg-merah-500 hover:bg-merah-400 ">Tolak</label>
                                 </div>
@@ -151,14 +151,18 @@
                                 @csrf
                                 <label for="note" class="text-kuning-500 text-xl  mx-10">Notes untuk pembeli : </br></label>
                                 <textarea class="w-[85%] h-[86px] rounded-[16px] mx-8" name="cashierNote" value="" wire:model="cashierNote"></textarea>
-                                <button class="btn w-[324px] h-[46px] text-center text-white-600 text-[20px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px] ml-10 mt-8" >Pesanan siap di pickup</button>
+                                <div class="flex justify-center">
+                                    <button class="btn md:w-8/12 md:h-[36px] sm:w-11/12 sm:h-4/12 text-center text-white-600 sm:text-[20px] md:text-[30px] font-['Poppins'] bg-yellow-600 rounded-[56px] md:mt-10" >Pesanan siap di pickup</button>
+                                </div>
                             </form>
 
                             @endif
                         {{-- Button buat menyelesaikan order ketika sudah di pickup --}}
                         @else
-                            <button class="btn w-[384px] h-[56px] text-center text-white-600 text-[40px] font-black font-['Poppins'] bg-yellow-600 rounded-[56px] ml-10 mt-10" wire:click="orderDone()">Order Done</button>
-                        @endif
+                            <div class="flex justify-center">
+                                <button class="btn md:w-8/12 md:h-[36px] sm:w-11/12 sm:h-4/12 text-center text-white-600 sm:text-[20px] md:text-[30px] font-['Poppins'] bg-yellow-600 rounded-[56px] md:mt-10" wire:click="orderDone()">Order Done</button>
+                            </div>
+                            @endif
                     </div>
                 </div>
             @endif

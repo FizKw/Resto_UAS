@@ -1,11 +1,11 @@
 <div>
     @if($products->count() > 0)
-        <div class="py-8 container w-full justify-center place-items-center mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div class="py-8 container w-full justify-center place-items-center mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             @foreach($products as $product)
             <div>
-                <div class="card card-compact mx-auto w-[20rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+                <div class="card card-compact mx-auto w-[12rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                     <button wire:key="{{ $product->id }}" wire:click="viewDetail({{ $product->id }})">
-                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class="w-[21rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[18rem] object-cover object-center" /></figure>
+                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" md:h-fit w-[12rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[10rem] object-cover object-center" /></figure>
                         <div></div>
                         <div class="card-body text-start ml-5 mt-2">
                             <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}</h2>
