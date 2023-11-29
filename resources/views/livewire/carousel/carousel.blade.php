@@ -1,6 +1,6 @@
 <div>
 @if (isset($item1) && isset($item2))
-<div class="carousel w-full min-h-screen relative ">
+<div class="carousel w-full max-h-screen relative ">
     {{-- slide 1 --}}
     {{-- Media Query Dekstop--}}
     <div id="slide1" class="relative w-full carousel-item hidden xl:grid grid-cols-3 pt-18">
@@ -61,10 +61,14 @@
         <button class="relative -bottom-[8%] inset-x-[32%] md:inset-x-[40%]">
         @auth
             @if (Auth()->user()->usertype === 'user')
+            <div class="flex justify-center">
                 <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
-            @endif
+            </div>
+                @endif
         @else
-        <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+        <div class="flex justify-center">
+            <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+        </div>
         @endauth
         </button>
     </div>

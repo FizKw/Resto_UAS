@@ -43,7 +43,7 @@
     <div class="md:flex justify-center mt-32 mx-auto">
 
       <div class="w-[68%] md:w-[50%] mx-auto md:mx-0">
-        <iframe class="min-h-[370px] w-full" src="https://www.youtube.com/embed/Z4nFlOGZEJI?si=P_tFXuXvYCNZHjI2&amp;controls=0    " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@inizollael/video/7304470547319049477" data-video-id="7304470547319049477" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@inizollael" href="https://www.tiktok.com/@inizollael?refer=embed">@inizollael</a> Saking enaknya, mau nambah lagi! endul bgt! <a title="mieayam" target="_blank" href="https://www.tiktok.com/tag/mieayam?refer=embed">#mieayam</a> <a title="bakmiehalal" target="_blank" href="https://www.tiktok.com/tag/bakmiehalal?refer=embed">#bakmiehalal</a> <a title="mieayambakso" target="_blank" href="https://www.tiktok.com/tag/mieayambakso?refer=embed">#mieayambakso</a> <a title="kulinertangerang" target="_blank" href="https://www.tiktok.com/tag/kulinertangerang?refer=embed">#kulinertangerang</a> <a title="kulinergadingserpong" target="_blank" href="https://www.tiktok.com/tag/kulinergadingserpong?refer=embed">#kulinergadingserpong</a> <a title="mieayamalya" target="_blank" href="https://www.tiktok.com/tag/mieayamalya?refer=embed">#mieayamalya</a>  </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
       </div>
     </div>
         
