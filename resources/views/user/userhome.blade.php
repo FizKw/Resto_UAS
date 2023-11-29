@@ -9,40 +9,25 @@
         </div>
     </div>
     <livewire:foodlist.food-list />
-    <footer>
-        <div class="py-10 bg-yellow-600 text-red-900">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex justify-center gap-5">
-                    <a class="ml-10 mt-10 text-lg" href="">Home</a>
-                    <a class="ml-10 mt-10 text-lg" href="">About</a>
-                    <a class="ml-10 mt-10 text-lg" href="">Menu</a>
-                    <a class="ml-10 mt-10 text-lg" href="">Contact Us</a>
-                </div>
-                <div class="mt-16 h-px max-h-full opacity-50 border border-black">
-                    <div class="flex justify-left items-center gap-5">
-                        <p class="text-blue-950 mt-1.5 font-sans font-bold">© 2021 | All Rights Reserved.</p>
-                        <div class="flex justify-center items-center gap-5 mt-2 mx-80">
-                            
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                            </svg></a>
-                            
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                            </svg></a>
-
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                            </svg></a>
-
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                            </svg></a>
-
-                        </div>                                  
-                    </div>
-                </div>
-            </div>  
+    <footer class=" flex justify-around bg-kuning-500">
+        <div>
+          <header class="sm:text-2xl font-bold text-merah-500 px-2 pt-20">Hubungi kami</header> 
+          <div class="flex justify-evenly mt-2">
+            <a href="https://www.instagram.com/mieayamalya/" target="_blank" rel="noopener noreferrer"><img src="{{ asset('asset/instagram.png') }}" class="w-6 h-6" alt="" ></a>
+            <a href="https://api.whatsapp.com/send/?phone=6285888320662&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer"><img src="{{ asset('asset/whatsapp.png') }}" class="w-6 h-6" alt="" ></a>
+            <a href="https://www.google.com/maps/place/Mie+ayam+alya/@-6.232512,106.627645,19z/data=!3m1!4b1!4m6!3m5!1s0x2e69fd809a7b35e1:0x2dfb1410455b1d01!8m2!3d-6.232512!4d106.6282887!16s%2Fg%2F11vlkjh76b?hl=id&entry=ttu" target="_blank" rel="noopener noreferrer"><img src="{{ asset('asset/map.png') }}" class="w-6 h-6" alt="" ></a>
+          </div>
         </div>
-    </footer>
+        <div class="mx-auto md:mx-0 w-[68%] md:w-[30%] px-2 py-4 text-merah-500">
+          <h1 class="sm:text-2xl font-bold ">Jam buka</h1>
+          <p class=" text-sm sm:text-base ">Setiap hari<br>09.00 AM to 11.00 PM<br>
+          <h1 class="sm:text-2xl font-bold  mt-4 ">Lokasi</h1>
+          <p class="text-sm sm:text-base ">Jl. Kelapa Gading Barat AG15 no.10 Kelurahan Kelapa Dua Kecamatan Panongan barat Kabupaten Tangerang</p>
+        </div>
+        <div class="w-[68%] md:w-[30%] md:mx-0">
+          <a href="https://www.google.com/maps/place/Mie+ayam+alya/@-6.232512,106.627645,19z/data=!3m1!4b1!4m6!3m5!1s0x2e69fd809a7b35e1:0x2dfb1410455b1d01!8m2!3d-6.232512!4d106.6282887!16s%2Fg%2F11vlkjh76b?hl=id&entry=ttu" target="_blank" rel="noopener noreferrer">
+            <img class="object-cover h-full" src="{{ asset('asset/maps.png') }}" alt="">
+          </a>
+        </div>
+      </footer>
 </x-app-layout>

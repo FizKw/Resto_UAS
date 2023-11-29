@@ -54,15 +54,17 @@
 
 
                     {{-- Button Remember me --}}
-                    <div class="block mt-4">
-                        <label for="remember_me" class="inline-flex items-center">
-                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                            <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                        </label>
+                    <div class="flex mt-4 justify-between">   
+                        <div class="block">
+                            <label for="remember_me" class="inline-flex items-center">
+                                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                <span class="ms-2 text-md text-white">{{ __('Remember me') }}</span>
+                            </label>
+                        </div>
+                        <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a>
                     </div>
 
                     {{-- Register --}}
-                    <div class="text-md mt-4 p-2">Lupa Password? <a href="{{ route('password.request') }}" class="button hover:text-kuning-400 text-kuning-500 text-md ">klik disini</a></div>
                     <div class="text-md mt-4 p-2">Belum punya akun? <a href="{{ route('register') }}" class="button hover:text-kuning-400 text-kuning-500 text-md ">Daftar disini</a></div>
 
                 </div>

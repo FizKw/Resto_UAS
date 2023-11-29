@@ -1,5 +1,5 @@
 <div class="max-h-screen">
-    <div class="bg-biru-500 overflow-auto h-[73vh] mx-10 mt-12 shadow-sm rounded-3xl border-4 text-white border-yellow-600 relative">
+    <div class="bg-biru-500 overflow-auto h-[80vh] mx-10 mt-12 shadow-sm rounded-3xl border-4 text-white border-yellow-600 relative">
         {{-- Kalau misalkan orderannya di cancel bakal muncul ini --}}
         @if ($orderNumber->status == "Cancel")
             <div class="mt-20">
@@ -36,16 +36,16 @@
         {{-- status orderan saat ini --}}
         @else
         <div class="mt-9">
-            <h1 class="font-bold pt-3 text-6xl md:text-7xl text-center">Selamat !</h1>
+            <h1 class="font-bold pt-3 pb-2 text-6xl md:text-7xl text-center">Selamat!</h1>
             @switch($orderNumber->status)
                 @case($orderNumber->status == "Waiting")
-                    <p class="text-lg md:text-xl text-center text-white mb-6">Pesananmu akan segera di proses</p>
+                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu akan segera di proses</p>
                     @break
                 @case($orderNumber->status == "Process")
-                    <p class="text-lg md:text-xl text-center text-white mb-6">Pesananmu sedang di proses restoran</p>
+                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu sedang di proses restoran</p>
                     @break
                 @case($orderNumber->status == "Ready")
-                    <p class="text-lg md:text-xl text-center text-white mb-6">Pesananmu siap diambil</p>
+                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu siap diambil</p>
                     @break
                 @default
             @endswitch
@@ -55,7 +55,7 @@
         
         @switch($orderNumber->status)
                 @case($orderNumber->status == "Waiting")
-                    <div class="fixed bottom-[12%] inset-x-[18%]">
+                    <div class="mx-6">
                         <div class="ml-[4%] mr-[5%] overflow-hidden rounded-full bg-gray-200">
                             <div class="h-2 w-[0.5%] rounded-full bg-kuning-500"></div>
                         </div>
@@ -111,7 +111,7 @@
                     </div>
                     @break
                 @case($orderNumber->status == "Ready")
-                    <div class="fixed bottom-[12%] inset-x-[18%]">
+                    <div class="mx-6">
                         <div class="ml-[4%] mr-[5%] overflow-hidden rounded-full bg-gray-200">
                             <div class="h-2 w-full rounded-full bg-kuning-500"></div>
                         </div>

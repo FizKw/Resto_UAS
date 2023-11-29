@@ -1,6 +1,6 @@
 <div class="navbar bg-merah-500 fixed z-50 h-28 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
-        <a href="{{ route('index') }}" class=" " wire:navigate>
+        <a href="{{ route('home') }}" class=" " wire:navigate>
             <img src="{{ asset('asset/logo.png') }}" alt="" class="w-24 h-20 mx-2 my-auto">
         </a>
     </div>
@@ -66,7 +66,7 @@
             <div class="lg:flex hidden mr-9 ">
                 <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
                     <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
-                        <i data-feather="user" class=""></i> 
+                        <i data-feather="user" class="text-kuning-500"></i> 
                     </label>
                 
                     {{-- Username --}}

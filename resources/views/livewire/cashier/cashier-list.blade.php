@@ -23,7 +23,7 @@
                             {{-- Kalau user udah upload Foto pembayaran tulisan yang ngasih tau
                                  pembayaran udh diverivikasi atau belum sama kasir --}}
                             @if ($order->status != "Waiting" && isset($order->payment_image))
-                                Payment {{  ($order->is_paid == 1) ? 'Sudah diverivikasi' : 'Belum Diverivikasi' }}
+                               <p> Payment {{  ($order->is_paid == 1) ? 'Sudah diverifikasi' : 'Belum Diverifikasi' }}</p>
                             @endif
                         </h2>
                     </div>
@@ -47,31 +47,45 @@
                 {{-- Konten Modal box --}}
                 <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-auto fixed inset-x-[10%] inset-y-[14%]">
                     <div class="relative">    
-                        {{-- Ini kalau si user udah upload foto bukti pembayaran --}}
-                        <div>
-                            @if(isset($selectedOrder->payment_image))
-                            <div class="">
-                                <img src="{{ asset('storage/' . $selectedOrder->payment_image) }}" alt="">
-                            </div>
-                            @endif
-                        </div>
+                        
                         {{-- isi pesanan dari dari order yang di select detailnya --}}
                         @if (isset($carts))
                             <?php $totalPrice = 0 ?>
+                            <div class="">
+                                <div class="">
+                                    <p class="text-kuning-500 text-2xl font-semibold capitalize mt-6 mb-3 mx-10">{{ $carts->user->f_name }} {{ $carts->user->l_name }} #{{ $selectedOrder->id }}</p>
+                                         @foreach($carts->foods as $cart)
+                                             {{-- pivot->count itu jumlah makanan yang dipesan --}}
+                                             <h1 class="text-kuning-500 text-xl font-['Poppins'] ml-10 mt-1">{{ $cart->pivot->count }} x {{ $cart->food }} = Rp {{number_format($cart->price * $cart->pivot->count,0,".",".")  }}</h1>
 
-                            <div class="text-kuning-500 text-2xl font-semibold capitalize mt-6 mb-3 mx-10">{{ $carts->user->f_name }} {{ $carts->user->l_name }} #{{ $selectedOrder->id }}</div>
-                            @foreach($carts->foods as $cart)
-                                {{-- pivot->count itu jumlah makanan yang dipesan --}}
-                                <div class="text-kuning-500 text-xl font-['Poppins'] ml-10 mt-1">{{ $cart->pivot->count }} x {{ $cart->food }} = Rp {{number_format($cart->price * $cart->pivot->count,0,".",".")  }}</div>
+                                             <?php $totalPrice += ($cart->price * $cart->pivot->count) ?>
 
-                                <?php $totalPrice += ($cart->price * $cart->pivot->count) ?>
+                                         @endforeach
+                                         {{-- Harga Total --}}
+                                        <h1 class="text-kuning-500 text-xl ml-10 mt-5">Total : Rp {{number_format($totalPrice,0,".",".")  }}</h1>
+                                         
+                                        {{-- Ini notes dari pembeli ke kasir --}}
+                                        <h1 class="text-kuning-500 text-xl  ml-10 mt-2 mb-5">Notes : {{ $selectedOrder->order_note }}</h1>
+                                </div>
+                        
+                                {{-- Ini kalau si user udah upload foto bukti pembayaran --}}
+                                @if(isset($selectedOrder->payment_image))
+                                <x-primary-button class="mx-6" onclick="pembayaran.showModal()">Lihat bukti pembayaran</x-primary-button>
+                                <dialog id="pembayaran" class="modal">
+                                    <div class="modal-box">
+                                        <img class="object-fit" src="{{ asset('storage/' . $selectedOrder->payment_image) }}" alt="">
+                                    </div>
+                                    <form method="dialog" class="modal-backdrop">
+                                    <button>close</button>
+                                    </form>
+                                </dialog>
+                                @endif  
 
-                            @endforeach
-                            {{-- Harga Total --}}
-                            <div class="text-kuning-500 text-xl ml-10 mt-5">Total : Rp {{number_format($totalPrice,0,".",".")  }}</div>
+                                   
+                                
+                            </div>
                         @endif
-                        {{-- Ini notes dari pembeli ke kasir --}}
-                        <h1 class="text-kuning-500 text-xl  ml-10 mt-2 mb-5">Notes : {{ $selectedOrder->order_note }}</h1>
+
 
                         {{-- Ini kalau processnya baru masuk dan masih waiting --}}
                         @if ($selectedOrder->status === 'Waiting')
@@ -128,7 +142,7 @@
                             {{-- Ini button verivikasi ketika payment dari user udh di upload --}}
                             @if ($selectedOrder->is_paid == 0 && isset($selectedOrder->payment_image))
                             <div class="flex justify-center">
-                                <button class="btn md:w-8/12 md:h-[36px] sm:w-11/12 sm:h-4/12 text-center text-white-600 sm:text-[20px] md:text-[30px] font-['Poppins'] bg-yellow-600 rounded-[56px] md:ml-44 md:mt-10" wire:click="verivication()">Verifikasi Payment</button>
+                                <button class="btn md:w-8/12 md:h-[36px] sm:w-11/12 sm:h-4/12 text-center text-white-600 sm:text-[20px] md:text-[30px] font-['Poppins'] bg-yellow-600 rounded-[56px]  md:mt-10" wire:click="verivication()">Verifikasi Payment</button>
                             </div>
                             @else
                             {{-- ini button buat ganti statusnya dari yang on progress ke ready,
