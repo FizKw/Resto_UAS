@@ -3,7 +3,7 @@
     <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2 h-full">
     <div class="mt-20 text-2xl">
         {{-- Form Buat Pengisian Tanggal --}}
-        <form method="POST" action="{{ route('products.history') }}" class="mb-36">
+        <form method="POST" action="{{ route('products.history') }}" class="mb-24 lg:mb-32">
             @csrf
             <h1 class="text-center font-semibold lg:text-1xl text-yellow-500 mt-4 lg:mt-8 xl:mt-12 ">Pemasukan</h1>
             <div class="grid grid-cols-2 text-center lg:float-right">
@@ -35,9 +35,7 @@
             @foreach ($history as $list)
                 {{-- div setiap order --}}
             <div class="container">
-            <div class="grid grid-cols-2">
-                <div class="grid grid-cols-2 w-[20%]">
-                <div class="w-8/12 h-1/12 bg-blue-950 rounded-[16px] border-4 border-yellow-600 card card-compact relative">
+                <div class="w-[80%] h-[30%] bg-blue-950 rounded-[16px] border-4 border-yellow-600 card card-compact relative mt-4 mx-auto">
                     <div class="card-body text-start">
                         <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']"># {{ $list->id }}</div>
                         <div class="card-title border-2 border-yellow-600"></div>
@@ -54,21 +52,19 @@
                         <?php $totalPrice += $price ?>
                     </div>
                 </div>
-                </div>
                 @endforeach
                 </div> 
                 {{-- Harga Total Di jangka waktu --}}
-                    <div class="w-[100%] h-[100%] bg-blue-950 rounded-[46px] border-4 border-yellow-600 card card-compact relative">
+                    <div class="w-[80%] h-[40%] bg-blue-950 rounded-[16px] border-4 border-yellow-600 card card-compact relative mt-8 mx-auto">
                         <div class="card-body">
-                            <div class="card-title text-center text-yellow-600 text-[22px] font-['Poppins'] ml-8">Total Pemasukan</div>
-                            <div class="card-title text-center text-yellow-600 text-[22px] font-['Poppins'] ml-8">Order id :{{ $list->id }}</div>
-                            <div class="card-title text-center text-white text-[22px] font-['Poppins'] ml-8">Price : {{ $price }}</div>
-                            <div class="card-title text-yellow-600 text-2xl font-['Poppins'] ml-56">+</div>
-                            <div class="card-title w-[80%] h-[0px] border-2 border-yellow-600 ml-4"></div>
-                            <div class="card-title text-center text-white text-[32px] font-['Poppins'] ml-20"> {{ $totalPrice }}</div>
+                            <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Total Pemasukan</div>
+                            <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Order id :{{ $list->id }}</div>
+                            <div class="card-title text-center text-white text-xl font-['Poppins']">Price : {{ $price }}</div>
+                            <div class="card-title text-yellow-600 text-2xl font-['Poppins'] ml-[90%]">+</div>
+                            <div class="card-title w-[95%] h-[0px] border-2 border-yellow-600"></div>
+                            <div class="card-title text-center text-white text-2xl font-['Poppins']"> {{ $totalPrice }}</div>
                         </div>
                     </div>
-            </div>
         @endif
             
     @else
