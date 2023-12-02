@@ -58,7 +58,7 @@
                     <div class="card-body text-start">
                         <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']"># {{ $list->id }}</div>
                         <div class="card-title border-2 border-yellow-600"></div>
-                        <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Name : {{ $list->user->f_name }} {{ $list->user->l_name }}</div>
+                        <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Pembeli : {{ $list->user->f_name }} {{ $list->user->l_name }}</div>
                         {{-- List Dari Orderan --}}
                         <?php $price = 0 ?>
                         @foreach ($list->foods as $food)
@@ -79,7 +79,7 @@
                             <div class="card-title text-center text-yellow-600 text-sm lg:text-xl font-['Poppins']">Total Pemasukan</div>
 
                             <div class="card-title w-[95%] h-[0px] border-2 border-yellow-600"></div>
-                            <div class="card-title text-center text-white text-2xl font-['Poppins']">Rp.{{number_format($totalPrice,0,".",".")  }}</div>
+                            <div class="card-title text-center text-white text-sm lg:text-xl font-['Poppins']">Rp.{{number_format($totalPrice,0,".",".")  }}</div>
                         </div>
                     </div>
             </div>
