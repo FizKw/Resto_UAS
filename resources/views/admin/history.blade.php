@@ -57,8 +57,8 @@
                 {{-- Harga Total Di jangka waktu --}}
                     <div class="w-[80%] h-[40%] bg-blue-950 rounded-[16px] border-4 border-yellow-600 card card-compact relative mt-8 mx-auto">
                         <div class="card-body">
-                            <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Total Pemasukan</div>
-                            <div class="card-title text-center text-yellow-600 text-sm font-['Poppins']">Order id :{{ $list->id }}</div>
+                            <div class="card-title text-center text-yellow-600 text-sm lg:text-xl font-['Poppins']">Total Pemasukan</div>
+                            <div class="card-title text-center text-yellow-600 text-sm lg:text-xl font-['Poppins']">Order id :{{ $list->id }}</div>
                             <div class="card-title text-center text-white text-xl font-['Poppins']">Price : {{ $price }}</div>
                             <div class="card-title text-yellow-600 text-2xl font-['Poppins'] ml-[90%]">+</div>
                             <div class="card-title w-[95%] h-[0px] border-2 border-yellow-600"></div>
