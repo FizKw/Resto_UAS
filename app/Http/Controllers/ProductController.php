@@ -89,8 +89,7 @@ class ProductController extends Controller
     public function filterHistory(Request $request){
 
         $history = Orders::with('user', 'foods')->onlyTrashed()
-            ->whereDate('deleted_at', '>=', $request->start_date)
-            ->whereDate('deleted_at', '<=', $request->end_date)
+            ->whereBetween('deleted_at',[$request->start_date, $request->end_date])
             ->where('status', 'Done')
             ->get()->sortBy('id');
         return view('admin.history', compact('history'));
