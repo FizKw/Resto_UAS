@@ -58,19 +58,17 @@
         <div class="mx-auto">
         <p class="text-center text-white mt-3 mx-16">{{$item1->description}}</p>
         </div>
-        <button class="relative -bottom-[8%] inset-x-[32%] md:inset-x-[40%]">
-        @auth
-            @if (Auth()->user()->usertype === 'user')
-            <div class="flex justify-center">
-                <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
-            </div>
+        <div class="flex justify-center pt-6">
+            <button>
+            @auth
+                @if (Auth()->user()->usertype === 'user')
+                    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
                 @endif
-        @else
-        <div class="flex justify-center">
+            @else
             <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @endauth
+            </button>
         </div>
-        @endauth
-        </button>
     </div>
 
         {{-- Slide 2 --}}
@@ -130,15 +128,17 @@
         <div class="mx-auto">
             <p class="text-center text-white mt-3 mx-16">{{$item2->description}}</p>
         </div>
-        <button class="relative -bottom-[8%] inset-x-[30%] md:inset-x-[40%]">
-        @auth
-            @if (Auth()->user()->usertype === 'user')
-                <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
-            @endif
-        @else
-        <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
-        @endauth
-        </button>
+        <div class="flex justify-center pt-6">
+            <button>
+            @auth
+                @if (Auth()->user()->usertype === 'user')
+                    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+                @endif
+            @else
+            <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @endauth
+            </button>
+        </div>
     </div>
 </div>
 @else

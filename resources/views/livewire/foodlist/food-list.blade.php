@@ -1,13 +1,13 @@
-<div>
+<div class="px-5">
     @if($products->count() > 0)
         <div class="py-8 container w-full justify-center place-items-center mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             @foreach($products as $product)
             <div>
-                <div class="card card-compact mx-auto w-[12rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
+                <div class="card card-compact mx-auto w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                     <button wire:key="{{ $product->id }}" wire:click="viewDetail({{ $product->id }})">
-                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" md:h-fit w-[12rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[10rem] object-cover object-center" /></figure>
+                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" md:h-fit w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[8rem] object-cover object-center" /></figure>
                         <div></div>
-                        <div class="card-body text-start ml-5 mt-2">
+                        <div class="card-body text-start mx-4 mt-2">
                             <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}</h2>
                         </div>
                     </button>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="mb-0">
-                            <h1 class="font-semibold md:mx-24 mb-1 mt-1 text-center md:text-end text-2xl">Rp.{{number_format($selectedFood->price,0,".",".")  }}</h1>
+                            <h1 class="font-semibold md:mx-24 mb-1 mt-1 text-center md:text-end text-2xl">Rp {{number_format($selectedFood->price,0,".",".")  }}</h1>
                             @if($foodCount > 0)
                                 <div wire:key="{{ $selectedFood->id }}" class="flex items-center md:justify-end justify-center mx-24 py-1 ">
                                     <button  wire:click="decrease({{ $selectedFood->id }})" class="text-xl bg-kuning-500 w-8 h-8 mr-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer p-0.5">-</button>
