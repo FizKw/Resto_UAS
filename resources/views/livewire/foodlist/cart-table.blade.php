@@ -7,14 +7,14 @@
                     <h1 class="font-bold text-2xl md:text-3xl px-7 md:px-14 pt-6 pb-2 sticky top-0 z-30 bg-biru-500">Pesanan</h1>
                     @foreach($listFood as $food)
                     <div>
-                        <section class="justify-start grid grid-rows-2 grid-flow-col items-center p-3 px-7 md:pl-14 ">
+                        <section class="justify-start grid grid-rows-2 grid-flow-col items-center p-3 px-5 md:pl-14 ">
                             <img src="{{ asset('storage/' . $food->food_image) }}" alt="{{ $food->food_image }}" class="items-center row-span-2 object-center object-cover mx-auto h-24 md:h-32 w-32 md:w-40 rounded">
                             <h1 class=" font-bold text-lg md:text-2xl capitalize px-4">{{ $food->food }}</h1>
                             <div class="self-start  ">
                                 <div class="flex px-4">
                                     <div class="flex">
                                         <button><a wire:key="{{ $food->id }}" wire:click.prevent="decrease({{ $food->id }})" type="button" class="md:text-xl bg-kuning-500 w-6 h-6 md:w-8 md:h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer md:p-0.5">-</a></button>
-                                        <p class="mx-4 font-bold md:text-2xl ">{{ $food->pivot->count }}</p>
+                                        <p class="mx-4 mt-1 md:mt-0 font-bold md:text-2xl ">{{ $food->pivot->count }}</p>
                                         <button><a wire:key="{{ $food->id }}" wire:click.prevent="increase({{ $food->id }})" type="button" class="md:text-xl bg-kuning-500 w-6 h-6 md:w-8 md:h-8 rounded-full text-biru-500 font-bold hover:scale-105 transform transition duration-500 cursor-pointer md:p-0.5">+</a></button>
                                     </div>
                                     <h1 class="align-middle font-bold text-lg md:text-2xl text-center ml-6 ">Rp {{number_format($food->price,0,".",".")  }}</h1>
@@ -38,8 +38,10 @@
                     @endif
                 </div>
                 @else
-                <h1 class="container text-center px-5 py-40 font-semibold text-xl md:text-3xl leading-normal">Kamu masih belum pesan apa apa nih :)</h1>
-                <button class=" btn mt-16 rounded-lg text-center capitalize text-lg md:text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black"> <a href="{{ route('home') }}">Pesan dulu yukk</a></button>
+                <div class="px-5 py-40 text-center">
+                    <h1 class="container text-center  font-semibold text-xl md:text-3xl leading-normal">Kamu masih belum pesan apa apa nih :)</h1>
+                    <button class=" btn mt-2 rounded-lg text-center capitalize text-lg md:text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black"> <a href="{{ route('home') }}">Pesan dulu yukk</a></button>
+                </div>
                 @endif
 
             </div>

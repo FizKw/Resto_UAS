@@ -58,7 +58,7 @@
                 {{-- Media Query Kecil --}}
             <label tabindex="0" class="btn block lg:hidden py-3 px-[10px] bg-merah-500 hover:cursor-pointer border-2 text-kuning-500 hover:bg-merah-400 active:bg-merah-400 focus:bg-merah-400 btn-circle avatar">
                 <div class="rounded-full">
-                    <i data-feather="user" class="text-kuning-500"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user text-kuning-500"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </label>
 
@@ -66,7 +66,7 @@
             <div class="lg:flex hidden mr-9 ">
                 <div class="flex group mt-3 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300 h-12 max-w-sm mx-auto">
                     <label tabindex="0" class="bg-merah-500 btn group-hover:cursor-pointer text-kuning-500 group-hover:bg-merah-400 group-active:bg-merah-400 group-focus:bg-merah-400 btn-circle avatar">
-                        <i data-feather="user" class="text-kuning-500"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user text-kuning-500"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     </label>
 
                     {{-- Username --}}
