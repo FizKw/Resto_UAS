@@ -5,7 +5,7 @@
             <div>
                 <div class="card card-compact mx-auto w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] mb-6 bg-biru-500  transition transform duration-700 shadow-md hover:shadow-xl hover:scale-105 rounded-none relative">
                     <button wire:key="{{ $product->id }}" wire:click="viewDetail({{ $product->id }})">
-                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" md:h-fit w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[8rem] object-cover object-center" /></figure>
+                        <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[8rem] object-cover object-center" /></figure>
                         <div></div>
                         <div class="card-body text-start mx-4 mt-2">
                             <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}</h2>

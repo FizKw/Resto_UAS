@@ -38,7 +38,8 @@
                     @endif
                 </div>
                 @else
-                <h1 class="container text-center px-5 py-40 font-semibold text-xl md:text-3xl leading-normal">Kamu masih belum pesan apa apa nih :) <br> Silahkan pesan menu yang kamu mau</h1>
+                <h1 class="container text-center px-5 py-40 font-semibold text-xl md:text-3xl leading-normal">Kamu masih belum pesan apa apa nih :)</h1>
+                <button class=" btn mt-16 rounded-lg text-center capitalize text-lg md:text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black"> <a href="{{ route('home') }}">Pesan dulu yukk</a></button>
                 @endif
 
             </div>

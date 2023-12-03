@@ -1,34 +1,35 @@
-<div class="container mx-auto w-full">
-        <div class="col-span-12">
+<div class="mx-auto max-w-screen-sm md:max-w-full">
+        
+    <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible ">
                 @if($product->count() > 0)
                     <table class="table text-white border-separate space-y-6 text-sm relative">
                         <thead class=" text-kuning-500">
                             <tr class="sticky top-0">
-                                <th class="p-3"></th>
-                                <th class="p-3 text-left">Menu</th>
-                                <th class="p-3 text-left">Detail</th>
-                                <th class="p-3 text-left">Harga</th>
-                                <th class="p-3 text-left"></th>
+                                <th class="md:p-3"></th>
+                                <th class="md:p-3 text-left">Menu</th>
+                                <th class="md:p-3 text-left">Detail</th>
+                                <th class="md:p-3 text-left">Harga</th>
+                                <th class="md:p-3 text-left"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($product as $rs)
                             <div class="">
-                                <tr class="bg-biru-500 outline outline-offset-1 outline-kuning-500">
-                                    <td class="p-2">
+                                <tr class="bg-biru-500 outline outline-offset-1 outline-kuning-500 text-sm">
+                                    <td class="md:p-2 h-16 w-36">
                                         <img src="{{ asset('storage/' . $rs->food_image) }}" alt="{{ $rs->food_image }}" class=" object-center object-cover mx-auto h-16 w-36 rounded">
                                     </td>
-                                    <td class="p-3 capitalize">
+                                    <td class="md:p-3 capitalize">
                                         {{ $rs->food }}
                                     </td>
-                                    <td class="p-3">
+                                    <td class="md:p-3  ">
                                         {{ $rs->description }}
                                     </td>
-                                    <td class="p-3">
+                                    <td class="md:p-3">
                                         Rp {{number_format($rs->price,0,".",".")  }}
                                     </td>
-                                    <td class="p-3 flex btn-group ">
+                                    <td class="md:p-3 flex btn-group ">
 
                                         <button><a href="{{ route('products.edit', $rs->id)}}" type="button" class="text-kuning-500 hover:text-kuning-300 text-md py-4 "><i data-feather="edit-2"></i></a></button>
                                         <form action="{{ route('products.destroy', $rs->id) }}" method="POST" type="button"  onsubmit="return confirm('Apakah anda yakin ingin mengapusnya?')">
