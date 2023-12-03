@@ -1,4 +1,4 @@
-<div class="navbar bg-merah-500 fixed z-50 h-28 shadow-lg justify-between">
+<div class="navbar bg-merah-500 fixed z-50 h-28 mr-10 shadow-lg justify-between">
     <div  class="flex-1 max-w-7xl px-1 sm:px-6 lg:px-8">
         <a href="{{ route('index') }}" class=" " wire:navigate>
             <img src="{{ asset('asset/logo.png') }}" alt="" class="w-24 h-20 mx-2 my-auto">
