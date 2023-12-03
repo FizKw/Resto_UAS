@@ -20,7 +20,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
-    <body class="font-poppins antialiased min-h-screen bg-[#5B0017]">
+    <body class="font-poppins antialiased min-h-screen min-w-fit bg-[#5B0017]">
         <div class="min-h-screen relative">
             {{-- Navbar masuk disini --}}
             <livewire:navbar.navigation />

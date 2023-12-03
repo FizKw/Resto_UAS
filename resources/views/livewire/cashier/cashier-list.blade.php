@@ -93,7 +93,7 @@
                         <div class="flex justify-around">
                             <div class="dropdown dropdown-bottom">
                                 <div>
-                                    <label tabindex="0" class="btn font-semibold text-center text-yellow-600 text-3xl bg-merah-500 hover:bg-merah-400 ">Tolak</label>
+                                    <label tabindex="0" class="btn font-semibold text-center text-yellow-600 text-xl bg-merah-500 hover:bg-merah-400 ">Tolak</label>
                                 </div>
                                 <form wire:submit="orderCancel()" class="dropdown-content  bg-merah-500 border-2 border-kuning-500 rounded-lg p-4 mt-5 mb-3">
                                     {{-- div baris ini itu pilihan kenapa cancel nya --}}
@@ -126,7 +126,7 @@
                                     </div>
                                         {{-- button konfirmasi setelah pilih alasan --}}
 
-                                        <button class="btn md:w-[334px] md:h-[36px] sm:w-11/12 text-center text-black text-xl md:text-2xl lg:text-3xl bg-kuning-500 hover:bg-kuning-400 rounded-lg">Cancel Order</button>
+                                        <button class="btn md:w-[334px] md:h-[36px] sm:w-11/12 text-center text-black text-lg md:text-2xl lg:text-3xl bg-kuning-500 hover:bg-kuning-400 rounded-lg">Cancel Order</button>
 
                                 </form>
                             </div>

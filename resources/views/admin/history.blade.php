@@ -1,7 +1,7 @@
 <x-app-layout>
 <div class="relative mx-6  max-h-screen">
     <div class="mt-24 ">
-    <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2 h-[80vh]">
+
 
         {{-- Form Buat Pengisian Tanggal --}}
         <form method="POST" action="{{ route('products.history') }}">
