@@ -5,6 +5,7 @@ namespace App\Livewire\Foodlist;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 
 class CartTable extends Component
 {
@@ -13,34 +14,33 @@ class CartTable extends Component
     public $totalPrice;
 
     public function increase($cartId = null){
-        $user = User::find(Auth()->user()->id);
-        DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->increment('count');
+        $user = User::with('foods')->where('id', Auth()->user()->id)->first();
+        $user->foods()->where('foods_id', $cartId)->increment('count');
         $this->dispatch('counts-update');
     }
 
     public function decrease($cartId = null){
-        $user = User::find(Auth()->user()->id);
-        $row = DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->first();
-        if($row->count > 1){
-            DB::table('user_foods')->where('foods_id', $cartId)->where('user_id', $user->id)->decrement('count');
+        $user = User::with('foods')->where('id', Auth()->user()->id)->first();
+        if($user->foods()->where('foods_id', $cartId)->first()->pivot->count > 1){
+            $user->foods()->where('foods_id', $cartId)->decrement('count');
         }else{
-            $user->foods()->detach($cartId);
+            $user->foods()->wherePivot('order_id', null)->detach($cartId);
         }
         $this->dispatch('counts-update');
-        
+
     }
 
+    #[On('counts-detail')]
     public function render()
     {
         $price = 0;
-        $this->counts = DB::table('user_foods')->where('user_id', Auth()->user()->id)->get();
         $cart = User::with('foods')->where('id',Auth()->user()->id)->first();
         $this->listFood = $cart->foods;
         foreach($cart->foods as $product){
             $price += $product->price * $product->pivot->count;
         }
         $this->totalPrice = $price;
-        
+
         return view('livewire.foodlist.cart-table');
     }
 }

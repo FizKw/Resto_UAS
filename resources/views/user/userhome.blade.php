@@ -1,13 +1,9 @@
 <x-app-layout>
-    <div class="hero min-h-screen relative" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Best food to fulfill your belly.</h1>
-            <a href="#foodcart" class=" btn rounded-full bg-color1 hover:bg-red-400 text-white"> Get Started</a>
-            <p id="foodcart" class="opacity-0 text-3xl absolute bottom-7">asdas</p>
-          </div>
-        </div>
-    </div>  
-        <livewire:foodlist.food-list />
+    <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2">
+    <div class="container lg:grid lg:grid-cols-2 lg:mx-auto mx-6 mt-28 lg:justify-center mb-4">
+        <p class="text-6xl md:text-7xl font-bold mx-6 text-white">Discover<br> Our Menu</p>
+        <p class="md:mx-8 mx-6 mt-4 md:mt-14 text-md text-white font-light">Rasakan kenikmatan dari mie ayam dengan resep rahasia racikan keluarga.</p>
+    </div>
+    <livewire:foodlist.food-list />
+    
 </x-app-layout>

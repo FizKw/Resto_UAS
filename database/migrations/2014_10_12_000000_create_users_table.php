@@ -19,10 +19,12 @@ return new class extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email')->unique();
-            $table->date('date_of_birth');
+            $table->foreignId('order_id')->nullable();
+            $table->string('phone');
             $table->string('avatar')->nullable();
             $table->string('password');
             $table->string('usertype')->default('user');
+            $table->timestamp('email_verivied_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,10 +33,21 @@ return new class extends Migration
             array(
                 'f_name' => 'admin',
                 'l_name' => 'only',
-                'date_of_birth' => '2000-01-01',
+                'phone' => '081234567890',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin123'),
                 'usertype' => 'admin'
+            )
+        );
+
+        DB::table('users')->insert(
+            array(
+                'f_name' => 'kasir',
+                'l_name' => '1',
+                'phone' => '081234567890',
+                'email' => 'kasir@gmail.com',
+                'password' => Hash::make('kasir123'),
+                'usertype' => 'cashier'
             )
         );
     }

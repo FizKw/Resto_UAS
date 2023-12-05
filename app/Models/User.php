@@ -20,8 +20,9 @@ class User extends Authenticatable
     protected $fillable = [
         'f_name',
         'l_name',
-        'date_of_birth',
+        'phone',
         'email',
+        'order_id',
         'password',
         'avatar',
     ];
@@ -47,7 +48,14 @@ class User extends Authenticatable
     ];
 
     public function foods(){
-        return $this->belongsToMany(Foods::class, 'user_foods')->withTimestamps()->withPivot('count');
+        return $this->belongsToMany(Foods::class, 'user_foods')->where('order_id', null)->withTimestamps()->withPivot('count', 'order_id');
     }
 
+    public function foodOrder(){
+        return $this->belongsToMany(Foods::class, 'user_foods')->withPivot('count', 'order_id');
+    }
+
+    public function order(){
+        return $this->hasOne(Orders::class);
+    }
 }

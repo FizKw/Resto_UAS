@@ -26,6 +26,9 @@ class HomeController extends Controller
             else if($usertype=='admin'){
                 return view('admin.adminhome');
             }
+            else if($usertype == 'cashier'){
+                return view('cashier.cashierhome');
+            }
             else{
                 return redirect()->back();
             }
@@ -35,13 +38,4 @@ class HomeController extends Controller
         }
     }
 
-    // public function category(string $category){
-        
-    //     $product = Foods::where('category', $category)->orderBy('created_at', 'DESC')->get();
-    //     $btnActive = $category;
-    //     return view('user.userhome',compact('product','btnActive'))->with('scroll', 'foodcart');
-
-    // }
-
-    
 }
