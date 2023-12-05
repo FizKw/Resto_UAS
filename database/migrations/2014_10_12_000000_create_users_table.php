@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('l_name');
             $table->string('email')->unique();
             $table->foreignId('order_id')->nullable();
-            $table->date('date_of_birth');
+            $table->string('phone');
             $table->string('avatar')->nullable();
             $table->string('password');
             $table->string('usertype')->default('user');
@@ -33,7 +33,7 @@ return new class extends Migration
             array(
                 'f_name' => 'admin',
                 'l_name' => 'only',
-                'date_of_birth' => '2000-01-01',
+                'phone' => '081234567890',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin123'),
                 'usertype' => 'admin'
@@ -44,7 +44,7 @@ return new class extends Migration
             array(
                 'f_name' => 'kasir',
                 'l_name' => '1',
-                'date_of_birth' => '2000-01-01',
+                'phone' => '081234567890',
                 'email' => 'kasir@gmail.com',
                 'password' => Hash::make('kasir123'),
                 'usertype' => 'cashier'

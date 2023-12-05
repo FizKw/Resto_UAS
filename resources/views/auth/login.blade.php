@@ -6,8 +6,8 @@
             @csrf
 
             <section class="text-white col-span-1">
-                <h1 class="text-center text-white text-7xl sm:text-8xl font-sans font-bold">Welcome</h1>
-                <h2 class="text-center text-white text-xl font-light mt-0">We are glad to see you back with us</h2>
+                <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
+                <h2 class="text-center text-white text-xl font-light mt-0">Senang melihat anda datang kembali</h2>
                 <div class="max-w-md mx-auto pt-6">
 
                     <!-- Email Address -->
@@ -22,7 +22,8 @@
                         </div>
                         <input id="email" class="w-full px-10 py-2 border rounded-md focus:outline-none focus:border-merah-500 focus:ring-merah-500 bg-white text-black placeholder:opacity-60" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus autocomplete="email" />
                     </div>
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 " />
+
+                    {{-- <x-input-error :messages="$errors->get('email')" class="mt-2 " /> --}}
 
                     <!-- Password -->
                     <div class="my-4 relative">
@@ -39,33 +40,41 @@
                                         placeholder="Password"
                                         required autocomplete="current-password" />
 
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                    </div>
 
-                    {{-- Captcha --}}
-                    <div class="mt-4">
-                        {!! captcha_img() !!}
-                        <input id="captcha" class="w-full px-2 py-2 mt-4 border rounded-md focus:outline-none focus:border-merah-500 focus:ring-merah-500 bg-white text-black placeholder:opacity-60" type="text" name="captcha" placeholder="Masukan Captcha" :value="old('captcha')" required autocomplete="captcha" />
-                        @if($errors->has('captcha'))
-                            <span class="text-danger">
-                                Captcha Is Incorrect
-                            </span>
-                        @endif
+                        {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
                     </div>
+                    @if ($errors->has('email'))
+                    <p class="mx-2 text-sm text-red-600 space-y-1">Email atau password yang anda masukan salah</p>
+                    @elseif (($errors->has('password')))
+                    <p class="mx-2 text-sm text-red-600 space-y-1">Email atau password yang anda masukan salah</p>
+                    @endif
 
                     {{-- Button --}}
                     <button type="submit" class="w-full bg-kuning-500 text-black border border-black py-2 px-4 mt-4 rounded-md hover:bg-kuning-400 focus:outline-none focus:border-kuning-400 focus:bg-kuning-400">Submit</button>
 
+
+                    {{-- Button Remember me --}}
+                    <div class="flex mt-4 justify-between">   
+                        <div class="block">
+                            <label for="remember_me" class="inline-flex items-center">
+                                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                <span class="ms-2 text-md text-white">{{ __('Remember me') }}</span>
+                            </label>
+                        </div>
+                        <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a>
+                    </div>
+
                     {{-- Register --}}
-                    <div class="text-md mt-4 p-2">Don't have an account? <a href="{{ route('register') }}" class="button text-yellow-600 text-md ">Register here</a></div>
+                    <div class="text-md mt-4 p-2">Belum punya akun? <a href="{{ route('register') }}" class="button hover:text-kuning-400 text-kuning-500 text-md ">Daftar disini</a></div>
 
                 </div>
             </section>
         </form>
         <div class="col-span-1 p-8  hidden lg:flex items-center justify-center">
-            <a href="{{ route('index') }}" class=" " wire:navigate>
+            <a href="{{ route('index') }}" class="" wire:navigate>
                 <img class=" w-full h-full rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
             </a>
         </div>
+
     </div>
 </x-guest-layout>

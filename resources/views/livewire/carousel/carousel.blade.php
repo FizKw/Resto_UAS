@@ -1,11 +1,10 @@
 <div>
 @if (isset($item1) && isset($item2))
-<div class="carousel w-full min-h-screen relative ">
+<div class="carousel w-full max-h-screen relative ">
     {{-- slide 1 --}}
     {{-- Media Query Dekstop--}}
     <div id="slide1" class="relative w-full carousel-item hidden xl:grid grid-cols-3 pt-18">
         <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2 h-[85%]">
-        <img src="{{ asset('asset/vector/buletan.png') }}" class="absolute hidden xl:flex left-10 bottom-[15%]">
 
         <div class="pt-18 mx-auto lg:ml-24 ml-10 z-20 min-w-full">
             <h1 class="xl:text-8xl lg:text-7xl md:text-6xl sm:text-5xl text-4xl text-white font-semibold leading-none z-20 bg-merah-500 bg-opacity-60 ">{{$item1->food }}</h1>
@@ -13,7 +12,9 @@
             <div  class="relative mt-6 md:mt-8 mx-10">
                 <button class="outline outline-2 hidden md:block md:outline-offset-[10px] outline-yellow-600">
                 @auth
-                <a href="{{ route('home') }}" class=" text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
+                    @if (Auth()->user()->usertype === 'user')
+                        <a href="{{ route('home') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Check Our Menu</a>
+                    @endif
                 @else
                 <a href="{{ route('menu') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
                 @endauth
@@ -57,19 +58,22 @@
         <div class="mx-auto">
         <p class="text-center text-white mt-3 mx-16">{{$item1->description}}</p>
         </div>
-        <button class="relative -bottom-[8%] inset-x-[32%] md:inset-x-[40%]">
-        @auth
-        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
-        @else
-        <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
-        @endauth
-        </button>
+        <div class="flex justify-center pt-6">
+            <button>
+            @auth
+                @if (Auth()->user()->usertype === 'user')
+                    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+                @endif
+            @else
+            <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @endauth
+            </button>
+        </div>
     </div>
 
         {{-- Slide 2 --}}
     <div id="slide2" class="relative w-full carousel-item hidden xl:grid grid-cols-3 pt-18">
         <img src="{{ asset('asset/vector/kotak.png') }}" class="absolute w-1/2 h-[85%]">
-        <img src="{{ asset('asset/vector/buletan.png') }}" class="absolute hidden xl:flex left-10 bottom-[15%]">
 
 
         <div class="mt-18 mx-auto lg:ml-24 ml-10 z-20 min-w-full">
@@ -78,7 +82,9 @@
             <div  class="relative mt-6 md:mt-8 mx-10">
                 <button class="outline outline-2 outline-offset-4 md:outline-offset-[10px] outline-yellow-600">
                 @auth
-                <a href="{{ route('home') }}" class=" text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
+                    @if (Auth()->user()->usertype === 'user')
+                        <a href="{{ route('home') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Check Our Menu</a>
+                    @endif
                 @else
                 <a href="{{ route('menu') }}" class="text-center text-yellow-600 text-xl font-semibold" wire:navigate>Our Menu</a>
                 @endauth
@@ -122,19 +128,25 @@
         <div class="mx-auto">
             <p class="text-center text-white mt-3 mx-16">{{$item2->description}}</p>
         </div>
-        <button class="relative -bottom-[8%] inset-x-[30%] md:inset-x-[40%]">
-        @auth
-        <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
-        @else
-        <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
-        @endauth
-        </button>
+        <div class="flex justify-center pt-6">
+            <button>
+            @auth
+                @if (Auth()->user()->usertype === 'user')
+                    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+                @endif
+            @else
+            <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Our Menu</a>
+            @endauth
+            </button>
+        </div>
     </div>
 </div>
 @else
 <button class="block mx-auto mt-32 mb-6">
     @auth
-    <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+        @if (Auth()->user()->usertype === 'user')
+            <a href="{{ route('home') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
+        @endif
     @else
     <a href="{{ route('menu') }}" class=" px-6 py-2 text-center capitalize text-2xl font-bold bg-kuning-500 hover:bg-kuning-400 text-black" wire:navigate>Check Our Menu</a>
     @endauth

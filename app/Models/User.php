@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'f_name',
         'l_name',
-        'date_of_birth',
+        'phone',
         'email',
         'order_id',
         'password',
@@ -58,6 +58,4 @@ class User extends Authenticatable
     public function order(){
         return $this->hasOne(Orders::class);
     }
-
-
 }
