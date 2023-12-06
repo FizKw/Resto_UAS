@@ -1,6 +1,6 @@
 <div>
     <div class="max-h-screen">
-        <div class="bg-biru-500 overflow-auto max-h-[74vh] mt-10 shadow-sm rounded-3xl border-4 border-yellow-600">
+        <div class="bg-biru-500 overflow-auto max-h-[74vh] mt-10 mx-5 shadow-sm rounded-3xl border-4 border-yellow-600">
             <div class=" text-white">
                 @if($listFood->count() > 0)
                 <div class="relative">

@@ -1,5 +1,5 @@
 <div class="max-h-screen">
-    <div class="bg-biru-500 overflow-auto h-[80vh] mx-10 mt-12 shadow-sm rounded-3xl border-4 text-white border-yellow-600 relative">
+    <div class="bg-biru-500 overflow-auto h-full pb-10 mx-10 mt-12 shadow-sm rounded-3xl border-4 text-white border-yellow-600 relative">
         {{-- Kalau misalkan orderannya di cancel bakal muncul ini --}}
         @if ($orderNumber->status == "Cancel")
             <div class="mt-20">
@@ -36,23 +36,23 @@
         {{-- status orderan saat ini --}}
         @else
         <div class="mt-9">
-            <h1 class="font-bold pt-3 pb-2 text-6xl md:text-7xl text-center">Selamat!</h1>
+            <h1 class="font-bold pt-3 pb-2 text-5xl md:text-7xl text-center">Selamat!</h1>
             @switch($orderNumber->status)
                 @case($orderNumber->status == "Waiting")
-                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu akan segera di proses</p>
+                    <p class="text-base md:text-xl text-center text-white pb-6">Pesananmu akan segera di proses</p>
                     @break
                 @case($orderNumber->status == "Process")
-                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu sedang di proses restoran</p>
+                    <p class="text-base md:text-xl text-center text-white pb-6">Pesananmu sedang di proses restoran</p>
                     @break
                 @case($orderNumber->status == "Ready")
-                    <p class="text-lg md:text-xl text-center text-white pb-6">Pesananmu siap diambil</p>
+                    <p class="text-base md:text-xl text-center text-white pb-6">Pesananmu siap diambil</p>
                     @break
                 @default
             @endswitch
-            <h1 class="text-9xl md:text-[12rem] text-center mb-12 font-bold">#{{ $orderNumber->id }}</></h1>
+            <h1 class="text-8xl md:text-[12rem] text-center mb-12 font-bold">#{{ $orderNumber->id }}</></h1>
             <div class="grid place-items-center">
         </div>
-        
+
         @switch($orderNumber->status)
                 @case($orderNumber->status == "Waiting")
                     <div class="mx-6">
@@ -148,6 +148,11 @@
                     <div class="flex justify-center items-center mt-4 mb-4">
                         <button x-data x-on:click="$dispatch('open-detail')" class="border-2 border-black rounded-xl font-bold flex-none md:px-12 px-8 py-2  w-22 bg-kuning-500 hover:bg-kuning-400 active:bg-kuning-300 focus:bg-kuning-300   text-biru-500 hover:border-black  transition ease-in-out duration-150">Bayar lewat QRIS yuk!!</button>
                     </div>
+
+                    @error('payment_image')
+                        <div>Foto Tidak Sesuai</div>
+                    @enderror
+
                     {{-- Kalau sudah upload image buat bayar tapi masih nunggu verivikasi dari kasir --}}
                 @elseif ($orderNumber->is_paid == false )
                 <p class="text-lg md:text-xl text-center text-white mt-6 mb-6">Sabar ya, restoran lagi verifikasi pembayaran kamu nihh!!
@@ -176,14 +181,16 @@
                     {{-- Ini form buat upload foto pembayaran --}}
                     <form action="{{ route('paynow') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="grid place-items-center">
-                        <x-text-input id="payment_image" name="payment_image" type="file" class="mt-1  w-[60%] " required autofocus autocomplete="payment_image" />
+                        <input id="payment_image" name="payment_image" type="file" class="mt-1 w-[80%] text-lg border border-black bg-kuning-500 ring-merah-500 focus:border-merah-500 focus:ring-merah-500 rounded-lg placeholder:italic placeholder:text-orange-800 placeholder:opacity-60 px-3 py-3.5" required autocomplete="payment_image" />
                         <x-input-error class="mt-2" :messages="$errors->get('payment_image')" />
                         </div>
                         <div class="flex justify-center mt-6">
                             <button class="btn capitalize text-2xl font-bold border hover:border-black bg-kuning-500 hover:bg-kuning-400 text-black hover:text-white">Bayar</button>
                         </div>
                     </form>
+
                 </div>
                 @endslot
         </x-detail-modal>

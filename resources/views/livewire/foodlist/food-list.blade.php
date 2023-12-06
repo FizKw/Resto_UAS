@@ -8,7 +8,7 @@
                         <figure class="mx-auto"><img src="{{ asset('storage/' . $product->food_image) }}" alt="{{ $product->food }}" class=" w-[10rem] sm:w-[18rem] xl:w-[24rem] 2xl:w-[31rem] lg:w-[20rem] md:w-[22rem] h-[8rem] md:h-[18rem] object-cover object-center" /></figure>
                         <div></div>
                         <div class="card-body text-start mx-4 mt-2">
-                            <h2 class="card-title text-white text-lg font-semibold capitalize">{{ $product->food }}</h2>
+                            <h2 class="card-title text-white text-base md:text-lg font-semibold capitalize">{{ $product->food }}</h2>
                         </div>
                     </button>
                 </div>
@@ -25,7 +25,7 @@
             <x-detail-modal name="food-detail">
                 @slot('body')
                     {{-- Modal Here --}}
-                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-auto fixed inset-x-[20%] inset-y-[13%] max-w-2xl text-white">
+                    <div class="bg-biru-500 rounded-xl border-4 border-kuning-500 m-auto overflow-auto fixed inset-x-[13%] inset-y-[22%] max-w-2xl text-white">
                         <div class="mx-4 mt-6 flex justify-between">
                             <div class="opacity-0">a</div>
                             <h1 class="text-center font-semibold mx-auto text-xl md:text-3xl capitalize">{{ $selectedFood->food }}</h1>
