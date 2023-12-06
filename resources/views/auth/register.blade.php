@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title','Register')
     <div class=" mx-auto lg:grid lg:grid-cols-2 gap-8">
         <div class="text-white col-span-1">
             <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
@@ -16,7 +17,7 @@
                             </svg>
                         </i>
                     </div>
-                    <input type="text" id="f_name" name="f_name" value="{{ old('f_name') }}" required autofocus autocomplete="f_name" placeholder="First Name" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
+                    <input type="text" id="f_name" name="f_name" value="{{ old('f_name') }}" required autofocus autocomplete="f_name" placeholder="Nama Depan" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
 
                     {{-- <x-input-error :messages="$errors->get('f_name')" class="mt-2" /> --}}
                 </div>
@@ -31,7 +32,7 @@
                             </svg>
                         </i>
                     </div>
-                    <input type="text" id="l_name" name="l_name" value="{{ old('l_name') }}" required autofocus autocomplete="l_name" placeholder="Last Name" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
+                    <input type="text" id="l_name" name="l_name" value="{{ old('l_name') }}" required autofocus autocomplete="l_name" placeholder="Nama Belakang" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
                     <x-input-error :messages="$errors->get('l_name')" class="mt-2" />
                 </div>
 
@@ -93,7 +94,7 @@
                             </svg>
                         </i>
                     </div>
-                    <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="password" placeholder="Confirm Password" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
+                    <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="password" placeholder="Konfirmasi Password" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
                     {{-- <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> --}}
                 </div>
                     @if ($errors->has('password_confirmation'))

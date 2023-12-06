@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title','Login')
     <!-- Session Status bisa diilangin -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="mx-auto lg:grid lg:grid-cols-2 gap-8">
