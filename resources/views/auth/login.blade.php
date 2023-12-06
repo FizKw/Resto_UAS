@@ -8,7 +8,7 @@
 
             <section class="text-white col-span-1">
                 <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
-                <h2 class="text-center text-white text-xl font-light mt-0">Senang melihat anda datang kembali</h2>
+                <h2 class="text-center text-white text-xl font-light mt-2 mb-1">Senang melihat anda datang kembali</h2>
                 <div class="max-w-md mx-auto pt-6">
 
                     <!-- Email Address -->
@@ -55,14 +55,14 @@
 
 
                     {{-- Button Remember me --}}
-                    <div class="flex mt-4 justify-between">   
+                    <div class="flex mt-4 justify-between">
                         <div class="block">
                             <label for="remember_me" class="inline-flex items-center">
                                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                                 <span class="ms-2 text-md text-white">{{ __('Remember me') }}</span>
                             </label>
                         </div>
-                        <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a>
+                        {{-- <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a> --}}
                     </div>
 
                     {{-- Register --}}
@@ -72,7 +72,7 @@
             </section>
         </form>
         <div class="col-span-1 p-8  hidden lg:flex items-center justify-center">
-            <a href="{{ route('index') }}" class="" wire:navigate>
+            <a href="{{ route('index') }}" class="">
                 <img class=" w-full h-full rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
             </a>
         </div>

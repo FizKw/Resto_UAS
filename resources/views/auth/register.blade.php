@@ -3,7 +3,7 @@
     <div class=" mx-auto lg:grid lg:grid-cols-2 gap-8">
         <div class="text-white col-span-1">
             <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
-            <h2 class="text-center text-white text-xl  font-light mt-0">Silahkan daftar disini</h2>
+            <h2 class="text-center text-white text-xl  font-light mt-2 mb-1">Silahkan daftar disini</h2>
 
             <form class="max-w-md mx-auto pt-6" method="POST" action="{{ route('register') }}">
                 @csrf
@@ -66,9 +66,9 @@
                     </div>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="email" placeholder="Email" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
                 @if ($errors->has('email'))
-                    <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email telah digunakan</p>
+                    <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email Tidak Sesuai(Invalid)</p>
                 @endif
 
                 {{-- Password --}}

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class CartController extends Controller
 {
@@ -35,6 +37,12 @@ class CartController extends Controller
 
 
     public function paynow(Request $request){
+
+
+
+        $request->validate([
+            'payment_image' => 'required|image',
+        ]);
 
         $path = Storage::disk('public')->put('payment_images',$request->file('payment_image'));
         $user = User::find(Auth()->user()->id);
