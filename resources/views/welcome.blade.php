@@ -59,7 +59,7 @@
         </button>
     </div>
   </div>
-  <footer class=" py-8 md:flex md:justify-around bg-biru-500">
+  <footer class="pt-8 md:py-8 md:flex md:justify-around bg-biru-500">
     <div class="mx-auto md:mx-0 w-[68%] md:w-[30%] px-2 py-4">
       <header class="sm:text-2xl md:mx-10 font-bold text-kuning-500 ">Hubungi kami</header> 
       <div class="flex md:mx-10 justify-start pt-1">

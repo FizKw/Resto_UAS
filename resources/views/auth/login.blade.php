@@ -8,7 +8,7 @@
 
             <section class="text-white col-span-1">
                 <h1 class="text-center text-white text-6xl sm:text-7xl font-sans font-bold">Selamat datang</h1>
-                <h2 class="text-center text-white text-xl font-light mt-0">Senang melihat anda datang kembali</h2>
+                <h2 class="text-center text-white text-xl font-light mt-2 mb-1">Senang melihat anda datang kembali</h2>
                 <div class="max-w-md mx-auto pt-6">
 
                     <!-- Email Address -->
