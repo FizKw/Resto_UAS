@@ -66,9 +66,9 @@
                     </div>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="email" placeholder="Email" class="w-full px-10 py-2 border rounded-md focus:outline-none bg-white text-black">
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
                 @if ($errors->has('email'))
-                    <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email telah digunakan</p>
+                    <p class="mt-2 mx-2 text-sm text-red-600 space-y-1">Email Tidak Sesuai(Invalid)</p>
                 @endif
 
                 {{-- Password --}}

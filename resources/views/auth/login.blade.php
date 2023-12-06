@@ -55,14 +55,14 @@
 
 
                     {{-- Button Remember me --}}
-                    <div class="flex mt-4 justify-between">   
+                    <div class="flex mt-4 justify-between">
                         <div class="block">
                             <label for="remember_me" class="inline-flex items-center">
                                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                                 <span class="ms-2 text-md text-white">{{ __('Remember me') }}</span>
                             </label>
                         </div>
-                        <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a>
+                        {{-- <a href="{{ route('password.request') }}" class="button hover:text-gray-300 text-white text-md hover:underline ">Lupa Password?</a> --}}
                     </div>
 
                     {{-- Register --}}
@@ -72,7 +72,7 @@
             </section>
         </form>
         <div class="col-span-1 p-8  hidden lg:flex items-center justify-center">
-            <a href="{{ route('index') }}" class="" wire:navigate>
+            <a href="{{ route('index') }}" class="">
                 <img class=" w-full h-full rounded-3xl" src="{{ asset('asset/logo.png') }}" alt="Placeholder Image">
             </a>
         </div>
